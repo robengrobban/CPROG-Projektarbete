@@ -1,6 +1,6 @@
 #include "SystemRenderer.h"
 
-namespace URMengine {
+namespace engine {
 
 	SystemRenderer::SystemRenderer() {
 

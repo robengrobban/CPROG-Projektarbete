@@ -1,18 +1,18 @@
-#include "GameEngine.h"
+#include "GameManager.h"
 
 #define FPS 60;
 
-namespace URMengine {
+namespace engine {
 
-	GameEngine::GameEngine() {
-
-	}
-
-	GameEngine::~GameEngine() {
+	GameManager::GameManager() {
 
 	}
 
-	void GameEngine::run() {
+	GameManager::~GameManager() {
+
+	}
+
+	void GameManager::run() {
 		bool running = true;
 
 		const int tick_interval = 1000 / FPS;

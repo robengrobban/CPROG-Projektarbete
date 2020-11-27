@@ -2,7 +2,7 @@
 #define RENDERER_H
 #include <SDL.h>
 
-namespace URMengine {
+namespace engine {
 	class SystemRenderer {
 		public:
 			SystemRenderer();

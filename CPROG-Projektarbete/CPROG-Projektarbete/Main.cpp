@@ -1,8 +1,8 @@
-#include "GameEngine.h"
+#include "GameManager.h"
 #include "SystemRenderer.h"
 
 using namespace std;
-using namespace URMengine;
+using namespace engine;
 
 int main(int argc, char** argv) {
 
