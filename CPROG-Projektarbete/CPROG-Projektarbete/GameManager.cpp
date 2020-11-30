@@ -22,6 +22,15 @@ namespace engine {
 		do {
 			next_tick = SDL_GetTicks() + tick_interval;
 
+			// Read events
+			SDL_Event event;
+			while ( SDL_PollEvent(&event) ) {
+				switch (event.type) {
+					case SDL_QUIT:
+						running = false;
+						break;
+				}
+			}
 
 
 
