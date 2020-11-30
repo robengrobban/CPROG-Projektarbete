@@ -11,6 +11,8 @@ namespace engine {
 
 			SDL_Renderer* get_ren() const;
 			void play_music(const char music_path[]);
+			void pause_music();
+			void resume_music();
 
 		protected:
 
@@ -22,7 +24,4 @@ namespace engine {
 
 	extern SystemRenderer sys_ren;
 }
-
-
-
 #endif

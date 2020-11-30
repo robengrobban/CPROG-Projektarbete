@@ -6,8 +6,8 @@
 #include <SDL_mixer.h>
 
 /*
- * Recurse through the list of arguments to clean up, cleaning up
- * the first one in the list each iteration.
+ Recurse through the list of arguments to clean up, cleaning up
+ the first one in the list each iteration.
  */
 template<typename T, typename... Args>
 void cleanup(T* t, Args&&... args) {

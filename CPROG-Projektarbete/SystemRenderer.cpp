@@ -58,7 +58,27 @@ namespace engine {
 			cleanup(this->music);
 		}
 		music = Mix_LoadWAV(music_path);
-		Mix_PlayChannel(-1, music, -1);
+		Mix_PlayChannel(0, music, -1);
+	}
+
+	/// <summary>
+	/// Pauses the music
+	/// </summary>
+	void SystemRenderer::pause_music()
+	{
+		if (Mix_Playing(0)) {
+			Mix_Pause(0);
+		}
+	}
+
+	/// <summary>
+	/// Resumes the music
+	/// </summary>
+	void SystemRenderer::resume_music()
+	{
+		if (Mix_Paused(0)) {
+			Mix_Resume(0);
+		}
 	}
 
 	SystemRenderer sys_ren;

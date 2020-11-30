@@ -4,6 +4,9 @@
 
 namespace engine {
 
+	/// <summary>
+	/// Runs the game loop.
+	/// </summary>
 	class GameManager {
 		public:
 			GameManager();
@@ -18,5 +21,4 @@ namespace engine {
 	};
 
 }
-
 #endif

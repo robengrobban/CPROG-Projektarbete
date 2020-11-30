@@ -13,6 +13,9 @@ namespace engine {
 
 	}
 
+	/// <summary>
+	/// Starts the game loop.
+	/// </summary>
 	void GameManager::run() {
 		bool running = true;
 
@@ -33,7 +36,6 @@ namespace engine {
 				}
 			}
 
-
 			// Draw frame
 			SDL_SetRenderDrawColor(sys_ren.get_ren(), 0, 0, 0, 255);
 			SDL_RenderClear(sys_ren.get_ren());
@@ -48,7 +50,5 @@ namespace engine {
 				SDL_Delay(delay);
 			}
 		} while (running);
-
 	}
-
 }
