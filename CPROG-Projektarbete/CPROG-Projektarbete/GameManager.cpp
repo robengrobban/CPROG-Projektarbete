@@ -1,4 +1,5 @@
 #include "GameManager.h"
+#include "SystemRenderer.h"
 
 #define FPS 60;
 
@@ -33,8 +34,15 @@ namespace engine {
 			}
 
 
+			// Draw frame
+			SDL_SetRenderDrawColor(sys_ren.get_ren(), 0, 0, 0, 255);
+			SDL_RenderClear(sys_ren.get_ren());
+			// ...
 
+			// Present frame
+			SDL_RenderPresent(sys_ren.get_ren());
 
+			// Calculate delay to cap frame rate
 			delay = next_tick - SDL_GetTicks();
 			if ( delay > 0 ) {
 				SDL_Delay(delay);
