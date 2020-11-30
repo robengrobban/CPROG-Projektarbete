@@ -1,13 +1,14 @@
 #include "SystemRenderer.h"
 #include <stdexcept>
 #include <string>
+#include "cleanup.h"
 
 namespace engine {
 
 	SystemRenderer::SystemRenderer() {
 		// Check for errors at initialization of SDL
-		int code = SDL_Init(SDL_INIT_EVERYTHING);
-		if ( code == -1 ) {
+		int init_code = SDL_Init(SDL_INIT_EVERYTHING);
+		if ( init_code == -1 ) {
 			throw std::runtime_error(std::string("Initfel: ") + SDL_GetError());
 		}
 
@@ -21,18 +22,43 @@ namespace engine {
 			throw std::runtime_error(std::string("Cannot create renderer: ") + SDL_GetError());
 		}
 
+		int music_code = Mix_OpenAudio(22050, AUDIO_S16SYS, 2, 4096);
+		if (music_code == -1){
+			throw std::runtime_error(std::string("Cannot initialize audio: ") + SDL_GetError());
+		}
+		music = nullptr;
 	}
 
+	/// <summary>
+	/// Destructor, destroys SDL resources and quits SDL.
+	/// </summary>
 	SystemRenderer::~SystemRenderer() {
 		
-		// Destroy window and renderer
-		SDL_DestroyRenderer(this->sdl_ren);
-		SDL_DestroyWindow(this->sdl_win);
+		// Destroy window, renderer and music
+		cleanup(this->sdl_ren, this->sdl_win, this->music);
+		Mix_Quit();
 		SDL_Quit();
 	}
 
+	/// <summary>
+	/// Retrieves the renderer.
+	/// </summary>
+	/// <returns>Pointer to the renderer</returns>
 	SDL_Renderer* SystemRenderer::get_ren() const {
 		return this->sdl_ren;
+	}
+
+	/// <summary>
+	/// Loads and plays music at selected path. If a song is already loaded it is first unloaded.
+	/// </summary>
+	/// <param name="music_path">Path for the music to be played. Char array.</param>
+	void SystemRenderer::play_music(const char music_path[])
+	{
+		if (music != nullptr) {
+			cleanup(this->music);
+		}
+		music = Mix_LoadWAV(music_path);
+		Mix_PlayChannel(-1, music, -1);
 	}
 
 	SystemRenderer sys_ren;
