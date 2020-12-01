@@ -32,7 +32,7 @@ namespace engine {
 
 	void LevelManager::assign_level(int number, Level& level) {
 		// Control so that the level number exists
-		if ( number >= this->levels.size() ) {
+		if ( number >= this->levels.size() && number >= 0 ) {
 			throw std::out_of_range(std::string("Level access out of range, there is no index " + number));
 		}
 		else {
@@ -49,7 +49,7 @@ namespace engine {
 
 	void LevelManager::change_level(int number) {
 		// Control so that the level number exists
-		if ( number >= this->levels.size() ) {
+		if (number >= this->levels.size() && number >= 0) {
 			throw std::out_of_range(std::string("Level access out of range, there is no index " + number));
 		}
 		else {
