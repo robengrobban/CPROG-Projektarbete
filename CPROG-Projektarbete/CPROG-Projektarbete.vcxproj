@@ -146,12 +146,26 @@
   <ItemGroup>
     <ClInclude Include="Cleanup.h" />
     <ClInclude Include="GameManager.h" />
+    <ClInclude Include="GameObject.h" />
+    <ClInclude Include="Level.h" />
+    <ClInclude Include="LevelManager.h" />
+    <ClInclude Include="MovingObject.h" />
+    <ClInclude Include="PlayerObject.h" />
+    <ClInclude Include="StaticObject.h" />
     <ClInclude Include="SystemRenderer.h" />
+    <ClInclude Include="ViewableObject.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="GameManager.cpp" />
+    <ClCompile Include="GameObject.cpp" />
+    <ClCompile Include="Level.cpp" />
+    <ClCompile Include="LevelManager.cpp" />
     <ClCompile Include="Main.cpp" />
+    <ClCompile Include="MovingObject.cpp" />
+    <ClCompile Include="PlayerObject.cpp" />
+    <ClCompile Include="StaticObject.cpp" />
     <ClCompile Include="SystemRenderer.cpp" />
+    <ClCompile Include="ViewableObject.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
