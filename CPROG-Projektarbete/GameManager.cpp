@@ -22,7 +22,6 @@ namespace engine {
 		const int tick_interval = 1000 / FPS;
 		Uint32 next_tick;
 		int delay;
-
 		do {
 			next_tick = SDL_GetTicks() + tick_interval;
 
