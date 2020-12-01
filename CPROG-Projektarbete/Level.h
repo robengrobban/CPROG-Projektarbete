@@ -8,6 +8,9 @@ namespace engine {
 		public:
 			static Level* create();
 
+			void tick_level();
+			void draw_level();
+
 			~Level();
 
 		protected:
