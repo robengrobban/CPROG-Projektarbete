@@ -22,12 +22,15 @@ namespace engine {
 		this->levels.at(this->current_level)->draw_level();
 	}
 
-	void LevelManager::add_level(Level& level) {
+	int LevelManager::add_level(Level& level) {
 		// Get next level number
 		int next_level = this->levels.size();
 
 		// Add new level
 		this->levels.insert({next_level, &level});
+
+		// Return index
+		return next_level;
 	}
 
 	void LevelManager::assign_level(int number, Level& level) {

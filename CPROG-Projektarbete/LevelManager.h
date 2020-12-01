@@ -14,7 +14,7 @@ namespace engine {
 			void tick_current_level();
 			void draw_current_level();
 
-			void add_level(Level&);
+			int add_level(Level&);
 			void assign_level(int, Level&);
 			void change_level(int);
 
