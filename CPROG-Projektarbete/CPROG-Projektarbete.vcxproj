@@ -150,7 +150,7 @@
     <ClInclude Include="Level.h" />
     <ClInclude Include="LevelManager.h" />
     <ClInclude Include="MovingObject.h" />
-    <ClInclude Include="PlayerObject.h" />
+    <ClInclude Include="ControllableObject.h" />
     <ClInclude Include="StaticObject.h" />
     <ClInclude Include="SystemRenderer.h" />
     <ClInclude Include="ViewableObject.h" />
@@ -162,7 +162,7 @@
     <ClCompile Include="LevelManager.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="MovingObject.cpp" />
-    <ClCompile Include="PlayerObject.cpp" />
+    <ClCompile Include="ControllableObject.cpp" />
     <ClCompile Include="StaticObject.cpp" />
     <ClCompile Include="SystemRenderer.cpp" />
     <ClCompile Include="ViewableObject.cpp" />
