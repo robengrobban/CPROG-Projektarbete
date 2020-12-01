@@ -2,10 +2,14 @@
 #define VIEWABLE_OBJECT_H
 #include "GameObject.h"
 
-class ViewableObject : public GameObject {
+namespace engine {
+
+	class ViewableObject : public GameObject {
 
 
 
-};
+	};
+
+}
 
 #endif

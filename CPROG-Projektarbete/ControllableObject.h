@@ -2,10 +2,14 @@
 #define CONTROLLABLE_OBJECT_H
 #include "ViewableObject.h"
 
-class ControllableObject : public ViewableObject {
+namespace engine {
+
+	class ControllableObject : public ViewableObject {
 
 
 
-};
+	};
+
+}
 
 #endif

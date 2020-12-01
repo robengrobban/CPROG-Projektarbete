@@ -2,10 +2,14 @@
 #define STATIC_OBJECT_H
 #include "ViewableObject.h"
 
-class StaticObject : public ViewableObject {
+namespace engine {
+
+	class StaticObject : public ViewableObject {
 
 
 
-};
+	};
+
+}
 
 #endif

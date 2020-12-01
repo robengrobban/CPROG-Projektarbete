@@ -2,12 +2,16 @@
 #define MOVING_OBJECT_H
 #include "ViewableObject.h"
 
-class MovingObject {
+namespace engine {
+
+	class MovingObject {
 
 
 
 
 
-};
+	};
+
+}
 
 #endif
