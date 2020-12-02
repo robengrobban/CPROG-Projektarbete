@@ -18,8 +18,8 @@ namespace engine {
 			void assign_level(int, Level&);
 			void change_level(int);
 
-			//int get_level_number(Level&); // There is no == operator at the moment
 			void remove_level(int);
+			void remove_level(Level&);
 
 			Level& get_current_level() const;
 			int get_current_level_number() const;

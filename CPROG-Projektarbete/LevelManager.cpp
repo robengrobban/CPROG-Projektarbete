@@ -47,22 +47,6 @@ namespace engine {
 		}
 	}
 
-	/*int LevelManager::get_level_number(Level& level) {
-		
-		std::map<int, Level*>::iterator it = this->levels.begin();
-		int map_index = -1;
-
-		while (it != this->levels.end()) {
-			if ( *(it->second) == level ) { // There is no == operator at the moment
-				map_index = it->first;
-			}
-			++it;
-		}
-
-		return map_index;
-
-	}*/
-
 	void LevelManager::remove_level(int number) {
 		if (number >= this->levels.size()) {
 			throw std::out_of_range(std::string("Level access out of range, there is no index " + number));
@@ -73,6 +57,22 @@ namespace engine {
 			delete level;
 			this->rearrange_levels();
 		}
+	}
+
+	void LevelManager::remove_level(Level& level) {
+		std::map<int, Level*>::iterator it = this->levels.begin();
+		while (it != this->levels.end()) {
+
+			if ( it->second == &level ) {
+				it = this->levels.erase(it);
+				delete &level;
+			}
+			else {
+				++it;
+			}
+
+		}
+		this->rearrange_levels();
 	}
 
 	Level& LevelManager::get_current_level() const {
