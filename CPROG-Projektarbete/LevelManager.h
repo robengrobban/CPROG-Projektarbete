@@ -25,11 +25,11 @@ namespace engine {
 			int get_current_level_number() const;
 
 			void print_debug() const {
-				std::cout << "\tKEY\tELEMENT\n";
-				for (auto itr = this->levels.begin(); itr != this->levels.end(); ++itr) {
-					std::cout << "\t" << itr->first
-						<< '\t' << itr->second << '\n';
+				std::cout << "\tKEY\tELEMENT" << std::endl;
+				for (auto it = this->levels.begin(); it != this->levels.end(); ++it) {
+					std::cout << "\t" << it->first << '\t' << it->second << std::endl;
 				}
+				std::cout << std::endl;
 			}
 
 			~LevelManager();

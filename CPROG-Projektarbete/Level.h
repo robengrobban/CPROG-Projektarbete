@@ -21,10 +21,11 @@ namespace engine {
 			void remove_object(GameObject&);
 
 			void print_debug() const {
-				std::cout << "\tVALUE\n";
-				for (auto itr = this->game_objects.begin(); itr != this->game_objects.end(); ++itr) {
-					std::cout << "\t" << *itr << '\n';
+				std::cout << "\tVALUE" << std::endl;
+				for (auto it = this->game_objects.begin(); it != this->game_objects.end(); ++it) {
+					std::cout << "\t" << *it << std::endl;
 				}
+				std::cout << std::endl;
 			}
 
 			~Level();

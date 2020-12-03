@@ -50,28 +50,21 @@ namespace engine {
 
 	void Level::internal_object_cleanup() {
 
-		std::vector<GameObject*>::iterator it = this->to_remove.begin();
-		while (it != this->to_remove.end()) {
+		for (GameObject* object : this->to_remove) {
+			
+			std::vector<GameObject*>::iterator it = this->game_objects.begin();
+			while ( it != this->game_objects.end() ) {
 
-			std::vector<GameObject*>::iterator it_internal = this->game_objects.begin();
-			while (it_internal != this->game_objects.end()) {
-				if (it_internal == it) {
-					
-					delete* it_internal;
-					it_internal = game_objects.erase(it_internal);
-
+				if ( *it == object ) {
+					delete* it;
+					it = this->game_objects.erase(it);
 				}
 				else {
-					++it_internal;
+					++it;
 				}
+
 			}
 
-			++it;
-
-		}
-
-		for ( GameObject* object : this->to_remove ) {
-			delete object;
 		}
 		this->to_remove.clear();
 
