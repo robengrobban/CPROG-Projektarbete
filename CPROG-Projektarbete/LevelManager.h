@@ -20,7 +20,7 @@ namespace engine {
 
 			void remove_level(int);
 			void remove_level(Level&);
-
+			
 			Level& get_current_level() const;
 			int get_current_level_number() const;
 
