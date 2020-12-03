@@ -1,23 +1,34 @@
 #include "Level.h"
+#include "ViewableObject.h"
 
 namespace engine {
 
-	Level* Level::create() {
-		return new Level();
+	Level* Level::create(std::string name) {
+		return new Level(name);
 	}
 
-	Level::Level() : game_objects() {
+	Level::Level(std::string n) : game_objects(), to_remove(), name(n) {
 
+	}
+
+	std::string Level::get_name() const {
+		return this->name;
 	}
 
 	void Level::tick_level() {
-		// TODO: Tick every object
+		for ( GameObject* object : this->game_objects ) {
+			object->tick();
+		}
 
 		this->internal_object_cleanup();
 	}
 
-	void Level::draw_level() {
-
+	void Level::draw_level() const {
+		for ( GameObject* object : this->game_objects ) {
+			if ( ViewableObject* viewable = dynamic_cast<ViewableObject*>(object) ) {
+				viewable->draw();
+			}
+		}
 	}
 
 	void Level::add_object(GameObject& object) {
@@ -30,10 +41,8 @@ namespace engine {
 
 	Level::~Level() {
 
-		std::vector<GameObject*>::iterator it = this->game_objects.begin();
-		while (it != this->game_objects.end() ) {
-			delete *it;
-			++it;
+		for ( GameObject* object : this->game_objects ) {
+			delete object;
 		}
 		this->game_objects.clear();
 
@@ -61,11 +70,8 @@ namespace engine {
 
 		}
 
-		it = this->to_remove.begin();
-		while (it != this->to_remove.end()) {
-			
-			delete* it;
-
+		for ( GameObject* object : this->to_remove ) {
+			delete object;
 		}
 		this->to_remove.clear();
 

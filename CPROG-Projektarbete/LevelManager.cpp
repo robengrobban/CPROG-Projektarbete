@@ -13,10 +13,10 @@ namespace engine {
 	}
 
 	void LevelManager::tick_current_level() {
-		this->levels.at(this->current_level)->draw_level();
+		this->levels.at(this->current_level)->tick_level();
 	}
 
-	void LevelManager::draw_current_level() {
+	void LevelManager::draw_current_level() const {
 		this->levels.at(this->current_level)->draw_level();
 	}
 

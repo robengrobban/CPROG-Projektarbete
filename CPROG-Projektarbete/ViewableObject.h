@@ -6,7 +6,19 @@ namespace engine {
 
 	class ViewableObject : public GameObject {
 
+		public:
 
+			virtual void draw() const = 0;
+
+			virtual ~ViewableObject() {}
+
+		protected:
+			ViewableObject();
+
+		private:
+
+			ViewableObject(const ViewableObject&) = delete; // For the time being
+			const ViewableObject& operator=(const ViewableObject&) = delete; // For the time being
 
 	};
 

@@ -2,6 +2,9 @@
 
 namespace engine {
 
+	GameObject::GameObject() {
+
+	}
 
 
 }

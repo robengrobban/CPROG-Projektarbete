@@ -12,7 +12,7 @@ namespace engine {
 			static LevelManager* create();
 
 			void tick_current_level();
-			void draw_current_level();
+			void draw_current_level() const;
 
 			int add_level(Level&);
 			void assign_level(int, Level&);
@@ -23,6 +23,14 @@ namespace engine {
 
 			Level& get_current_level() const;
 			int get_current_level_number() const;
+
+			void print_debug() const {
+				std::cout << "\tKEY\tELEMENT\n";
+				for (auto itr = this->levels.begin(); itr != this->levels.end(); ++itr) {
+					std::cout << "\t" << itr->first
+						<< '\t' << itr->second << '\n';
+				}
+			}
 
 			~LevelManager();
 

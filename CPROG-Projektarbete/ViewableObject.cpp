@@ -2,7 +2,9 @@
 
 namespace engine {
 
+	ViewableObject::ViewableObject() {
 
+	}
 
 }
 
