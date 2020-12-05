@@ -1,6 +1,7 @@
 #ifndef STATIC_OBJECT_H
 #define STATIC_OBJECT_H
 #include "GameObject.h"
+#include "SystemRenderer.h"
 
 namespace engine {
 
@@ -22,6 +23,7 @@ namespace engine {
 		StaticObject(const StaticObject&) = delete; // For the time being
 		const StaticObject& operator=(const StaticObject&) = delete; // For the time being
 
+		SDL_Texture* testImage ;
 	};
 
 }

@@ -1,4 +1,5 @@
 #include "StaticObject.h"
+#include <SDL_image.h>
 
 namespace engine {
 
@@ -10,15 +11,25 @@ namespace engine {
 
 	}
 
-	void StaticObject::draw() const {
+	void StaticObject::draw() const
+	{
+		SDL_RenderCopy(sys_ren.get_ren(), testImage, NULL, &getRect());
+
 
 	}
 
-	StaticObject::StaticObject(int x, int y, int w, int h) :GameObject(x, y, w, h) {
+	StaticObject::StaticObject(int x, int y, int w, int h) :GameObject(x, y, w, h)
+	{
+
+
+		testImage = IMG_LoadTexture(sys_ren.get_ren(), "c:/images/test-image.png");
+
 
 	}
 
-	StaticObject::~StaticObject() {
+	StaticObject::~StaticObject()
+	{
+		SDL_DestroyTexture(testImage);
 
 	}
 
