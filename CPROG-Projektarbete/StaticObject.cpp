@@ -13,7 +13,7 @@ namespace engine {
 
 	void StaticObject::draw() const
 	{
-		SDL_RenderCopy(sys_ren.get_ren(), testImage, NULL, &getRect());
+		SDL_RenderCopy(sys_ren.get_ren(), textureImage, NULL, &getRect());
 
 
 	}
@@ -22,14 +22,14 @@ namespace engine {
 	{
 
 
-		testImage = IMG_LoadTexture(sys_ren.get_ren(), "c:/images/test-image.png");
+		textureImage = IMG_LoadTexture(sys_ren.get_ren(), "c:/images/test-image.png");
 
 
 	}
 
 	StaticObject::~StaticObject()
 	{
-		SDL_DestroyTexture(testImage);
+		SDL_DestroyTexture(textureImage);
 
 	}
 

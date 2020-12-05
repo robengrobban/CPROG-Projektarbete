@@ -8,12 +8,12 @@ namespace engine {
 	SystemRenderer::SystemRenderer() {
 		// Check for errors at initialization of SDL
 		int init_code = SDL_Init(SDL_INIT_EVERYTHING);
-		if ( init_code == -1 ) {
+		if (init_code == -1) {
 			throw std::runtime_error(std::string("Initfel: ") + SDL_GetError());
 		}
 
 		this->sdl_win = SDL_CreateWindow("Window", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 1200, 800, 0);
-		if ( this->sdl_win == nullptr ) {
+		if (this->sdl_win == nullptr) {
 			throw std::runtime_error(std::string("Cannot create window: ") + SDL_GetError());
 		}
 
@@ -23,7 +23,7 @@ namespace engine {
 		}
 
 		int music_code = Mix_OpenAudio(22050, AUDIO_S16SYS, 2, 4096);
-		if (music_code == -1){
+		if (music_code == -1) {
 			throw std::runtime_error(std::string("Cannot initialize audio: ") + SDL_GetError());
 		}
 		music = nullptr;
@@ -33,7 +33,7 @@ namespace engine {
 	/// Destructor, destroys SDL resources and quits SDL.
 	/// </summary>
 	SystemRenderer::~SystemRenderer() {
-		
+
 		// Destroy window, renderer and music
 		cleanup(this->sdl_ren, this->sdl_win, this->music);
 		Mix_Quit();

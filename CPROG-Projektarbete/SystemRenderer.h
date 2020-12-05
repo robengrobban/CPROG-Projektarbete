@@ -5,21 +5,21 @@
 
 namespace engine {
 	class SystemRenderer {
-		public:
-			SystemRenderer();
-			~SystemRenderer();
+	public:
+		SystemRenderer();
+		~SystemRenderer();
 
-			SDL_Renderer* get_ren() const;
-			void play_music(const char music_path[]);
-			void pause_music();
-			void resume_music();
+		SDL_Renderer* get_ren() const;
+		void play_music(const char music_path[]);
+		void pause_music();
+		void resume_music();
 
-		protected:
+	protected:
 
-		private:
-			SDL_Window* sdl_win;
-			SDL_Renderer* sdl_ren;
-			Mix_Chunk* music;
+	private:
+		SDL_Window* sdl_win;
+		SDL_Renderer* sdl_ren;
+		Mix_Chunk* music;
 	};
 
 	extern SystemRenderer sys_ren;

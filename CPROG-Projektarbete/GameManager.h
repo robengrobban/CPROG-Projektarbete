@@ -5,16 +5,16 @@
 namespace engine {
 
 	class GameManager {
-		public:
-			GameManager();
-			~GameManager();
+	public:
+		GameManager();
+		~GameManager();
 
-			void run();
+		void run();
 
-		protected:
+	protected:
 
-		private:
-			
+	private:
+
 	};
 
 }

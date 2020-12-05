@@ -27,11 +27,11 @@ namespace engine {
 
 			// Read events
 			SDL_Event event;
-			while ( SDL_PollEvent(&event) ) {
+			while (SDL_PollEvent(&event)) {
 				switch (event.type) {
-					case SDL_QUIT:
-						running = false;
-						break;
+				case SDL_QUIT:
+					running = false;
+					break;
 				}
 			}
 
@@ -45,7 +45,7 @@ namespace engine {
 
 			// Calculate delay to cap frame rate
 			delay = next_tick - SDL_GetTicks();
-			if ( delay > 0 ) {
+			if (delay > 0) {
 				SDL_Delay(delay);
 			}
 		} while (running);

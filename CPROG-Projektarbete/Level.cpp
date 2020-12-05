@@ -15,7 +15,7 @@ namespace engine {
 	}
 
 	void Level::tick_level() {
-		for ( GameObject* object : this->game_objects ) {
+		for (GameObject* object : this->game_objects) {
 			object->tick();
 		}
 
@@ -23,7 +23,7 @@ namespace engine {
 	}
 
 	void Level::draw_level() const {
-		for ( GameObject* object : this->game_objects ) {
+		for (GameObject* object : this->game_objects) {
 			object->draw();
 		}
 	}
@@ -38,7 +38,7 @@ namespace engine {
 
 	Level::~Level() {
 
-		for ( GameObject* object : this->game_objects ) {
+		for (GameObject* object : this->game_objects) {
 			delete object;
 		}
 		this->game_objects.clear();
@@ -48,11 +48,11 @@ namespace engine {
 	void Level::internal_object_cleanup() {
 
 		for (GameObject* object : this->to_remove) {
-			
-			std::vector<GameObject*>::iterator it = this->game_objects.begin();
-			while ( it != this->game_objects.end() ) {
 
-				if ( *it == object ) {
+			std::vector<GameObject*>::iterator it = this->game_objects.begin();
+			while (it != this->game_objects.end()) {
+
+				if (*it == object) {
 					delete* it;
 					it = this->game_objects.erase(it);
 				}

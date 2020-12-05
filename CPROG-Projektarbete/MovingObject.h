@@ -6,22 +6,22 @@ namespace engine {
 
 	class MovingObject : public GameObject {
 
-		public:
+	public:
 
-			static MovingObject* create(int x, int y, int w, int h);
+		static MovingObject* create(int x, int y, int w, int h);
 
-			void tick();
-			void draw() const;
+		void tick();
+		void draw() const;
 
-			~MovingObject();
+		~MovingObject();
 
-		protected:
-			MovingObject(int x, int y, int w, int h);
+	protected:
+		MovingObject(int x, int y, int w, int h);
 
-		private:
+	private:
 
-			MovingObject(const MovingObject&) = delete; // For the time being
-			const MovingObject& operator=(const MovingObject&) = delete; // For the time being
+		MovingObject(const MovingObject&) = delete; // For the time being
+		const MovingObject& operator=(const MovingObject&) = delete; // For the time being
 
 	};
 
