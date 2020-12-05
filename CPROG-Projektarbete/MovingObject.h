@@ -1,10 +1,10 @@
 #ifndef MOVING_OBJECT_H
 #define MOVING_OBJECT_H
-#include "ViewableObject.h"
+#include "GameObject.h"
 
 namespace engine {
 
-	class MovingObject {
+	class MovingObject : public GameObject {
 
 		public:
 

@@ -1,5 +1,4 @@
 #include "Level.h"
-#include "ViewableObject.h"
 
 namespace engine {
 
@@ -25,9 +24,7 @@ namespace engine {
 
 	void Level::draw_level() const {
 		for ( GameObject* object : this->game_objects ) {
-			if ( ViewableObject* viewable = dynamic_cast<ViewableObject*>(object) ) {
-				viewable->draw();
-			}
+			object->draw();
 		}
 	}
 

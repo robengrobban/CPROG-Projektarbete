@@ -1,10 +1,10 @@
 #ifndef STATIC_OBJECT_H
 #define STATIC_OBJECT_H
-#include "ViewableObject.h"
+#include "GameObject.h"
 
 namespace engine {
 
-	class StaticObject : public ViewableObject {
+	class StaticObject : public GameObject {
 
 		public:
 			static StaticObject* create();

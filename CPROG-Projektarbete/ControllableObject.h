@@ -1,10 +1,10 @@
 #ifndef CONTROLLABLE_OBJECT_H
 #define CONTROLLABLE_OBJECT_H
-#include "ViewableObject.h"
+#include "GameObject.h"
 
 namespace engine {
 
-	class ControllableObject : public ViewableObject {
+	class ControllableObject : public GameObject {
 
 		public:
 			static ControllableObject* create();
