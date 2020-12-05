@@ -6,21 +6,21 @@ namespace engine {
 
 	class ControllableObject : public GameObject {
 
-		public:
-			static ControllableObject* create();
+	public:
+		static ControllableObject* create(int x, int y, int w, int h);
 
-			void tick();
-			void draw() const;
+		void tick();
+		void draw() const;
 
-			~ControllableObject();
+		~ControllableObject();
 
-		protected:
-			ControllableObject();
+	protected:
+		ControllableObject(int x, int y, int w, int h);
 
-		private:
+	private:
 
-			ControllableObject(const ControllableObject&) = delete; // For the time being
-			const ControllableObject& operator=(const ControllableObject&) = delete; // For the time being
+		ControllableObject(const ControllableObject&) = delete; // For the time being
+		const ControllableObject& operator=(const ControllableObject&) = delete; // For the time being
 
 	};
 

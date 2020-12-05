@@ -33,11 +33,11 @@ int main(int argc, char** argv) {
 
 	lm->print_debug();
 
-	GameObject* go1 = StaticObject::create();
-	GameObject* go2 = StaticObject::create();
-	GameObject* go3 = StaticObject::create();
-	GameObject* go4 = StaticObject::create();
-	GameObject* go5 = StaticObject::create();
+	GameObject* go1 = StaticObject::create(100, 150, 200, 250);
+	GameObject* go2 = StaticObject::create(100, 150, 200, 250);
+	GameObject* go3 = StaticObject::create(100, 150, 200, 250);
+	GameObject* go4 = StaticObject::create(100, 150, 200, 250);
+	GameObject* go5 = StaticObject::create(100, 150, 200, 250);
 
 	l1->add_object(*go1);
 	l1->add_object(*go2);

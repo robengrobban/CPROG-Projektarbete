@@ -2,8 +2,8 @@
 
 namespace engine {
 
-	StaticObject* StaticObject::create() {
-		return new StaticObject();
+	StaticObject* StaticObject::create(int x, int y, int w, int h) {
+		return new StaticObject(x, y, w, h);
 	}
 
 	void StaticObject::tick() {
@@ -14,7 +14,7 @@ namespace engine {
 
 	}
 
-	StaticObject::StaticObject() {
+	StaticObject::StaticObject(int x, int y, int w, int h) :GameObject(x, y, w, h) {
 
 	}
 

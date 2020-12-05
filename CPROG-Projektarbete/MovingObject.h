@@ -8,7 +8,7 @@ namespace engine {
 
 		public:
 
-			static MovingObject* create();
+			static MovingObject* create(int x, int y, int w, int h);
 
 			void tick();
 			void draw() const;
@@ -16,7 +16,7 @@ namespace engine {
 			~MovingObject();
 
 		protected:
-			MovingObject();
+			MovingObject(int x, int y, int w, int h);
 
 		private:
 

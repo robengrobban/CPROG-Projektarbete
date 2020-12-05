@@ -6,21 +6,21 @@ namespace engine {
 
 	class StaticObject : public GameObject {
 
-		public:
-			static StaticObject* create();
+	public:
+		static StaticObject* create(int x, int y, int w, int h);
 
-			void tick();
-			void draw() const;
+		void tick();
+		void draw() const;
 
-			~StaticObject();
+		~StaticObject();
 
-		protected:
-			StaticObject();
+	protected:
+		StaticObject(int x, int y, int w, int h);
 
-		private:
+	private:
 
-			StaticObject(const StaticObject&) = delete; // For the time being
-			const StaticObject& operator=(const StaticObject&) = delete; // For the time being
+		StaticObject(const StaticObject&) = delete; // For the time being
+		const StaticObject& operator=(const StaticObject&) = delete; // For the time being
 
 	};
 
