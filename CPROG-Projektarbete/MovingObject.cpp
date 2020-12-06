@@ -13,7 +13,7 @@ namespace engine {
 	void MovingObject::tick() {
 		if (rect.y <= 0)
 		{
-			//Level::remove_object();
+			//Level::remove_object(this);
 			//remove
 		}
 		else
