@@ -1,6 +1,7 @@
 #include "LevelManager.h"
 #include <stdexcept>
 #include <string>
+#include <iostream>
 
 namespace engine {
 
@@ -13,11 +14,21 @@ namespace engine {
 	}
 
 	void LevelManager::tick_current_level() {
-		this->levels.at(this->current_level)->tick_level();
+		try {
+			this->levels.at(this->current_level)->tick_level();
+		}
+		catch (std::out_of_range e) {
+			std::cout << "Cannot tick current level, out of range: " << e.what() << std::endl;
+		}
 	}
 
 	void LevelManager::draw_current_level() const {
-		this->levels.at(this->current_level)->draw_level();
+		try {
+			this->levels.at(this->current_level)->draw_level();
+		}
+		catch (std::out_of_range e) {
+			std::cout << "Cannot draw current level, out of range: " << e.what() << std::endl;
+		}
 	}
 
 	int LevelManager::add_level(Level& level) {
@@ -43,7 +54,6 @@ namespace engine {
 		}
 		else {
 			this->current_level = number;
-			// TODO : Change the level on screen aswell, not only the number
 		}
 	}
 
@@ -93,7 +103,7 @@ namespace engine {
 	}
 
 	void LevelManager::rearrange_levels() {
-		this->current_level--;
+		this->current_level = 0;
 		int new_level_number = 0;
 
 		std::map<int, Level*>::iterator it = this->levels.begin();

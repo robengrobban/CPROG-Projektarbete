@@ -6,11 +6,24 @@
 namespace engine {
 
 	GameManager::GameManager() {
-
+		this->level_manager = LevelManager::create();
 	}
 
 	GameManager::~GameManager() {
+		delete this->level_manager;
+	}
 
+	LevelManager& GameManager::get_level_manager() {
+		return *this->level_manager;
+	}
+	
+	void GameManager::set_level_manager(LevelManager& new_manager) {
+		delete this->level_manager;
+		this->level_manager = &new_manager;
+	}
+
+	void GameManager::change_level(int level) {
+		this->level_manager->change_level(level);
 	}
 
 	/// <summary>
@@ -35,10 +48,13 @@ namespace engine {
 				}
 			}
 
+			// Tick every Game Object
+			this->level_manager->tick_current_level();
+
 			// Draw frame
 			SDL_SetRenderDrawColor(sys_ren.get_ren(), 0, 0, 0, 255);
 			SDL_RenderClear(sys_ren.get_ren());
-			// ...
+			this->level_manager->draw_current_level();
 
 			// Present frame
 			SDL_RenderPresent(sys_ren.get_ren());
