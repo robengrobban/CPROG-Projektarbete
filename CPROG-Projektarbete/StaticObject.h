@@ -23,7 +23,7 @@ namespace engine {
 		StaticObject(const StaticObject&) = delete; // For the time being
 		const StaticObject& operator=(const StaticObject&) = delete; // For the time being
 
-		SDL_Texture* textureImage;
+		SDL_Texture* testImage ;
 	};
 
 }
