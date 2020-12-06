@@ -11,8 +11,9 @@ using namespace std;
 using namespace engine;
 
 int main(int argc, char** argv) {
-	// Test for Level and LevelManager
-	LevelManager* lm = LevelManager::create();
+	GameManager* game_manager = new GameManager();
+
+	LevelManager* lm = &game_manager->get_level_manager();
 
 	Level* l1 = Level::create("Level 1");
 	Level* l2 = Level::create("Level 2");
@@ -33,11 +34,11 @@ int main(int argc, char** argv) {
 
 	lm->print_debug();
 
-	GameObject* go1 = StaticObject::create(100, 150, 200, 250);
-	GameObject* go2 = StaticObject::create(100, 150, 200, 250);
-	GameObject* go3 = StaticObject::create(100, 150, 200, 250);
-	GameObject* go4 = StaticObject::create(100, 150, 200, 250);
-	GameObject* go5 = StaticObject::create(100, 150, 200, 250);
+	GameObject* go1 = StaticObject::create(100, 150, 200, 200);
+	GameObject* go2 = StaticObject::create(300, 150, 200, 200);
+	GameObject* go3 = StaticObject::create(500, 150, 200, 200);
+	GameObject* go4 = StaticObject::create(700, 150, 200, 200);
+	GameObject* go5 = StaticObject::create(900, 150, 200, 200);
 
 	l1->add_object(*go1);
 	l1->add_object(*go2);
@@ -55,9 +56,7 @@ int main(int argc, char** argv) {
 	l1->tick_level();
 
 	l1->print_debug();
-
-	// End Test
-	GameManager* game_manager = new GameManager();
+	
 	game_manager->run();
 	delete game_manager;
 	return 0;
