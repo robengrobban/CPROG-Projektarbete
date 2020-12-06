@@ -1,5 +1,6 @@
 #include "StaticObject.h"
 #include <SDL_image.h>
+#include <iostream>
 
 namespace engine {
 
@@ -13,6 +14,7 @@ namespace engine {
 
 	void StaticObject::draw() const
 	{
+
 		SDL_RenderCopy(sys_ren.get_ren(), textureImage, NULL, &getRect());
 
 
@@ -34,4 +36,3 @@ namespace engine {
 	}
 
 }
-
