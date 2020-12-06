@@ -39,12 +39,16 @@ int main(int argc, char** argv) {
 	GameObject* go3 = StaticObject::create(500, 150, 200, 200);
 	GameObject* go4 = StaticObject::create(700, 150, 200, 200);
 	GameObject* go5 = StaticObject::create(900, 150, 200, 200);
+	GameObject* movingO = MovingObject::create(600, 800, 200, 100);
+
 
 	l1->add_object(*go1);
 	l1->add_object(*go2);
 	l1->add_object(*go3);
 	l1->add_object(*go4);
 	l1->add_object(*go5);
+	l1->add_object(*movingO);
+
 
 	l1->print_debug();
 
@@ -56,6 +60,8 @@ int main(int argc, char** argv) {
 	l1->tick_level();
 
 	l1->print_debug();
+
+
 	
 	game_manager->run();
 	delete game_manager;

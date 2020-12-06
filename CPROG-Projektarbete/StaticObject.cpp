@@ -1,6 +1,8 @@
 #include "StaticObject.h"
+
 #include <SDL_image.h>
-#include <iostream>
+#include "SystemRenderer.h"
+
 
 namespace engine {
 
@@ -9,7 +11,6 @@ namespace engine {
 	}
 
 	void StaticObject::tick() {
-
 	}
 
 	void StaticObject::draw() const

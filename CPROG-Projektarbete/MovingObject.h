@@ -2,6 +2,7 @@
 #define MOVING_OBJECT_H
 #include "GameObject.h"
 
+
 namespace engine {
 
 	class MovingObject : public GameObject {
@@ -22,6 +23,7 @@ namespace engine {
 
 			MovingObject(const MovingObject&) = delete; // For the time being
 			const MovingObject& operator=(const MovingObject&) = delete; // For the time being
+			SDL_Texture* textureImage;
 
 	};
 

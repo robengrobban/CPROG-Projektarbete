@@ -1,7 +1,6 @@
 #ifndef STATIC_OBJECT_H
 #define STATIC_OBJECT_H
 #include "GameObject.h"
-#include "SystemRenderer.h"
 
 namespace engine {
 

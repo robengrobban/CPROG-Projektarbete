@@ -21,9 +21,9 @@ namespace engine {
 
 	protected:
 		GameObject(int x, int y, int w, int h);
+		SDL_Rect rect;
 
 	private:
-		SDL_Rect rect;
 
 
 		GameObject(const GameObject&) = delete; // For the time being
