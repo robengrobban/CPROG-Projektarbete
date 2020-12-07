@@ -11,8 +11,13 @@ namespace engine {
 
 			static MovingObject* create(int x, int y, int w, int h);
 
-			void tick();
+			virtual void tick() {}; // Empty, child object will fill it, = 0 later when we have a prototype
 			void draw() const;
+
+			virtual void mouse_down(const SDL_Event&) {};
+			virtual void mouse_up(const SDL_Event&) {};
+			virtual void key_down(const SDL_Event&) {};
+			virtual void key_up(const SDL_Event&) {};
 
 			~MovingObject();
 

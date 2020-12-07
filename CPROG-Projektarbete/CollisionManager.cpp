@@ -8,7 +8,7 @@ namespace engine {
 	/// <param name="objects">Objects to check collision against.</param>
 	/// <param name="player">The player that can collide with the objects</param>
 	/// <returns>True if any collision occured, else false.</returns>
-	bool CollisionManager::next_tick_collides(std::vector<GameObject*>& objects, ControllableObject& player)
+	bool CollisionManager::next_tick_collides(std::vector<GameObject*>& objects, MovingObject& player)
 	{
 		int left_a, right_a, top_a, bottom_a;
 

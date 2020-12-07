@@ -7,15 +7,15 @@ namespace engine {
 	class GameObject {
 
 	public:
-		virtual void mouseDown(const SDL_Event&) {}
-		virtual void mouseUp(const SDL_Event&) {}
-		virtual void keyDown(const SDL_Event&) {}
-		virtual void keyUp(const SDL_Event&) {}
+		virtual void mouse_down(const SDL_Event&) = 0;
+		virtual void mouse_up(const SDL_Event&) = 0;
+		virtual void key_down(const SDL_Event&) = 0;
+		virtual void key_up(const SDL_Event&) = 0;
 
 		virtual void tick() = 0;
 		virtual void draw() const = 0;
-		const SDL_Rect& getRect() const { return rect; }
 
+		const SDL_Rect& getRect() const { return rect; }
 
 		virtual ~GameObject() {}
 

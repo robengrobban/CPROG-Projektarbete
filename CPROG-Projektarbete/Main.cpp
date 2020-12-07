@@ -5,7 +5,6 @@
 #include "GameObject.h"
 #include "StaticObject.h"
 #include "MovingObject.h"
-#include "ControllableObject.h"
 
 using namespace std;
 using namespace engine;

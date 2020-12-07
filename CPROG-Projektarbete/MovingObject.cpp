@@ -10,19 +10,6 @@ namespace engine {
 		return new MovingObject(x, y, w, h);
 	}
 
-	void MovingObject::tick() {
-		if (rect.y <= 0)
-		{
-			//Level::remove_object(this);
-			//remove
-		}
-		else
-		{
-			rect.y--;
-
-		}
-	}
-
 	void MovingObject::draw() const {
 		SDL_RenderCopy(sys_ren.get_ren(), textureImage, NULL, &getRect());
 

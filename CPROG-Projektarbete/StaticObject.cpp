@@ -10,9 +10,6 @@ namespace engine {
 		return new StaticObject(x, y, w, h);
 	}
 
-	void StaticObject::tick() {
-	}
-
 	void StaticObject::draw() const
 	{
 
