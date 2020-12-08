@@ -28,7 +28,7 @@ namespace engine {
 			const int get_next_bottom() const;
 
 			virtual void handle_collision(GameObject&) {}; // Empty, child object will fill it, = 0 later when we have a prototype
-			void move_back(GameObject&, CollisionManager&);
+			void resolve_phys_collision(GameObject&, CollisionManager&);
 
 			~MovingObject();
 
