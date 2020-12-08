@@ -1,7 +1,10 @@
 #ifndef MOVING_OBJECT_H
 #define MOVING_OBJECT_H
 #include "GameObject.h"
-
+#include "CollisionManager.h"
+#include <SDL_image.h>
+#include "SystemRenderer.h"
+#include "Level.h"
 
 namespace engine {
 
@@ -19,6 +22,14 @@ namespace engine {
 			virtual void key_down(const SDL_Event&) {};
 			virtual void key_up(const SDL_Event&) {};
 
+			const int get_next_left() const;
+			const int get_next_right() const;
+			const int get_next_top() const;
+			const int get_next_bottom() const;
+
+			virtual void handle_collision(GameObject&) {}; // Empty, child object will fill it, = 0 later when we have a prototype
+			void move_back(GameObject&, CollisionManager&);
+
 			~MovingObject();
 
 		protected:
@@ -29,9 +40,9 @@ namespace engine {
 			MovingObject(const MovingObject&) = delete; // For the time being
 			const MovingObject& operator=(const MovingObject&) = delete; // For the time being
 			SDL_Texture* textureImage;
-
+			int velocity_x;
+			int velocity_y;
 	};
 
 }
-
 #endif

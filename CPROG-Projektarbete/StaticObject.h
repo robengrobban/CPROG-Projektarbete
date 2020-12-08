@@ -18,6 +18,13 @@ namespace engine {
 		void key_down(const SDL_Event&) {};
 		void key_up(const SDL_Event&) {};
 
+		const int get_next_left() const;
+		const int get_next_right() const;
+		const int get_next_top() const;
+		const int get_next_bottom() const;
+
+		virtual void handle_collision(GameObject&) {}; // Empty, child object will fill it, = 0 later when we have a prototype
+
 		~StaticObject();
 
 	protected:

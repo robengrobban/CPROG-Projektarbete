@@ -1,13 +1,19 @@
+#ifndef COLLISION_MANAGER_H
+#define COLLISION_MANAGER_H
 #include <vector>
-#include "MovingObject.h"
+#include "GameObject.h"
 
-#ifndef LEVEL_MANAGER_H
-#define LEVEL_MANAGER_H
+
 namespace engine {
 	class CollisionManager {
 	public:
-		bool next_tick_collides(std::vector<GameObject*>&, MovingObject&);
+		void handle_next_collision(GameObject&, std::vector<GameObject*>&);
+		bool collides(int, int, int, int, int, int, int, int);
+		bool collides_x(GameObject&, GameObject&, int);
+		bool collides_y(GameObject&, GameObject&, int);
 	private:
+		bool within_level(GameObject&, int, int);
+		bool next_tick_collides(GameObject&, GameObject&);
 	};
 }
 #endif
