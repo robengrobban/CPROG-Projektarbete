@@ -35,7 +35,7 @@ namespace engine {
 		virtual ~GameObject() {}
 
 	protected:
-		GameObject(int x, int y, int w, int h);
+		GameObject(int x, int y, int w, int h, bool solid);
 		SDL_Rect rect;
 	private:
 		bool solid; //For the time being

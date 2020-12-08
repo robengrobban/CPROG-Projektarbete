@@ -12,7 +12,7 @@ namespace engine {
 
 		public:
 
-			static MovingObject* create(int x, int y, int w, int h);
+			static MovingObject* create(int x, int y, int w, int h, bool solid = true);
 
 			virtual void tick() {}; // Empty, child object will fill it, = 0 later when we have a prototype
 			void draw() const;
@@ -33,7 +33,7 @@ namespace engine {
 			~MovingObject();
 
 		protected:
-			MovingObject(int x, int y, int w, int h);
+			MovingObject(int x, int y, int w, int h, bool solid);
 
 		private:
 

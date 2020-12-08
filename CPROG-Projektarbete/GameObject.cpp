@@ -2,7 +2,7 @@
 
 namespace engine {
 
-	GameObject::GameObject(int x, int y, int w, int h) :rect{ x,y,w,h }
+	GameObject::GameObject(int x, int y, int w, int h, bool solid) :rect{ x,y,w,h }, solid(solid)
 	{
 
 	}

@@ -2,8 +2,8 @@
 
 namespace engine {
 
-	MovingObject* MovingObject::create(int x, int y, int w, int h) {
-		return new MovingObject(x, y, w, h);
+	MovingObject* MovingObject::create(int x, int y, int w, int h, bool solid) {
+		return new MovingObject(x, y, w, h, solid);
 	}
 
 	void MovingObject::draw() const {
@@ -11,7 +11,7 @@ namespace engine {
 
 	}
 
-	MovingObject::MovingObject(int x, int y, int w, int h) :GameObject(x, y, w, h) {
+	MovingObject::MovingObject(int x, int y, int w, int h, bool solid) :GameObject(x, y, w, h, solid) {
 		textureImage = IMG_LoadTexture(sys_ren.get_ren(), "c:/images/test-image.png");
 
 	}
