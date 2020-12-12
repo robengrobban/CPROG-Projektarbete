@@ -38,7 +38,9 @@ int main(int argc, char** argv) {
 	GameObject* go3 = StaticObject::create(500, 150, 200, 200);
 	GameObject* go4 = StaticObject::create(700, 150, 200, 200);
 	GameObject* go5 = StaticObject::create(900, 150, 200, 200);
-	GameObject* movingO = MovingObject::create(600, 800, 200, 100);
+
+	GameObject* go6 = MovingObject::create(10, 150, 200, 200);
+	GameObject* go7 = MovingObject::create(10, 300, 200, 200);
 
 
 	l1->add_object(*go1);
@@ -46,7 +48,9 @@ int main(int argc, char** argv) {
 	l1->add_object(*go3);
 	l1->add_object(*go4);
 	l1->add_object(*go5);
-	l1->add_object(*movingO);
+	
+	l1->add_object(*go6);
+	l1->add_object(*go7);
 
 
 	l1->print_debug();

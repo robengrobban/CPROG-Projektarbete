@@ -1,4 +1,7 @@
 #include "MovingObject.h"
+#include <SDL_image.h>
+#include "SystemRenderer.h"
+
 
 namespace engine {
 
@@ -12,6 +15,8 @@ namespace engine {
 	}
 
 	MovingObject::MovingObject(int x, int y, int w, int h, bool solid) :GameObject(x, y, w, h, solid) {
+		velocity_x, velocity_y = 0;
+		
 		textureImage = IMG_LoadTexture(sys_ren.get_ren(), "c:/images/test-image.png");
 
 	}

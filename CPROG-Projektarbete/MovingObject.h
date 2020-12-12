@@ -2,9 +2,7 @@
 #define MOVING_OBJECT_H
 #include "GameObject.h"
 #include "CollisionManager.h"
-#include <SDL_image.h>
-#include "SystemRenderer.h"
-#include "Level.h"
+
 
 namespace engine {
 
