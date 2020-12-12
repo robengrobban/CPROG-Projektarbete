@@ -5,8 +5,8 @@
 
 namespace engine {
 
-	MovingObject* MovingObject::create(int x, int y, int w, int h, bool solid) {
-		return new MovingObject(x, y, w, h, solid);
+	MovingObject* MovingObject::create(int x, int y, int w, int h, int velocity_x, int velocity_y, bool solid) {
+		return new MovingObject(x, y, w, h, velocity_x, velocity_y, solid);
 	}
 
 	void MovingObject::draw() const {
@@ -14,12 +14,13 @@ namespace engine {
 
 	}
 
-	MovingObject::MovingObject(int x, int y, int w, int h, bool solid) :GameObject(x, y, w, h, solid) {
-		velocity_x, velocity_y = 0;
-		
+	MovingObject::MovingObject(int x, int y, int w, int h, int velocity_x, int velocity_y, bool solid) 
+		:GameObject(x, y, w, h, solid), velocity_x(velocity_x), velocity_y(velocity_y) {
+
 		textureImage = IMG_LoadTexture(sys_ren.get_ren(), "c:/images/test-image.png");
 
 	}
+
 
 	const int MovingObject::get_next_left() const { return get_left() + velocity_x; }
 	const int MovingObject::get_next_right() const { return get_right() + velocity_x; }
