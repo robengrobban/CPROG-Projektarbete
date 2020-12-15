@@ -1,7 +1,6 @@
 #include <SDL.h>
 #ifndef GAME_OBJECT_H
 #define GAME_OBJECT_H
-#include "Level.h"
 
 namespace engine {
 
@@ -35,8 +34,6 @@ namespace engine {
 
 		void rect_add_x(int);
 		void rect_add_y(int);
-
-		void assign_level(Level&);
 
 		virtual ~GameObject() {}
 
