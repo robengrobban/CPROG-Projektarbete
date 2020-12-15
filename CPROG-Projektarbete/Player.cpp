@@ -13,8 +13,8 @@ namespace demo {
 
 	void Player::tick() {
 		
-		const engine::Level* level = get_level();
-		std::vector<GameObject*> objects = level->get_game_objects();
+		const engine::Level& level = get_level();
+		std::vector<GameObject*> objects = level.get_game_objects();
 		
 		for (engine::GameObject* obj : objects) {
 			if ( obj != this ) {
@@ -54,6 +54,10 @@ namespace demo {
 		velocity_x = 0;
 		velocity_y = 0;
 	}
+
+	void Player::handle_collision(GameObject& obj) {
+		std::cout << "Jag krockade!" << std::endl;
+	};
 
 }
 

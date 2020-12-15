@@ -1,6 +1,8 @@
 #ifndef STATIC_OBJECT_H
 #define STATIC_OBJECT_H
+
 #include "GameObject.h"
+#include <iostream>
 
 namespace engine {
 
@@ -9,21 +11,15 @@ namespace engine {
 	public:
 		static StaticObject* create(int x, int y, int w, int h, bool solid = true);
 
-		virtual void tick() {}; // Empty, child object will fill it, = 0 later when we have a prototype
+		virtual void tick() {};
 		void draw() const;
-
-		// Does not care about key or mouse events
-		void mouse_down(const SDL_Event&) {};
-		void mouse_up(const SDL_Event&) {};
-		void key_down(const SDL_Event&) {};
-		void key_up(const SDL_Event&) {};
 
 		const int get_next_left() const;
 		const int get_next_right() const;
 		const int get_next_top() const;
 		const int get_next_bottom() const;
 
-		virtual void handle_collision(GameObject&) {}; // Empty, child object will fill it, = 0 later when we have a prototype
+		virtual void handle_collision(GameObject&) { std::cout << "Någon krockade med Static!" << std::endl; };
 
 		~StaticObject();
 

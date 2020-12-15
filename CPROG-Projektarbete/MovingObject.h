@@ -12,20 +12,20 @@ namespace engine {
 
 			//static MovingObject* create(int x, int y, int w, int h, bool solid = true);
 
-			virtual void tick() = 0;
+			virtual void tick() {};
 			void draw() const;
 
-			virtual void mouse_down(const SDL_Event&) = 0;
-			virtual void mouse_up(const SDL_Event&) = 0;
-			virtual void key_down(const SDL_Event&) = 0;
-			virtual void key_up(const SDL_Event&) = 0;
+			virtual void mouse_down(const SDL_Event&) {};
+			virtual void mouse_up(const SDL_Event&) {};
+			virtual void key_down(const SDL_Event&) {};
+			virtual void key_up(const SDL_Event&) {};
 
 			const int get_next_left() const;
 			const int get_next_right() const;
 			const int get_next_top() const;
 			const int get_next_bottom() const;
 
-			virtual void handle_collision(GameObject&) = 0;
+			virtual void handle_collision(GameObject&) {};
 			void resolve_phys_collision(GameObject&, CollisionManager&);
 
 			virtual ~MovingObject();

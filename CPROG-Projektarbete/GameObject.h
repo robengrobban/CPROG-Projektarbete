@@ -10,10 +10,10 @@ namespace engine {
 	class GameObject {
 
 	public:
-		virtual void mouse_down(const SDL_Event&) = 0;
-		virtual void mouse_up(const SDL_Event&) = 0;
-		virtual void key_down(const SDL_Event&) = 0;
-		virtual void key_up(const SDL_Event&) = 0;
+		virtual void mouse_down(const SDL_Event&) {};
+		virtual void mouse_up(const SDL_Event&) {};
+		virtual void key_down(const SDL_Event&) {};
+		virtual void key_up(const SDL_Event&) {};
 
 		virtual void tick() = 0;
 		virtual void draw() const = 0;
@@ -38,7 +38,7 @@ namespace engine {
 		void rect_add_x(int);
 		void rect_add_y(int);
 
-		const Level* get_level();
+		const Level& get_level();
 		void assign_level(Level&);
 
 		virtual ~GameObject() {}

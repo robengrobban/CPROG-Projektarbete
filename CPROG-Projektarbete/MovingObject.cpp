@@ -51,6 +51,7 @@ namespace engine {
 			}
 			if ( collision ) {
 				this->handle_collision(*this);
+				obj.handle_collision(*this);
 			}
 		}
 	}
