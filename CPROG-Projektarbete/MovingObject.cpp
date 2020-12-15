@@ -32,12 +32,14 @@ namespace engine {
 
 		//Only if both are solid, might be put in the "handle_collision" method implemented in derived objects instead.
 		if (this->is_solid() && obj.is_solid()) {
+			bool collision = false;
 			if (m.collides_x(*this, obj, this->velocity_x))
 			{
 				int moveX = this->velocity_x > 0 ? 1 : -1;
 				this->velocity_x = 0;
 				while (!m.collides_x(*this, obj, moveX))
 					this->rect_add_x(moveX);
+				collision = true;
 			}
 			else if (m.collides_y(*this, obj, this->velocity_y))
 			{
@@ -45,6 +47,10 @@ namespace engine {
 				this->velocity_y = 0;
 				while (!m.collides_y(*this, obj, moveY))
 					this->rect_add_y(moveY);
+				collision = true;
+			}
+			if ( collision ) {
+				this->handle_collision(*this);
 			}
 		}
 	}
