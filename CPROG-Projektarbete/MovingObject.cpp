@@ -5,8 +5,8 @@
 
 namespace engine {
 
-	MovingObject* MovingObject::create(int x, int y, int w, int h, Level* my_level, bool solid) {
-		return new MovingObject(x, y, w, h, my_level, solid);
+	MovingObject* MovingObject::create(int x, int y, int w, int h, bool solid) {
+		return new MovingObject(x, y, w, h, solid);
 	}
 
 	void MovingObject::draw() const {
@@ -14,8 +14,8 @@ namespace engine {
 
 	}
 
-	MovingObject::MovingObject(int x, int y, int w, int h, Level* my_level, bool solid)
-		: GameObject(x, y, w, h, my_level, solid), velocity_x(0), velocity_y(0) {
+	MovingObject::MovingObject(int x, int y, int w, int h, bool solid)
+		: GameObject(x, y, w, h, solid), velocity_x(0), velocity_y(0) {
 
 		textureImage = IMG_LoadTexture(sys_ren.get_ren(), "c:/images/test-image.png");
 

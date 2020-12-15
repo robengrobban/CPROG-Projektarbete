@@ -1,7 +1,6 @@
 #ifndef MOVING_OBJECT_H
 #define MOVING_OBJECT_H
 #include "GameObject.h"
-#include <iostream> // Debug purposes
 #include "CollisionManager.h"
 
 
@@ -11,7 +10,7 @@ namespace engine {
 
 		public:
 
-			static MovingObject* create(int x, int y, int w, int h, Level* my_level, bool solid = true);
+			static MovingObject* create(int x, int y, int w, int h, bool solid = true);
 
 			virtual void tick() {}; // Empty, child object will fill it, = 0 later when we have a prototype
 			void draw() const;
@@ -32,7 +31,7 @@ namespace engine {
 			~MovingObject();
 
 		protected:
-			MovingObject(int x, int y, int w, int h, Level* my_level, bool solid);
+			MovingObject(int x, int y, int w, int h, bool solid);
 
 		private:
 

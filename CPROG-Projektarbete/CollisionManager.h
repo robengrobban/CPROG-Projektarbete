@@ -15,7 +15,5 @@ namespace engine {
 		bool collides(int, int, int, int, int, int, int, int);
 		bool next_tick_collides(GameObject&, GameObject&);
 	};
-
-	extern CollisionManager col_man;
 }
 #endif

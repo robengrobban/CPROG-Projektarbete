@@ -2,7 +2,7 @@
 
 namespace engine {
 
-	GameObject::GameObject(int x, int y, int w, int h, Level* my_level, bool solid) :rect{ x,y,w,h }, my_level(my_level), solid(solid)
+	GameObject::GameObject(int x, int y, int w, int h, bool solid) :rect{ x,y,w,h }, solid(solid)
 	{
 
 	}

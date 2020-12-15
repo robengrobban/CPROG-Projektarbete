@@ -23,8 +23,6 @@ namespace engine {
 
 			void forward_event(const SDL_Event&);
 
-			const std::vector<GameObject*>& get_game_objects() const;
-
 			void print_debug() const {
 				std::cout << "\tVALUE" << std::endl;
 				for (auto it = this->game_objects.begin(); it != this->game_objects.end(); ++it) {

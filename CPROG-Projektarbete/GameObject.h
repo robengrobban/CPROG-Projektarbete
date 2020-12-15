@@ -36,14 +36,14 @@ namespace engine {
 		void rect_add_x(int);
 		void rect_add_y(int);
 
+		void assign_level(Level&);
+
 		virtual ~GameObject() {}
 
 	protected:
-		GameObject(int x, int y, int w, int h, Level* my_level, bool solid);
+		GameObject(int x, int y, int w, int h, bool solid);
 		
 	private:
-		Level* my_level;
-
 		bool solid; //For the time being
 		SDL_Rect rect;
 

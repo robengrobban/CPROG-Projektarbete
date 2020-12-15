@@ -84,7 +84,5 @@ namespace engine {
 			b.get_next_left(), b.get_next_right(), b.get_next_top(), b.get_next_bottom());
 	}
 
-
-	CollisionManager col_man;
 }
 

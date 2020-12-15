@@ -39,8 +39,8 @@ int main(int argc, char** argv) {
 	GameObject* go4 = StaticObject::create(700, 150, 200, 200);
 	GameObject* go5 = StaticObject::create(900, 150, 200, 200);
 
-	GameObject* go6 = MovingObject::create(10, 150, 200, 200,0,0);
-	GameObject* go7 = MovingObject::create(10, 300, 200, 200,0,0,true);
+	GameObject* go6 = MovingObject::create(10, 150, 200, 200);
+	GameObject* go7 = MovingObject::create(10, 300, 200, 200,true);
 
 
 	l1->add_object(*go1);
