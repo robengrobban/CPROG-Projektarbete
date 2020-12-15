@@ -1,5 +1,6 @@
 #ifndef LEVEL_MANAGER_H
 #define LEVEL_MANAGER_H
+
 #include "Level.h"
 #include <map>
 #include <iostream> // Debug purposes

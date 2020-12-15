@@ -10,36 +10,39 @@ namespace engine {
 
 		public:
 
-			static MovingObject* create(int x, int y, int w, int h, bool solid = true);
+			//static MovingObject* create(int x, int y, int w, int h, bool solid = true);
 
-			virtual void tick() {}; // Empty, child object will fill it, = 0 later when we have a prototype
+			virtual void tick() = 0;
 			void draw() const;
 
-			virtual void mouse_down(const SDL_Event&) {};
-			virtual void mouse_up(const SDL_Event&) {};
-			virtual void key_down(const SDL_Event&) {};
-			virtual void key_up(const SDL_Event&) {};
+			virtual void mouse_down(const SDL_Event&) = 0;
+			virtual void mouse_up(const SDL_Event&) = 0;
+			virtual void key_down(const SDL_Event&) = 0;
+			virtual void key_up(const SDL_Event&) = 0;
 
 			const int get_next_left() const;
 			const int get_next_right() const;
 			const int get_next_top() const;
 			const int get_next_bottom() const;
 
-			virtual void handle_collision(GameObject&) {}; // Empty, child object will fill it, = 0 later when we have a prototype
+			virtual void handle_collision(GameObject&) = 0;
 			void resolve_phys_collision(GameObject&, CollisionManager&);
 
-			~MovingObject();
+			virtual ~MovingObject();
 
 		protected:
 			MovingObject(int x, int y, int w, int h, bool solid);
+			
+			void do_movement();
+			
+			int velocity_x;
+			int velocity_y;
 
 		private:
-
 			MovingObject(const MovingObject&) = delete; // For the time being
 			const MovingObject& operator=(const MovingObject&) = delete; // For the time being
 			SDL_Texture* textureImage;
-			int velocity_x;
-			int velocity_y;
+			
 	};
 
 }

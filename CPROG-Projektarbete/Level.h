@@ -1,5 +1,6 @@
 #ifndef LEVEL_H
 #define LEVEL_H
+
 #include <vector>
 #include <string>
 #include "GameObject.h"
@@ -22,6 +23,8 @@ namespace engine {
 			void remove_object(GameObject&);
 
 			void forward_event(const SDL_Event&);
+
+			const std::vector<GameObject*>& get_game_objects() const;
 
 			void print_debug() const {
 				std::cout << "\tVALUE" << std::endl;

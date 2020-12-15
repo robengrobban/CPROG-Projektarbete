@@ -19,5 +19,13 @@ namespace engine {
 		rect.y += y;
 	}
 
+	const Level* GameObject::get_level() {
+		return this->level;
+	}
+
+	void GameObject::assign_level(Level& level) {
+		this->level = &level;
+	}
+
 }
 

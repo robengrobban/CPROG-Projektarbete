@@ -5,9 +5,11 @@
 #include "GameObject.h"
 #include "StaticObject.h"
 #include "MovingObject.h"
+#include "Player.h"
 
 using namespace std;
 using namespace engine;
+using namespace demo;
 
 int main(int argc, char** argv) {
 	GameManager* game_manager = new GameManager();
@@ -39,8 +41,7 @@ int main(int argc, char** argv) {
 	GameObject* go4 = StaticObject::create(700, 150, 200, 200);
 	GameObject* go5 = StaticObject::create(900, 150, 200, 200);
 
-	GameObject* go6 = MovingObject::create(10, 150, 200, 200);
-	GameObject* go7 = MovingObject::create(10, 300, 200, 200,true);
+	GameObject* go6 = Player::create(10, 150, 200, 200);
 
 
 	l1->add_object(*go1);
@@ -50,7 +51,6 @@ int main(int argc, char** argv) {
 	l1->add_object(*go5);
 	
 	l1->add_object(*go6);
-	l1->add_object(*go7);
 
 
 	l1->print_debug();

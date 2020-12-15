@@ -10,7 +10,7 @@ namespace engine {
 	}
 
 	LevelManager::LevelManager() : levels(), current_level(0) {
-
+		
 	}
 
 	void LevelManager::tick_current_level() {

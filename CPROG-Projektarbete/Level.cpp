@@ -29,6 +29,7 @@ namespace engine {
 	}
 
 	void Level::add_object(GameObject& object) {
+		object.assign_level(*this);
 		this->game_objects.push_back(&object);
 	}
 
@@ -57,6 +58,9 @@ namespace engine {
 		}
 	}
 
+	const std::vector<GameObject*>& Level::get_game_objects() const {
+		return this->game_objects;
+	}
 
 	Level::~Level() {
 

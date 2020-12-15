@@ -5,9 +5,9 @@
 
 namespace engine {
 
-	MovingObject* MovingObject::create(int x, int y, int w, int h, bool solid) {
+	/*MovingObject* MovingObject::create(int x, int y, int w, int h, bool solid) {
 		return new MovingObject(x, y, w, h, solid);
-	}
+	}*/
 
 	void MovingObject::draw() const {
 		SDL_RenderCopy(sys_ren.get_ren(), textureImage, NULL, &get_rect());
@@ -39,7 +39,7 @@ namespace engine {
 				while (!m.collides_x(*this, obj, moveX))
 					this->rect_add_x(moveX);
 			}
-			else if (m.collides_y(*this, obj, this->velocity_x))
+			else if (m.collides_y(*this, obj, this->velocity_y))
 			{
 				int moveY = this->velocity_y > 0 ? 1 : -1;
 				this->velocity_y = 0;
@@ -47,6 +47,11 @@ namespace engine {
 					this->rect_add_y(moveY);
 			}
 		}
+	}
+
+	void MovingObject::do_movement() {
+		this->rect_add_x(velocity_x);
+		this->rect_add_y(velocity_y);
 	}
 
 	MovingObject::~MovingObject() {

@@ -1,8 +1,11 @@
-#include <SDL.h>
 #ifndef GAME_OBJECT_H
 #define GAME_OBJECT_H
 
+#include <SDL.h>
+
 namespace engine {
+
+	class Level; // Forward declaration
 
 	class GameObject {
 
@@ -35,6 +38,9 @@ namespace engine {
 		void rect_add_x(int);
 		void rect_add_y(int);
 
+		const Level* get_level();
+		void assign_level(Level&);
+
 		virtual ~GameObject() {}
 
 	protected:
@@ -43,6 +49,7 @@ namespace engine {
 	private:
 		bool solid; //For the time being
 		SDL_Rect rect;
+		Level* level;
 
 		GameObject(const GameObject&) = delete; // For the time being
 		const GameObject& operator=(const GameObject&) = delete; // For the time being
