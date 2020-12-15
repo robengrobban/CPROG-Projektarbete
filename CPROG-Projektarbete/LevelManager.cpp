@@ -93,6 +93,10 @@ namespace engine {
 		return this->current_level;
 	}
 
+	void LevelManager::forward_event(const SDL_Event& event) {
+		this->get_current_level().forward_event(event);
+	}
+
 	LevelManager::~LevelManager() {
 		std::map<int, Level*>::iterator it = this->levels.begin();
 		while (it != this->levels.end()) {

@@ -3,6 +3,7 @@
 #include <vector>
 #include <string>
 #include "GameObject.h"
+#include "MovingObject.h"
 #include <iostream> // Debug purposes
 
 namespace engine {
@@ -19,6 +20,8 @@ namespace engine {
 
 			void add_object(GameObject&);
 			void remove_object(GameObject&);
+
+			void forward_event(const SDL_Event&);
 
 			void print_debug() const {
 				std::cout << "\tVALUE" << std::endl;

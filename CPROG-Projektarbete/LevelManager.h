@@ -24,6 +24,8 @@ namespace engine {
 			Level& get_current_level() const;
 			int get_current_level_number() const;
 
+			void forward_event(const SDL_Event&);
+
 			void print_debug() const {
 				std::cout << "\tKEY\tELEMENT" << std::endl;
 				for (auto it = this->levels.begin(); it != this->levels.end(); ++it) {

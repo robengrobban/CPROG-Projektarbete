@@ -45,6 +45,8 @@ namespace engine {
 					case SDL_QUIT:
 						running = false;
 						break;
+					default:
+						this->level_manager->forward_event(event);
 				}
 			}
 

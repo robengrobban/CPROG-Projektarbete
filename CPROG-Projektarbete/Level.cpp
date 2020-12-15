@@ -36,6 +36,27 @@ namespace engine {
 		this->to_remove.push_back(&object);
 	}
 
+	void Level::forward_event(const SDL_Event& event) {
+		for ( GameObject* object : this->game_objects ) {
+			if ( MovingObject* target = dynamic_cast<MovingObject*>(object) ) {
+				switch ( event.type ) {
+					case SDL_MOUSEBUTTONDOWN:
+						target->mouse_down(event);
+						break;
+					case SDL_MOUSEBUTTONUP:
+						target->mouse_up(event);
+						break;
+					case SDL_KEYDOWN:
+						target->key_down(event);
+						break;
+					case SDL_KEYUP:
+						target->key_up(event);
+						break;
+				}
+			}
+		}
+	}
+
 	Level::~Level() {
 
 		for ( GameObject* object : this->game_objects ) {
