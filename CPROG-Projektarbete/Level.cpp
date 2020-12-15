@@ -57,6 +57,10 @@ namespace engine {
 		}
 	}
 
+	const std::vector<GameObject*>& Level::get_game_objects() const {
+		return this->game_objects;
+	}
+
 	Level::~Level() {
 
 		for ( GameObject* object : this->game_objects ) {

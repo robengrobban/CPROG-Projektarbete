@@ -83,5 +83,8 @@ namespace engine {
 		return collides(a.get_next_left(), a.get_next_right(), a.get_next_top(), a.get_next_bottom(),
 			b.get_next_left(), b.get_next_right(), b.get_next_top(), b.get_next_bottom());
 	}
+
+
+	CollisionManager col_man;
 }
 

@@ -7,7 +7,7 @@ namespace engine {
 	class StaticObject : public GameObject {
 
 	public:
-		static StaticObject* create(int x, int y, int w, int h, bool solid = true);
+		static StaticObject* create(int x, int y, int w, int h, Level* my_level, bool solid = true);
 
 		virtual void tick() {}; // Empty, child object will fill it, = 0 later when we have a prototype
 		void draw() const;
@@ -28,7 +28,7 @@ namespace engine {
 		~StaticObject();
 
 	protected:
-		StaticObject(int x, int y, int w, int h, bool solid);
+		StaticObject(int x, int y, int w, int h, Level* my_level, bool solid);
 
 	private:
 

@@ -1,6 +1,7 @@
 #include <SDL.h>
 #ifndef GAME_OBJECT_H
 #define GAME_OBJECT_H
+#include "Level.h"
 
 namespace engine {
 
@@ -32,13 +33,19 @@ namespace engine {
 
 		virtual void handle_collision(GameObject&) = 0;
 
+		void rect_add_x(int);
+		void rect_add_y(int);
+
 		virtual ~GameObject() {}
 
 	protected:
-		GameObject(int x, int y, int w, int h, bool solid);
-		SDL_Rect rect;
+		GameObject(int x, int y, int w, int h, Level* my_level, bool solid);
+		
 	private:
+		Level* my_level;
+
 		bool solid; //For the time being
+		SDL_Rect rect;
 
 		GameObject(const GameObject&) = delete; // For the time being
 		const GameObject& operator=(const GameObject&) = delete; // For the time being

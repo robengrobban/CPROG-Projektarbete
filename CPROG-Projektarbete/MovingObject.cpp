@@ -5,8 +5,8 @@
 
 namespace engine {
 
-	MovingObject* MovingObject::create(int x, int y, int w, int h, int velocity_x, int velocity_y, bool solid) {
-		return new MovingObject(x, y, w, h, velocity_x, velocity_y, solid);
+	MovingObject* MovingObject::create(int x, int y, int w, int h, Level* my_level, bool solid) {
+		return new MovingObject(x, y, w, h, my_level, solid);
 	}
 
 	void MovingObject::draw() const {
@@ -14,8 +14,8 @@ namespace engine {
 
 	}
 
-	MovingObject::MovingObject(int x, int y, int w, int h, int velocity_x, int velocity_y, bool solid) 
-		:GameObject(x, y, w, h, solid), velocity_x(velocity_x), velocity_y(velocity_y) {
+	MovingObject::MovingObject(int x, int y, int w, int h, Level* my_level, bool solid)
+		: GameObject(x, y, w, h, my_level, solid), velocity_x(0), velocity_y(0) {
 
 		textureImage = IMG_LoadTexture(sys_ren.get_ren(), "c:/images/test-image.png");
 
@@ -37,14 +37,14 @@ namespace engine {
 				int moveX = this->velocity_x > 0 ? 1 : -1;
 				this->velocity_x = 0;
 				while (!m.collides_x(*this, obj, moveX))
-					this->rect.x += moveX;
+					this->rect_add_x(moveX);
 			}
 			else if (m.collides_y(*this, obj, this->velocity_x))
 			{
 				int moveY = this->velocity_y > 0 ? 1 : -1;
 				this->velocity_y = 0;
 				while (!m.collides_y(*this, obj, moveY))
-					this->rect.y += moveY;
+					this->rect_add_y(moveY);
 			}
 		}
 	}
