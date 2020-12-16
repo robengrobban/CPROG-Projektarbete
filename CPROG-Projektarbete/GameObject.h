@@ -2,11 +2,11 @@
 #define GAME_OBJECT_H
 
 #include <SDL.h>
-#include "Sprite.h"
 
 namespace engine {
 
 	class Level; // Forward declaration
+	class Sprite; // Forward declaration
 
 	class GameObject {
 
