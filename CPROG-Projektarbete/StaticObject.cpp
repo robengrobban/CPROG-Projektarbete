@@ -31,13 +31,13 @@ namespace engine {
 		return elasticity;
 	}
 
-	//Sets elasticity (if moving objects bounde off). -100 = bounce back at same speed, 0 = no bounce.
+	//Sets elasticity (if moving objects bounde off). 100 = bounce back at same speed, 0 = no bounce.
 	void StaticObject::set_elasticity(int value)
 	{
-		if (elasticity > 0)
+		if (elasticity < 0)
 			elasticity = 0;
-		else if (elasticity < -100)
-			elasticity = -100;
+		else if (elasticity > 100)
+			elasticity = 100;
 		else
 			elasticity = value;
 	}
