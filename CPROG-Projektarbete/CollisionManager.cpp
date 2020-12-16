@@ -50,7 +50,7 @@ namespace engine {
 	/// Checks if there is any collision downwards for one object to another.
 	/// </summary>
 	/// <returns>True if collision, else false.</returns>
-	bool CollisionManager::collides_down(GameObject & obj1, GameObject& obj2) const
+	bool CollisionManager::collides_down(const GameObject& obj1, const GameObject& obj2) const
 	{
 		//if collides if obj1 is put 1 step down.
 		if (!((obj2.get_bottom() <= obj1.get_next_top() + 1) || (obj2.get_top() >= obj1.get_bottom() + 1) ||

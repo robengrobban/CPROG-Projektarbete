@@ -9,7 +9,7 @@ namespace engine {
 	const class CollisionManager {
 	public:
 		void handle_next_collision(GameObject&, std::vector<GameObject*>&) const;
-		bool collides_down(GameObject&, GameObject&) const;
+		bool collides_down(const GameObject&, const GameObject&) const;
 		bool collides_x(const GameObject&, const GameObject&, const int) const;
 		bool collides_y(const GameObject&, const GameObject&, const int) const;
 		bool within_level(GameObject&, int, int) const;
