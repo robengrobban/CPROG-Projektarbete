@@ -54,6 +54,7 @@ namespace engine {
 		bool solid; //For the time being
 		SDL_Rect rect;
 		Level* level;
+		Sprite* sprite;
 
 		GameObject(const GameObject&) = delete; // For the time being
 		const GameObject& operator=(const GameObject&) = delete; // For the time being
