@@ -19,7 +19,7 @@ namespace engine {
 		virtual void draw() const = 0;
 
 		const SDL_Rect& get_rect() const { return rect; }
-		const bool is_solid() const { return solid; } //For the time being, should return if objects should stop when colliding.
+		const bool is_solid() const { return solid; }
 
 		//Boundarys for the object
 		const int get_left() const;
