@@ -24,7 +24,14 @@ namespace demo {
 
 	void Player::calculate_movement() {
 		velocity_x = force_left + force_right;
-		velocity_y = force_up + force_down;
+	}
+
+	void Player::jump()
+	{
+		if (on_ground) {
+			velocity_y = -15;
+			on_ground = false;
+		}
 	}
 
 	void Player::mouse_down(const SDL_Event& event) {
@@ -49,6 +56,9 @@ namespace demo {
 		if ( key_num == 100 ) { // D
 			force_right = movement_speed;
 		}
+		if (key_num == SDLK_SPACE) {
+			jump();
+		}
 	}
 
 	void Player::key_up(const SDL_Event& event) {
@@ -69,6 +79,8 @@ namespace demo {
 
 	void Player::on_collision(GameObject& obj) {
 		std::cout << "Jag krockade!" << std::endl;
+		if (velocity_y == 0 && engine::col_man.collides_down(*this, obj))
+			on_ground = true;
 	};
 
 }

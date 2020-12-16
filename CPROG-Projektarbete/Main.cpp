@@ -46,6 +46,7 @@ int main(int argc, char** argv) {
 	GameObject* go8 = StaticObject::create(100, 100, 50, 50);
 
 	GameObject* player = Player::create(0, 0, 50, 50);
+	player->set_gravity_y(1);
 
 
 	l1->add_object(*go1);
@@ -66,6 +67,15 @@ int main(int argc, char** argv) {
 	l1->add_object(*StaticObject::create(300, 150, 50, 50));
 	l1->add_object(*StaticObject::create(150, 300, 50, 50));
 	l1->add_object(*StaticObject::create(150, 50, 50, 50));
+
+	//Ground
+	for (int i = 0; i < 1200; i += 50) {
+		l1->add_object(*StaticObject::create(i, 750, 50, 50));
+	}
+
+	//Bouncepad
+	l1->add_object(*StaticObject::create(550, 700, 50, 50, true, -80));
+	l1->add_object(*StaticObject::create(600, 700, 50, 50, true, -80));
 
 	l1->add_object(*player);
 

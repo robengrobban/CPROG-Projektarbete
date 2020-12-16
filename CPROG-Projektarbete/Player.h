@@ -35,8 +35,10 @@ namespace demo {
 			int force_right;
 			int force_left;
 			int movement_speed;
+			bool on_ground;
 
 			void calculate_movement();
+			void jump();
 
 	};
 

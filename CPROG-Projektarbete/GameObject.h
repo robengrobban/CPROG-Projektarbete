@@ -27,6 +27,11 @@ namespace engine {
 		const int get_top() const;
 		const int get_bottom() const;
 
+		virtual const int get_elasticity() const { return 0; }
+
+		virtual void set_gravity_x(int) {};
+		virtual void set_gravity_y(int) {};
+
 		//Boundarys after next tick.
 		virtual const int get_next_left() const = 0;
 		virtual const int get_next_right() const = 0;

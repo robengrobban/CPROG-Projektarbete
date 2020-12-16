@@ -27,6 +27,9 @@ namespace engine {
 			const int get_next_top() const;
 			const int get_next_bottom() const;
 
+			void set_gravity_x(int);
+			void set_gravity_y(int);
+
 			virtual void on_collision(GameObject&) {};
 			virtual void resolve_phys_collision(GameObject&, const CollisionManager&);
 
@@ -43,6 +46,11 @@ namespace engine {
 			int velocity_y;
 
 		private:
+			const int MAX_GRAVITY = 20;
+			int gravity_x;
+			int gravity_y;
+			bool on_ground;
+
 			bool check_collides_x(GameObject&, const CollisionManager&);
 			bool check_collides_y(GameObject&, const CollisionManager&);
 

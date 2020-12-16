@@ -13,17 +13,27 @@ namespace engine {
 	}
 
 	MovingObject::MovingObject(int x, int y, int w, int h, bool solid)
-		: GameObject(x, y, w, h, solid), velocity_x(0), velocity_y(0) {
+		: GameObject(x, y, w, h, solid), velocity_x(0), velocity_y(0), gravity_x(0), gravity_y(0) {
 
 		textureImage = IMG_LoadTexture(sys_ren.get_ren(), "c:/images/test-image.png");
 
 	}
 
 
-	const int MovingObject::get_next_left() const { return get_left() + velocity_x; }
-	const int MovingObject::get_next_right() const { return get_right() + velocity_x; }
-	const int MovingObject::get_next_top() const { return get_top() + velocity_y; }
-	const int MovingObject::get_next_bottom() const { return get_bottom() + velocity_y; }
+	const int MovingObject::get_next_left() const { return get_left() + velocity_x + gravity_x; }
+	const int MovingObject::get_next_right() const { return get_right() + velocity_x + gravity_x; }
+	const int MovingObject::get_next_top() const { return get_top() + velocity_y + gravity_y; }
+	const int MovingObject::get_next_bottom() const { return get_bottom() + velocity_y + gravity_y; }
+
+	void MovingObject::set_gravity_x(int val)
+	{
+		gravity_x = val;
+	}
+
+	void MovingObject::set_gravity_y(int val)
+	{
+		gravity_y = val;
+	}
 
 	//Stops this object next to the object it collides with.
 	void MovingObject::resolve_phys_collision(GameObject& obj, const CollisionManager& m) {
@@ -44,7 +54,7 @@ namespace engine {
 			}
 			
 			if ( collision ) {
-				this->on_collision(*this);
+				this->on_collision(obj);
 				obj.on_collision(*this);
 			}
 		}
@@ -64,10 +74,18 @@ namespace engine {
 	bool MovingObject::check_collides_y(GameObject& obj, const CollisionManager& m) {
 		if (m.collides_y(*this, obj, this->velocity_y))
 		{
+			int temp_vel_y = velocity_y;
 			int moveY = this->velocity_y > 0 ? 1 : -1;
 			this->velocity_y = 0;
 			while (!m.collides_y(*this, obj, moveY))
 				this->rect_add_y(moveY);
+
+			if (obj.get_elasticity() != 0) {
+				int bounce = (temp_vel_y * obj.get_elasticity()) / 100 + gravity_y;
+				if (abs(bounce) > 1)
+					this->velocity_y = bounce;
+			}
+
 			return true;
 		}
 		return false;
@@ -76,6 +94,13 @@ namespace engine {
 	void MovingObject::do_movement() {
 		this->rect_add_x(velocity_x);
 		this->rect_add_y(velocity_y);
+
+		if (abs(velocity_y) <= MAX_GRAVITY) {
+			velocity_x += gravity_x;
+		}
+		if (abs(velocity_y <= MAX_GRAVITY)) {
+			velocity_y += gravity_y;
+		}
 	}
 
 	void MovingObject::default_collision_executor() {
