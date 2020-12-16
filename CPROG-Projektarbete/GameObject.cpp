@@ -19,7 +19,7 @@ namespace engine {
 		rect.y += y;
 	}
 
-	const Level& GameObject::get_level() {
+	const Level& GameObject::get_level() const {
 		return *this->level;
 	}
 

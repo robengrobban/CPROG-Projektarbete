@@ -21,7 +21,7 @@ namespace demo {
 			void key_down(const SDL_Event&);
 			void key_up(const SDL_Event&);
 
-			void handle_collision(GameObject&);
+			void on_collision(GameObject&);
 
 			~Player() {}
 

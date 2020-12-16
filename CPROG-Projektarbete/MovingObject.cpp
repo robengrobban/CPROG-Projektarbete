@@ -44,8 +44,8 @@ namespace engine {
 			}
 			
 			if ( collision ) {
-				this->handle_collision(*this);
-				obj.handle_collision(*this);
+				this->on_collision(*this);
+				obj.on_collision(*this);
 			}
 		}
 	}
@@ -78,7 +78,7 @@ namespace engine {
 		this->rect_add_y(velocity_y);
 	}
 
-	void MovingObject::standard_collision() {
+	void MovingObject::default_collision_executor() {
 		const Level& level = get_level();
 		std::vector<GameObject*> objects = level.get_game_objects();
 

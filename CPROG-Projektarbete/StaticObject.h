@@ -19,7 +19,7 @@ namespace engine {
 		const int get_next_top() const;
 		const int get_next_bottom() const;
 
-		virtual void handle_collision(GameObject&) { std::cout << "Någon krockade med Static!" << std::endl; };
+		virtual void on_collision(GameObject&) { std::cout << "Någon krockade med Static!" << std::endl; };
 
 		~StaticObject();
 

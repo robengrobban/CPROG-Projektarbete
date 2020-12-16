@@ -27,7 +27,7 @@ namespace engine {
 			const int get_next_top() const;
 			const int get_next_bottom() const;
 
-			virtual void handle_collision(GameObject&) {};
+			virtual void on_collision(GameObject&) {};
 			virtual void resolve_phys_collision(GameObject&, const CollisionManager&);
 
 			virtual ~MovingObject();
@@ -37,7 +37,7 @@ namespace engine {
 			
 			virtual void do_movement();
 			virtual void calculate_movement() {};
-			void standard_collision();
+			void default_collision_executor();
 			
 			int velocity_x;
 			int velocity_y;

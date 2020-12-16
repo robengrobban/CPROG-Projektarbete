@@ -14,7 +14,7 @@ namespace engine {
 		{
 			if (next_tick_collides(obj, *objects[i]))
 			{
-				obj.handle_collision(*objects[i]);
+				obj.on_collision(*objects[i]);
 			}
 		}
 	}

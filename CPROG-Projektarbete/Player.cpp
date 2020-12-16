@@ -16,7 +16,7 @@ namespace demo {
 		
 		this->calculate_movement();
 
-		this->standard_collision();
+		this->default_collision_executor();
 		
 		this->do_movement();
 
@@ -67,7 +67,7 @@ namespace demo {
 		}
 	}
 
-	void Player::handle_collision(GameObject& obj) {
+	void Player::on_collision(GameObject& obj) {
 		std::cout << "Jag krockade!" << std::endl;
 	};
 
