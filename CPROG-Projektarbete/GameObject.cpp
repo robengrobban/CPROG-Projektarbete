@@ -27,5 +27,9 @@ namespace engine {
 		this->level = &level;
 	}
 
+	GameObject::~GameObject() {
+		delete this->sprite;
+	}
+
 }
 

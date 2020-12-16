@@ -2,6 +2,7 @@
 #define GAME_OBJECT_H
 
 #include <SDL.h>
+#include "Sprite.h"
 
 namespace engine {
 
@@ -45,7 +46,7 @@ namespace engine {
 		const Level& get_level() const;
 		void assign_level(Level&);
 
-		virtual ~GameObject() {}
+		virtual ~GameObject();
 
 	protected:
 		GameObject(int x, int y, int w, int h, bool solid);
