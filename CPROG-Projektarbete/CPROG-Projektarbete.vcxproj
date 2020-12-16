@@ -152,6 +152,7 @@
     <ClInclude Include="LevelManager.h" />
     <ClInclude Include="MovingObject.h" />
     <ClInclude Include="Player.h" />
+    <ClInclude Include="Sprite.h" />
     <ClInclude Include="StaticObject.h" />
     <ClInclude Include="SystemRenderer.h" />
   </ItemGroup>
@@ -164,6 +165,7 @@
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="MovingObject.cpp" />
     <ClCompile Include="Player.cpp" />
+    <ClCompile Include="Sprite.cpp" />
     <ClCompile Include="StaticObject.cpp" />
     <ClCompile Include="SystemRenderer.cpp" />
   </ItemGroup>
