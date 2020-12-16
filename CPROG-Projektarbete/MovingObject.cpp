@@ -82,7 +82,7 @@ namespace engine {
 		const Level& level = get_level();
 		std::vector<GameObject*> objects = level.get_game_objects();
 
-		for (engine::GameObject* obj : objects) {
+		for (GameObject* obj : objects) {
 			if (obj != this) {
 				this->resolve_phys_collision(*obj, engine::col_man);
 			}
