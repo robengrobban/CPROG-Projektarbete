@@ -30,7 +30,13 @@ namespace demo {
 			
 
 		private:
+			int force_up;
+			int force_down;
+			int force_right;
+			int force_left;
+			int movement_speed;
 
+			void calculate_movement();
 
 	};
 

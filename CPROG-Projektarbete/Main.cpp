@@ -35,13 +35,17 @@ int main(int argc, char** argv) {
 
 	lm->print_debug();
 
-	GameObject* go1 = StaticObject::create(100, 150, 200, 200);
-	GameObject* go2 = StaticObject::create(300, 150, 200, 200);
-	GameObject* go3 = StaticObject::create(500, 150, 200, 200);
-	GameObject* go4 = StaticObject::create(700, 150, 200, 200);
-	GameObject* go5 = StaticObject::create(900, 150, 200, 200);
+	GameObject* go1 = StaticObject::create(50, 0, 50, 50);
+	GameObject* go2 = StaticObject::create(50, 0, 50, 50);
 
-	GameObject* go6 = Player::create(10, 150, 200, 200);
+	GameObject* go3 = StaticObject::create(50, 0, 50, 50);
+	GameObject* go4 = StaticObject::create(50, 50, 50, 50);
+	GameObject* go5 = StaticObject::create(50, 100, 50, 50);
+	GameObject* go6 = StaticObject::create(50, 250, 50, 50);
+	GameObject* go7 = StaticObject::create(100, 250, 50, 50);
+	GameObject* go8 = StaticObject::create(100, 100, 50, 50);
+
+	GameObject* player = Player::create(0, 0, 50, 50);
 
 
 	l1->add_object(*go1);
@@ -49,8 +53,21 @@ int main(int argc, char** argv) {
 	l1->add_object(*go3);
 	l1->add_object(*go4);
 	l1->add_object(*go5);
-	
 	l1->add_object(*go6);
+	l1->add_object(*go7);
+	l1->add_object(*go8);
+
+	l1->add_object(*StaticObject::create(0, 200, 50, 50));
+	l1->add_object(*StaticObject::create(150, 250, 50, 50));
+	l1->add_object(*StaticObject::create(150, 100, 50, 50));
+	l1->add_object(*StaticObject::create(250, 100, 50, 50));
+	l1->add_object(*StaticObject::create(250, 250, 50, 50));
+	l1->add_object(*StaticObject::create(250, 150, 50, 50));
+	l1->add_object(*StaticObject::create(300, 150, 50, 50));
+	l1->add_object(*StaticObject::create(150, 300, 50, 50));
+	l1->add_object(*StaticObject::create(150, 50, 50, 50));
+
+	l1->add_object(*player);
 
 
 	l1->print_debug();

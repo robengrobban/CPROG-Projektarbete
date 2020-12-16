@@ -35,11 +35,11 @@ namespace engine {
 	/// Checks if there is any collision between two sets of boundarys.
 	/// </summary>
 	/// <returns>True if collision, else false.</returns>
-	bool CollisionManager::collides(int a_left, int a_right, int a_top, int a_bottom,
-		int b_left, int b_right, int b_top, int b_bottom) const
+	bool CollisionManager::collides(const int a_left, const int a_right, const int a_top, const int a_bottom,
+		const int b_left, const int b_right, const int b_top, const int b_bottom) const
 	{
 		//If a is not outside b on all sides (e.g. a top below b bottom), there is collision.
-		if (!((b_bottom < a_top) || (b_top > a_bottom) || (b_right < a_left) || (b_left > a_right)))
+		if (!((b_bottom <= a_top) || (b_top >= a_bottom) || (b_right <= a_left) || (b_left >= a_right)))
 		{
 			return true;
 		}
@@ -50,7 +50,7 @@ namespace engine {
 	/// Checks if there is any collision if adding x velocity.
 	/// </summary>
 	/// <returns>True if collision, else false.</returns>
-	bool CollisionManager::collides_x(GameObject& a, GameObject& b, int vel_x) const
+	bool CollisionManager::collides_x(const GameObject& a, const GameObject& b, const int vel_x) const
 	{
 		if (collides(a.get_left() + vel_x, a.get_right() + vel_x, a.get_top(), a.get_bottom(), b.get_left(), b.get_right(), b.get_top(), b.get_bottom()))
 		{
@@ -63,7 +63,7 @@ namespace engine {
 	/// Checks if there is any collision if adding y velocity.
 	/// </summary>
 	/// <returns>True if collision, else false.</returns>
-	bool CollisionManager::collides_y(GameObject& a, GameObject& b, int vel_y) const
+	bool CollisionManager::collides_y(const GameObject& a, const GameObject& b, const int vel_y) const
 	{
 		if (collides(a.get_left(), a.get_right(), a.get_top() + vel_y, a.get_bottom() + vel_y, b.get_left(), b.get_right(), b.get_top(), b.get_bottom()))
 		{
@@ -84,6 +84,6 @@ namespace engine {
 			b.get_next_left(), b.get_next_right(), b.get_next_top(), b.get_next_bottom());
 	}
 
-	CollisionManager col_man;
+	const CollisionManager col_man;
 }
 
