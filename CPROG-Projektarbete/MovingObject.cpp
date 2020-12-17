@@ -22,7 +22,7 @@ namespace engine {
 
 
 	MovingObject::MovingObject(int x, int y, int w, int h, bool solid)
-		: GameObject(x, y, w, h, solid), velocity_x(0), velocity_y(0) {
+		: GameObject(x, y, w, h, solid), velocity_x(0), velocity_y(0), gravity(0) {
 
 	}
 
@@ -30,7 +30,12 @@ namespace engine {
 	const int MovingObject::get_next_left() const { return get_left() + velocity_x; }
 	const int MovingObject::get_next_right() const { return get_right() + velocity_x; }
 	const int MovingObject::get_next_top() const { return get_top() + velocity_y; }
-	const int MovingObject::get_next_bottom() const { return get_bottom() + velocity_y; }
+	const int MovingObject::get_next_bottom() const { return get_bottom() + velocity_y + gravity; }
+
+	void MovingObject::set_gravity(int val)
+	{
+		gravity = abs(val);
+	}
 
 	//Stops this object next to the object it collides with.
 	void MovingObject::resolve_phys_collision(GameObject& obj, const CollisionManager& m) {
@@ -49,10 +54,10 @@ namespace engine {
 				bool tmp2 = check_collides_x(obj, m);
 				collision = tmp1 || tmp2;
 			}
-
-			if (collision) {
-				this->handle_collision(*this);
-				obj.handle_collision(*this);
+			
+			if ( collision ) {
+				this->on_collision(obj);
+				obj.on_collision(*this);
 			}
 		}
 	}
@@ -71,10 +76,18 @@ namespace engine {
 	bool MovingObject::check_collides_y(GameObject& obj, const CollisionManager& m) {
 		if (m.collides_y(*this, obj, this->velocity_y))
 		{
+			int temp_vel_y = velocity_y;
 			int moveY = this->velocity_y > 0 ? 1 : -1;
 			this->velocity_y = 0;
 			while (!m.collides_y(*this, obj, moveY))
 				this->rect_add_y(moveY);
+
+			if (obj.get_elasticity() != 0) {
+				int bounce = (temp_vel_y * (-obj.get_elasticity())) / 100 + gravity;
+				if (abs(bounce) > 1)
+					this->velocity_y = bounce;
+			}
+
 			return true;
 		}
 		return false;
@@ -83,9 +96,13 @@ namespace engine {
 	void MovingObject::do_movement() {
 		this->rect_add_x(velocity_x);
 		this->rect_add_y(velocity_y);
+
+		if (abs(velocity_y <= MAX_GRAVITY)) {
+			velocity_y += gravity;
+		}
 	}
 
-	void MovingObject::standard_collision() {
+	void MovingObject::default_collision_executor() {
 		const Level& level = get_level();
 		std::vector<GameObject*> objects = level.get_game_objects();
 

@@ -21,7 +21,7 @@ namespace demo {
 			void key_down(const SDL_Event&);
 			void key_up(const SDL_Event&);
 
-			void handle_collision(GameObject&);
+			void on_collision(GameObject&);
 
 			~Player() {}
 
@@ -35,8 +35,10 @@ namespace demo {
 			int force_right;
 			int force_left;
 			int movement_speed;
+			bool on_ground;
 
 			void calculate_movement();
+			void jump();
 
 	};
 

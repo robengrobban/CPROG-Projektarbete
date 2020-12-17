@@ -36,12 +36,16 @@ namespace engine {
 		srcRect.x = srcRect.w * static_cast<int>((SDL_GetTicks() / mSpeed) % nFrame);
 	}
 
-	const Level& GameObject::get_level() {
+	const Level& GameObject::get_level() const {
 		return *this->level;
 	}
 
 	void GameObject::assign_level(Level& level) {
 		this->level = &level;
+	}
+
+	GameObject::~GameObject() {
+		delete this->sprite;
 	}
 
 }

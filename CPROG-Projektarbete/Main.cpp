@@ -44,7 +44,9 @@ int main(int argc, char** argv) {
 	GameObject* go6 = StaticObject::create(50, 250, 50, 50);
 	GameObject* go7 = StaticObject::create(100, 250, 50, 50);
 	GameObject* go8 = StaticObject::create(100, 100, 50, 50);
-	
+
+	GameObject* player = Player::create(0, 0, 50, 50);
+	player->set_gravity(1);
 	
 	go7->set_image_path("c:/images/donkey.png");
 	go8->set_image_path("c:/images/mario_sheet.png");
@@ -77,10 +79,18 @@ int main(int argc, char** argv) {
 	l1->add_object(*StaticObject::create(150, 300, 50, 50));
 	l1->add_object(*StaticObject::create(150, 50, 50, 50));
 
-	//l1->add_object(*player);
+	//Ground
+	for (int i = 0; i < 1200; i += 50) {
+		l1->add_object(*StaticObject::create(i, 750, 50, 50));
+	}
+
+	//Bouncepad
+	l1->add_object(*StaticObject::create(550, 700, 50, 50, true, 80));
+	l1->add_object(*StaticObject::create(600, 700, 50, 50, true, 80));
+
+	l1->add_object(*player);
+
 	l1->add_object(*player2);
-
-
 
 	l1->print_debug();
 

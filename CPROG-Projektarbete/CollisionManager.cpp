@@ -14,7 +14,7 @@ namespace engine {
 		{
 			if (next_tick_collides(obj, *objects[i]))
 			{
-				obj.handle_collision(*objects[i]);
+				obj.on_collision(*objects[i]);
 			}
 		}
 	}
@@ -40,6 +40,21 @@ namespace engine {
 	{
 		//If a is not outside b on all sides (e.g. a top below b bottom), there is collision.
 		if (!((b_bottom <= a_top) || (b_top >= a_bottom) || (b_right <= a_left) || (b_left >= a_right)))
+		{
+			return true;
+		}
+		else return false;
+	}
+
+	/// <summary>
+	/// Checks if there is any collision downwards for one object to another.
+	/// </summary>
+	/// <returns>True if collision, else false.</returns>
+	bool CollisionManager::collides_down(const GameObject& obj1, const GameObject& obj2) const
+	{
+		//if collides if obj1 is put 1 step down.
+		if (!((obj2.get_bottom() <= obj1.get_next_top() + 1) || (obj2.get_top() >= obj1.get_bottom() + 1) ||
+			(obj2.get_right() <= obj1.get_left()) || (obj2.get_left() >= obj1.get_right())))
 		{
 			return true;
 		}
