@@ -56,9 +56,9 @@ namespace engine {
 		const Level& get_level() const;
 		void assign_level(Level&);
 
-		~GameObject() {
-			SDL_DestroyTexture(textureImage);
-		}
+		virtual ~GameObject();
+			
+		
 	protected:
 		GameObject(int x, int y, int w, int h, bool solid);
 		SDL_Rect dstRect;

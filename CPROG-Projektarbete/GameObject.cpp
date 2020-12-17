@@ -46,6 +46,7 @@ namespace engine {
 
 	GameObject::~GameObject() {
 		delete this->sprite;
+		SDL_DestroyTexture(textureImage);
 	}
 
 }
