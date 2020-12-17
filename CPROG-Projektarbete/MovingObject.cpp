@@ -3,19 +3,26 @@
 
 namespace engine {
 
-	/*MovingObject* MovingObject::create(int x, int y, int w, int h, bool solid) {
-		return new MovingObject(x, y, w, h, solid);
-	}*/
 
-	void MovingObject::draw() const {
-		SDL_RenderCopy(sys_ren.get_ren(), textureImage, NULL, &get_rect());
+
+	void MovingObject::draw() {
+
+
+		if (animated) {
+			addAnimation(frame, speed);
+			SDL_RenderCopy(sys_ren.get_ren(), textureImage, &srcRect, &dstRect);
+		}
+		else {
+			SDL_RenderCopy(sys_ren.get_ren(), textureImage, NULL, &dstRect);
+
+		}
 
 	}
 
+
+
 	MovingObject::MovingObject(int x, int y, int w, int h, bool solid)
 		: GameObject(x, y, w, h, solid), velocity_x(0), velocity_y(0) {
-
-		textureImage = IMG_LoadTexture(sys_ren.get_ren(), "c:/images/test-image.png");
 
 	}
 
@@ -32,7 +39,7 @@ namespace engine {
 		if (this->is_solid() && obj.is_solid()) {
 			bool collision = false;
 
-			if ( this->velocity_x >= this->velocity_y ) {
+			if (this->velocity_x >= this->velocity_y) {
 				bool tmp1 = check_collides_x(obj, m);
 				bool tmp2 = check_collides_y(obj, m);
 				collision = tmp1 || tmp2;
@@ -42,8 +49,8 @@ namespace engine {
 				bool tmp2 = check_collides_x(obj, m);
 				collision = tmp1 || tmp2;
 			}
-			
-			if ( collision ) {
+
+			if (collision) {
 				this->handle_collision(*this);
 				obj.handle_collision(*this);
 			}

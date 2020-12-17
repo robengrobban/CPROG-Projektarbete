@@ -5,6 +5,7 @@
 #include <SDL_image.h>
 #include "SystemRenderer.h"
 #include "Level.h"
+#include <string>
 
 namespace engine {
 
@@ -15,7 +16,8 @@ namespace engine {
 			//static MovingObject* create(int x, int y, int w, int h, bool solid = true);
 
 			virtual void tick() {};
-			void draw() const;
+			void draw()  ;
+		//	void set_image(std::string ) ;
 
 			virtual void mouse_down(const SDL_Event&) {};
 			virtual void mouse_up(const SDL_Event&) {};
@@ -31,7 +33,8 @@ namespace engine {
 			virtual void resolve_phys_collision(GameObject&, const CollisionManager&);
 
 			virtual ~MovingObject();
-
+			//SDL_Rect desrect; //animation test
+			
 		protected:
 			MovingObject(int x, int y, int w, int h, bool solid);
 			
@@ -48,7 +51,6 @@ namespace engine {
 
 			MovingObject(const MovingObject&) = delete; // For the time being
 			const MovingObject& operator=(const MovingObject&) = delete; // For the time being
-			SDL_Texture* textureImage;
 			
 	};
 

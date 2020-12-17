@@ -44,9 +44,19 @@ int main(int argc, char** argv) {
 	GameObject* go6 = StaticObject::create(50, 250, 50, 50);
 	GameObject* go7 = StaticObject::create(100, 250, 50, 50);
 	GameObject* go8 = StaticObject::create(100, 100, 50, 50);
+	
+	
+	go7->set_image_path("c:/images/donkey.png");
+	go8->set_image_path("c:/images/mario_sheet.png");
+	go8->addAnimation( 3, 100);
+	go8->removeAnimation();
 
-	GameObject* player = Player::create(0, 0, 50, 50);
+	
 
+	GameObject* player2 = Player::create(500, 500, 64, 128);
+
+	player2->set_image_path("c:/images/mario_sheet.png");
+	player2->addAnimation( 3, 100);
 
 	l1->add_object(*go1);
 	l1->add_object(*go2);
@@ -67,7 +77,9 @@ int main(int argc, char** argv) {
 	l1->add_object(*StaticObject::create(150, 300, 50, 50));
 	l1->add_object(*StaticObject::create(150, 50, 50, 50));
 
-	l1->add_object(*player);
+	//l1->add_object(*player);
+	l1->add_object(*player2);
+
 
 
 	l1->print_debug();

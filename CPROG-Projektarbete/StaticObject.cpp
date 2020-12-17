@@ -10,15 +10,23 @@ namespace engine {
 		return new StaticObject(x, y, w, h, solid);
 	}
 
-	void StaticObject::draw() const
+	void StaticObject::draw()
 	{
-		SDL_RenderCopy(sys_ren.get_ren(), textureImage, NULL, &get_rect());
+		if (animated) {
+			addAnimation(frame, speed);
+			SDL_RenderCopy(sys_ren.get_ren(), textureImage, &srcRect, &dstRect);
+		}
+		else
+		{
+			SDL_RenderCopy(sys_ren.get_ren(), textureImage, NULL, &dstRect);
+
+		}
 	}
 
-	StaticObject::StaticObject(int x, int y, int w, int h, bool solid) 
+	StaticObject::StaticObject(int x, int y, int w, int h, bool solid)
 		: GameObject(x, y, w, h, solid)
 	{
-		textureImage = IMG_LoadTexture(sys_ren.get_ren(), "c:/images/test-image.png");
+
 	}
 
 	const int StaticObject::get_next_left() const { return get_left(); }
@@ -28,7 +36,6 @@ namespace engine {
 
 	StaticObject::~StaticObject()
 	{
-		SDL_DestroyTexture(textureImage);
 
 	}
 

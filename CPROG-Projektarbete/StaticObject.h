@@ -12,7 +12,7 @@ namespace engine {
 		static StaticObject* create(int x, int y, int w, int h, bool solid = true);
 
 		virtual void tick() {};
-		void draw() const;
+		void draw() ;
 
 		const int get_next_left() const;
 		const int get_next_right() const;
@@ -31,7 +31,6 @@ namespace engine {
 		StaticObject(const StaticObject&) = delete; // For the time being
 		const StaticObject& operator=(const StaticObject&) = delete; // For the time being
 
-		SDL_Texture* textureImage;
 	};
 
 }

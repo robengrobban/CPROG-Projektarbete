@@ -9,7 +9,7 @@ namespace demo {
 	Player::Player(int x, int y, int w, int h, bool solid)
 		: MovingObject(x, y, w, h, solid), force_up(0), force_down(0), force_left(0), force_right(0),
 		movement_speed(3) {
-
+		//set_image_path("c:/images/gubbe.bmp");
 	}
 
 	void Player::tick() {
