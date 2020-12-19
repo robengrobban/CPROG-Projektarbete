@@ -148,6 +148,8 @@
     <ClInclude Include="CollisionManager.h" />
     <ClInclude Include="GameManager.h" />
     <ClInclude Include="GameObject.h" />
+    <ClInclude Include="JObject.h" />
+    <ClInclude Include="JsonParser.h" />
     <ClInclude Include="Level.h" />
     <ClInclude Include="LevelManager.h" />
     <ClInclude Include="MovingObject.h" />
@@ -160,6 +162,8 @@
     <ClCompile Include="CollisionManager.cpp" />
     <ClCompile Include="GameManager.cpp" />
     <ClCompile Include="GameObject.cpp" />
+    <ClCompile Include="JObject.cpp" />
+    <ClCompile Include="JsonParser.cpp" />
     <ClCompile Include="Level.cpp" />
     <ClCompile Include="LevelManager.cpp" />
     <ClCompile Include="Main.cpp" />

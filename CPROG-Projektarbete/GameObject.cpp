@@ -3,7 +3,7 @@
 #include "SystemRenderer.h"
 namespace engine {
 
-	GameObject::GameObject(int x, int y, int w, int h, bool solid) :dstRect{ x,y,w,h }, srcRect{ 0,0,w,h }, solid(solid), level(nullptr), image_path("c:/images/test-image.png")
+	GameObject::GameObject(int x, int y, int w, int h, bool solid) :dstRect{ x,y,w,h }, srcRect{ 0,0,w,h }, solid(solid), level(nullptr), image_path("c:/CPROG-Assets/images/test-image.png")
 	{
 		textureImage = IMG_LoadTexture(sys_ren.get_ren(), image_path.c_str());
 

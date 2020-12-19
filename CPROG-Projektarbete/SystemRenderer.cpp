@@ -12,7 +12,7 @@ namespace engine {
 			throw std::runtime_error(std::string("Initfel: ") + SDL_GetError());
 		}
 
-		this->sdl_win = SDL_CreateWindow("Window", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 1200, 800, 0);
+		this->sdl_win = SDL_CreateWindow("Window", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 1280, 640, 0);
 		if ( this->sdl_win == nullptr ) {
 			throw std::runtime_error(std::string("Cannot create window: ") + SDL_GetError());
 		}
