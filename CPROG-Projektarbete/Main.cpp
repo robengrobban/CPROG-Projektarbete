@@ -8,6 +8,7 @@
 #include "Player.h"
 #include "JsonParser.h"
 
+
 using namespace std;
 using namespace engine;
 using namespace demo;
@@ -53,6 +54,8 @@ void autoSetup(LevelManager* lm)
 	l1->print_debug();
 	l1->tick_level();
 	l1->print_debug();
+
+	delete levels;
 }
 
 //Temporary method for testing setup with manually created levels and objects.
