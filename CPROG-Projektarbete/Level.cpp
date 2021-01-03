@@ -37,6 +37,16 @@ namespace engine {
 		this->to_remove.push_back(&object);
 	}
 
+	void Level::add_bg_color(SDL_Color color)
+	{
+		bg_color = color;
+	}
+
+	SDL_Color Level::get_bg_color() const
+	{
+		return bg_color;
+	}
+
 	void Level::forward_event(const SDL_Event& event) {
 		for ( GameObject* object : this->game_objects ) {
 			if ( MovingObject* target = dynamic_cast<MovingObject*>(object) ) {

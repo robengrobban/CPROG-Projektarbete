@@ -44,6 +44,4 @@ namespace demo {
 
 }
 
-
-
 #endif

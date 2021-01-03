@@ -54,7 +54,8 @@ namespace engine {
 			this->level_manager->tick_current_level();
 
 			// Draw frame
-			SDL_SetRenderDrawColor(sys_ren.get_ren(), 0, 0, 0, 255);
+			SDL_Color bgc = this->level_manager->get_bg_color();
+			SDL_SetRenderDrawColor(sys_ren.get_ren(), bgc.r, bgc.g, bgc.b, 255);
 			SDL_RenderClear(sys_ren.get_ren());
 			this->level_manager->draw_current_level();
 

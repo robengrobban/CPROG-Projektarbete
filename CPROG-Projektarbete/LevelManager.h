@@ -24,6 +24,7 @@ namespace engine {
 			
 			Level& get_current_level() const;
 			int get_current_level_number() const;
+			SDL_Color get_bg_color() const;
 
 			void forward_event(const SDL_Event&);
 

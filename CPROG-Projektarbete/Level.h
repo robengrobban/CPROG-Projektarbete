@@ -21,6 +21,8 @@ namespace engine {
 
 			void add_object(GameObject&);
 			void remove_object(GameObject&);
+			void add_bg_color(SDL_Color);
+			SDL_Color get_bg_color() const;
 
 			void forward_event(const SDL_Event&);
 
@@ -43,6 +45,7 @@ namespace engine {
 			std::vector<GameObject*> game_objects;
 			std::vector<GameObject*> to_remove;
 			std::string name;
+			SDL_Color bg_color;
 
 			void internal_object_cleanup();
 

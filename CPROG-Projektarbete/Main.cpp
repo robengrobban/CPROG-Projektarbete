@@ -17,7 +17,6 @@ using namespace demo;
 void autoSetup(LevelManager*);
 void manualSetup(LevelManager*);
 
-
 int main(int argc, char** argv) {
 
 	GameManager* game_manager = new GameManager();
@@ -75,7 +74,7 @@ void manualSetup(LevelManager* lm) {
 
 	lm->print_debug();
 
-	lm->remove_level(3);
+	lm->remove_level(3); 
 	lm->remove_level(*l5);
 
 	lm->print_debug();

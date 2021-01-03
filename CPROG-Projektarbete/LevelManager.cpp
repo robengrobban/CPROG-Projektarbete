@@ -93,6 +93,10 @@ namespace engine {
 		return this->current_level;
 	}
 
+	SDL_Color LevelManager::get_bg_color() const {
+		return (this->levels.at(this->current_level))->get_bg_color();
+	}
+
 	void LevelManager::forward_event(const SDL_Event& event) {
 		this->get_current_level().forward_event(event);
 	}
