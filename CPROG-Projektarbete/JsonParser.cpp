@@ -21,10 +21,14 @@ namespace engine {
 		{
 			Level* level = Level::create(j_level["Name"]);
 			std::string color = j_level["BackgroundColor"];
-			uint8_t r = std::strtoul(color.substr(3, 2).c_str(), 0, 16);
-			uint8_t g = std::strtoul(color.substr(5, 2).c_str(), 0, 16);
-			uint8_t b = std::strtoul(color.substr(7, 2).c_str(), 0, 16);
-			level->add_bg_color(SDL_Color{ r,g,b });
+			if (color[0] == '#')
+			{
+				uint8_t r = std::strtoul(color.substr(3, 2).c_str(), 0, 16);
+				uint8_t g = std::strtoul(color.substr(5, 2).c_str(), 0, 16);
+				uint8_t b = std::strtoul(color.substr(7, 2).c_str(), 0, 16);
+				level->add_bg_color(SDL_Color{ r,g,b });
+			}
+			else level->add_bg_color(SDL_Color{ 0,0,0 });
 			for (JObject sprite : j_level.get_array("Levels")) {
 
 				GameObject* obj = StaticObject::create(
