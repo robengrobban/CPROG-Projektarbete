@@ -9,6 +9,8 @@
 
 namespace engine {
 
+	class LevelManager;
+
 	class Level {
 
 		public:
@@ -36,6 +38,9 @@ namespace engine {
 				std::cout << std::endl;
 			}
 
+			void set_level_manager(LevelManager*);
+			LevelManager& get_level_manager() const;
+
 			~Level();
 
 		protected:
@@ -46,6 +51,8 @@ namespace engine {
 			std::vector<GameObject*> to_remove;
 			std::string name;
 			SDL_Color bg_color;
+
+			LevelManager* level_manager;
 
 			void internal_object_cleanup();
 

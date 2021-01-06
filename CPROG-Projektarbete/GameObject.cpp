@@ -1,6 +1,7 @@
 #include "GameObject.h"
 #include <SDL_image.h>
 #include "SystemRenderer.h"
+#include <iostream>
 namespace engine {
 
 	GameObject::GameObject(int x, int y, int w, int h, bool solid) :dstRect{ x,y,w,h }, srcRect{ 0,0,w,h }, solid(solid), level(nullptr), image_path("c:/CPROG-Assets/images/test-image.png")

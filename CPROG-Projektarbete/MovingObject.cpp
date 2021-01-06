@@ -1,5 +1,6 @@
 #include "MovingObject.h"
 
+#include "Player.h"
 
 namespace engine {
 
@@ -43,7 +44,6 @@ namespace engine {
 		//Only if both are solid, might be put in the "handle_collision" method implemented in derived objects instead.
 		if (this->is_solid() && obj.is_solid()) {
 			bool collision = false;
-
 			if (this->velocity_x >= this->velocity_y) {
 				bool tmp1 = check_collides_x(obj, m);
 				bool tmp2 = check_collides_y(obj, m);
@@ -54,7 +54,6 @@ namespace engine {
 				bool tmp2 = check_collides_x(obj, m);
 				collision = tmp1 || tmp2;
 			}
-			
 			if ( collision ) {
 				this->on_collision(obj);
 				obj.on_collision(*this);
@@ -67,8 +66,9 @@ namespace engine {
 		{
 			int moveX = this->velocity_x > 0 ? 1 : -1;
 			this->velocity_x = 0;
-			while (!m.collides_x(*this, obj, moveX))
+			while (!m.collides_x(*this, obj, moveX)) {
 				this->rect_add_x(moveX);
+			}	
 			return true;
 		}
 		return false;
@@ -79,9 +79,9 @@ namespace engine {
 			int temp_vel_y = velocity_y;
 			int moveY = this->velocity_y > 0 ? 1 : -1;
 			this->velocity_y = 0;
-			while (!m.collides_y(*this, obj, moveY))
+			while (!m.collides_y(*this, obj, moveY)) {
 				this->rect_add_y(moveY);
-
+			}
 			if (obj.get_elasticity() != 0) {
 				int bounce = (temp_vel_y * (-obj.get_elasticity())) / 100 + gravity;
 				if (abs(bounce) > 1)

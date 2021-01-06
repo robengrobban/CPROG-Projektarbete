@@ -34,6 +34,7 @@ namespace engine {
 	int LevelManager::add_level(Level& level) {
 		int next_level = this->levels.size();
 		this->levels.insert({next_level, &level});
+		level.set_level_manager(this);
 		return next_level;
 	}
 

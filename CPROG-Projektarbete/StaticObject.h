@@ -22,7 +22,7 @@ namespace engine {
 		const int get_elasticity() const;
 		void set_elasticity(int);
 
-		virtual void on_collision(GameObject&) { std::cout << "Någon krockade med Static!" << std::endl; };
+		virtual void on_collision(GameObject&) {};
 
 		~StaticObject();
 

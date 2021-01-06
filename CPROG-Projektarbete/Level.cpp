@@ -81,6 +81,14 @@ namespace engine {
 
 	}
 
+	void Level::set_level_manager(LevelManager* manager) {
+		this->level_manager = manager;
+	}
+
+	LevelManager& Level::get_level_manager() const {
+		return *(this->level_manager);
+	}
+
 	void Level::internal_object_cleanup() {
 
 		for (GameObject* object : this->to_remove) {

@@ -23,6 +23,8 @@ namespace demo {
 
 			void on_collision(GameObject&);
 
+			void die();
+
 			~Player() {}
 
 		protected:

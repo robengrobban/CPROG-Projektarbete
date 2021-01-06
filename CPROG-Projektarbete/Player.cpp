@@ -1,4 +1,5 @@
 #include "Player.h"
+#include "LevelManager.h"
 
 namespace demo {
 
@@ -13,11 +14,11 @@ namespace demo {
 	}
 
 	void Player::tick() {
-		
+
 		this->calculate_movement();
 
 		this->default_collision_executor();
-		
+
 		this->do_movement();
 
 	}
@@ -32,6 +33,10 @@ namespace demo {
 			velocity_y = -15;
 			on_ground = false;
 		}
+	}
+
+	void Player::die() {
+		this->get_level().get_level_manager().get_current_level().remove_object(*this);
 	}
 
 	void Player::mouse_down(const SDL_Event& event) {
@@ -78,10 +83,11 @@ namespace demo {
 	}
 
 	void Player::on_collision(GameObject& obj) {
-		std::cout << "Jag krockade!" << std::endl;
-		if (velocity_y == 0 && engine::col_man.collides_down(*this, obj))
+		if (velocity_y == 0 && engine::col_man.collides_down(*this, obj)) {
 			on_ground = true;
-	};
+		}
+			
+	}
 
 }
 

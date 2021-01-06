@@ -146,6 +146,7 @@
   <ItemGroup>
     <ClInclude Include="Cleanup.h" />
     <ClInclude Include="CollisionManager.h" />
+    <ClInclude Include="Enemy.h" />
     <ClInclude Include="GameManager.h" />
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="JObject.h" />
@@ -157,9 +158,11 @@
     <ClInclude Include="Sprite.h" />
     <ClInclude Include="StaticObject.h" />
     <ClInclude Include="SystemRenderer.h" />
+    <ClInclude Include="Teleporter.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="CollisionManager.cpp" />
+    <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="GameManager.cpp" />
     <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="JObject.cpp" />
@@ -172,6 +175,7 @@
     <ClCompile Include="Sprite.cpp" />
     <ClCompile Include="StaticObject.cpp" />
     <ClCompile Include="SystemRenderer.cpp" />
+    <ClCompile Include="Teleporter.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
