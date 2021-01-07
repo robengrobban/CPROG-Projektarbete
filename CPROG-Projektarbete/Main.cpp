@@ -53,14 +53,14 @@ void autoSetup(LevelManager* lm)
 	l1->add_object(*player);
 
 	// Enemy
-	GameObject* enemy_level_1 = Enemy::create(1088, 832, 64, 64, true);
+	/*GameObject* enemy_level_1 = Enemy::create(1088, 832, 64, 64, true);
 	enemy_level_1->set_image_path("c:/CPROG-Assets/images/regular_block.png");
-	l1->add_object(*enemy_level_1);
+	l1->add_object(*enemy_level_1);*/
 
 	// Teleporter to level 5 
-	GameObject* teleporter_level_5 = Teleporter::create(1472, 0, 64, 128, 4); //1472 1536
+	//GameObject* teleporter_level_5 = Teleporter::create(1472, 0, 64, 128, 4); //1472 1536
 	//teleporter_level_5->set_image_path("c:/CPROG-Assets/images/regular_block.png");
-	l1->add_object(*teleporter_level_5);
+	//l1->add_object(*teleporter_level_5);
 	// ... and player for level 5
 	Level* l5 = levels->at(4);
 	GameObject* player_level_5 = Player::create(0, 704, 64, 128);

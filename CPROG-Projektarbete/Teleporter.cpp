@@ -14,7 +14,7 @@ namespace demo {
 		// this class just borrows it for level change.
 	}
 
-	void Teleporter::on_collision(GameObject& other) {
+	void Teleporter::on_collision(GameObject& other) { 
 		if ( Player* p = dynamic_cast<Player*>(&other) ) {
 			this->get_level().get_level_manager().change_level(next_level);
 		}

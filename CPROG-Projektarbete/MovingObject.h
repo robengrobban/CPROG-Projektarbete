@@ -48,7 +48,7 @@ namespace engine {
 			int velocity_y;
 
 		private:
-			const int MAX_GRAVITY = 20;
+			const int MAX_GRAVITY = 30;
 			int gravity;
 			bool on_ground;
 

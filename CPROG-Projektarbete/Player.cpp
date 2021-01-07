@@ -30,7 +30,7 @@ namespace demo {
 	void Player::jump()
 	{
 		if (on_ground) {
-			velocity_y = -15;
+			velocity_y = -18;
 			on_ground = false;
 		}
 	}

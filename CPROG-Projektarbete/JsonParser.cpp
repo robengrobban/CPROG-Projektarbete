@@ -1,4 +1,8 @@
 #include "JsonParser.h"
+#include "Teleporter.h"
+#include "MovingPlatform.h"
+#include "Enemy.h"
+using namespace engine;
 
 namespace engine {
 
@@ -29,17 +33,11 @@ namespace engine {
 				level->add_bg_color(SDL_Color{ r,g,b });
 			}
 			else level->add_bg_color(SDL_Color{ 0,0,0 });
-			for (JObject sprite : j_level.get_array("Levels")) {
+			for (JObject game_obj : j_level.get_array("Levels")) {
 
-				GameObject* obj = StaticObject::create(
-					stoi(sprite["X"]),
-					stoi(sprite["Y"]),
-					stoi(sprite["W"]),
-					stoi(sprite["H"]),
-					std::string(sprite["Solid"]) == "true" ? true : false,
-					stoi(sprite["Elasticity"])
-				);
-				std::string id = sprite["SpriteID"];
+				GameObject* obj = get_obj(game_obj);
+				
+				std::string id = game_obj["SpriteID"];
 				std::vector<JObject> paths = project.get_array("Paths");
 				std::string path = paths[0][id];
 				obj->set_image_path(path);
@@ -49,5 +47,47 @@ namespace engine {
 			levels->push_back(level);
 		}
 		return levels;
+	}
+
+	GameObject* JsonParser::get_obj(JObject& game_obj)
+	{
+		switch (stoi(game_obj["Type"]))
+		{
+		case 0:
+			return StaticObject::create(
+				stoi(game_obj["X"]),
+				stoi(game_obj["Y"]),
+				stoi(game_obj["W"]),
+				stoi(game_obj["H"]),
+				std::string(game_obj["Solid"]) == "true" ? true : false,
+				stoi(game_obj["Elasticity"])
+			);
+		case 1:
+			return demo::Teleporter::create(
+				stoi(game_obj["X"]),
+				stoi(game_obj["Y"]),
+				stoi(game_obj["W"]),
+				stoi(game_obj["H"]),
+				stoi(game_obj["LevelTo"])
+			);
+		case 2:
+			return demo::MovingPlatform::create(
+				stoi(game_obj["X"]),
+				stoi(game_obj["Y"]),
+				stoi(game_obj["W"]),
+				stoi(game_obj["H"]),
+				stoi(game_obj["SpeedR"]),
+				stoi(game_obj["SpeedU"])
+			);
+		case 3:
+			return demo::Enemy::create(
+				stoi(game_obj["X"]),
+				stoi(game_obj["Y"]),
+				stoi(game_obj["W"]),
+				stoi(game_obj["H"]),
+				stoi(game_obj["LevelTo"])
+			);
+		default: return nullptr;
+		}
 	}
 }
