@@ -62,7 +62,7 @@ void autoSetup(LevelManager* lm)
 	//teleporter_level_5->set_image_path("c:/CPROG-Assets/images/regular_block.png");
 	//l1->add_object(*teleporter_level_5);
 	// ... and player for level 5
-	Level* l5 = levels->at(4);
+	Level* l5 = levels->at(3);
 	GameObject* player_level_5 = Player::create(0, 704, 64, 128);
 	player_level_5->set_gravity(1);
 	player_level_5->set_image_path("c:/CPROG-Assets/images/mario_sheet.png");
