@@ -37,12 +37,15 @@ namespace engine {
 
 				GameObject* obj = get_obj(game_obj);
 				
-				std::string id = game_obj["SpriteID"];
-				std::vector<JObject> paths = project.get_array("Paths");
-				std::string path = paths[0][id];
-				obj->set_image_path(path);
+				if (obj != nullptr)
+				{
+					std::string id = game_obj["SpriteID"];
+					std::vector<JObject> paths = project.get_array("Paths");
+					std::string path = paths[0][id];
+					obj->set_image_path(path);
 
-				level->add_object(*obj);
+					level->add_object(*obj);
+				}
 			}
 			levels->push_back(level);
 		}
