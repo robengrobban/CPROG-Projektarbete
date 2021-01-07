@@ -39,8 +39,8 @@ void autoSetup(LevelManager* lm)
 {
 	GameObject* player = Player::create(0, 768, 64, 128);
 	player->set_gravity(1);
-	player->set_image_path("c:/CPROG-Assets/images/mario_sheet.png");
-	player->addAnimation(3, 100);
+	player->set_image_path("c:/CPROG-Assets/images/mario_standing.png");
+	//player->addAnimation(3, 100);
 
 	JsonParser* parser = new JsonParser();
 	vector<Level*>* levels(parser->load_levels("C:/CPROG-Assets/project.json"));

@@ -24,6 +24,8 @@ namespace engine {
 
 	void GameObject::set_image_path(std::string path)
 	{
+		SDL_DestroyTexture(textureImage);
+
 		image_path = path;
 		textureImage = IMG_LoadTexture(sys_ren.get_ren(), image_path.c_str());
 

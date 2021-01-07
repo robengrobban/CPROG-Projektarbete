@@ -57,9 +57,15 @@ namespace demo {
 		}
 		if ( key_num == 97 ) { // A
 			force_left = -movement_speed;
+			set_image_path("c:/CPROG-Assets/images/mario_left.png");
+			addAnimation(2, 100);
 		}
 		if ( key_num == 100 ) { // D
 			force_right = movement_speed;
+			set_image_path("c:/CPROG-Assets/images/mario_right.png");
+			addAnimation(2, 100);
+
+
 		}
 		if (key_num == SDLK_SPACE) {
 			jump();
@@ -76,10 +82,17 @@ namespace demo {
 		}
 		if (key_num == 97) { // A
 			force_left = 0;
+			set_image_path("c:/CPROG-Assets/images/mario_standing.png");
+			animated = false;
 		}
 		if (key_num == 100) { // D
 			force_right = 0;
+			set_image_path("c:/CPROG-Assets/images/mario_standing.png");
+			animated = false;
 		}
+		
+
+
 	}
 
 	void Player::on_collision(GameObject& obj) {
