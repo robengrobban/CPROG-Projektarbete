@@ -12,7 +12,7 @@ namespace demo {
 
 			void on_collision(GameObject&);
 
-			~Teleporter();
+			~Teleporter() {};
 
 		protected:
 			Teleporter(int x, int y, int w, int h, int n);

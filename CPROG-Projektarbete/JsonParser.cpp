@@ -16,6 +16,7 @@ namespace engine {
 		std::ifstream file(path.c_str());
 		std::string json_string;
 		json_string.assign(std::istreambuf_iterator<char>(file), std::istreambuf_iterator<char>());
+		file.close();
 
 		JObject project = JObject(json_string);
 		std::vector<JObject> j_levels = project.get_array("Levels");

@@ -87,7 +87,12 @@ namespace engine {
 	}
 
 	Level& LevelManager::get_current_level() const {
-		return *(this->levels.at(this->current_level));
+		try {
+			return *(this->levels.at(this->current_level));
+		}
+		catch (std::out_of_range e) {
+			std::cout << "Cannot get current level, out of range: " << e.what() << std::endl;
+		}
 	}
 
 	int LevelManager::get_current_level_number() const {
@@ -99,7 +104,12 @@ namespace engine {
 	}
 
 	void LevelManager::forward_event(const SDL_Event& event) {
-		this->get_current_level().forward_event(event);
+		try {
+			this->get_current_level().forward_event(event);
+		}
+		catch (std::out_of_range e) {
+			std::cout << "Cannot forward event, current level out of range: " << e.what() << std::endl;
+		}
 	}
 
 	LevelManager::~LevelManager() {
