@@ -14,6 +14,8 @@ namespace engine {
 	public:
 		std::vector<Level*>* load_levels(std::string path);
 		GameObject* get_obj(JObject&);
+
+		~JsonParser() {}
 	};
 }
 #endif

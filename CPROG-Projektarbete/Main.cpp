@@ -118,11 +118,6 @@ void manualSetup(LevelManager* lm) {
 	player->set_image_path("c:/CPROG-Assets/images/mario_sheet.png");
 	player->addAnimation(3, 100);
 
-	GameObject* player2 = Player::create(400, 462, 64, 128);
-	player2->set_gravity(1);
-	player2->set_image_path("c:/CPROG-Assets/images/mario_sheet.png");
-	player2->addAnimation(3, 100);
-
 	l1->add_object(*go1);
 	l1->add_object(*go2);
 	l1->add_object(*go3);
@@ -150,8 +145,6 @@ void manualSetup(LevelManager* lm) {
 	//Bouncepad
 	l1->add_object(*StaticObject::create(550, 540, 50, 50, true, 80));
 	l1->add_object(*StaticObject::create(600, 540, 50, 50, true, 80));
-
-	l1->add_object(*player2);
 
 	l1->print_debug();
 
