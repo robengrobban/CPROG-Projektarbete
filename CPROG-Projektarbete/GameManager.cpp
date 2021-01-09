@@ -5,7 +5,7 @@
 
 namespace engine {
 
-	GameManager::GameManager() {
+	GameManager::GameManager(int width, int height) : SCREEN_WIDTH(width), SCREEN_HEIGHT(height), camera{ 0, 0, width, height } {
 		this->level_manager = LevelManager::create();
 	}
 
@@ -57,7 +57,7 @@ namespace engine {
 			SDL_Color bgc = this->level_manager->get_bg_color();
 			SDL_SetRenderDrawColor(sys_ren.get_ren(), bgc.r, bgc.g, bgc.b, 255);
 			SDL_RenderClear(sys_ren.get_ren());
-			this->level_manager->draw_current_level();
+			this->level_manager->draw_current_level(camera);
 
 			// Present frame
 			SDL_RenderPresent(sys_ren.get_ren());

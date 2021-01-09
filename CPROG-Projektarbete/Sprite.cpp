@@ -22,10 +22,11 @@ namespace engine
 		cleanup(texture);
 	}
 
-	void Sprite::draw(SDL_Rect dst_rect) {
+	void Sprite::draw(SDL_Rect& dst_rect, SDL_Rect& camera) {
 		if (num_frames > 1)
 			animate();
-		SDL_RenderCopy(sys_ren.get_ren(), texture, &src_rect, &dst_rect);
+		SDL_Rect r{ dst_rect.x - camera.x, dst_rect.y - camera.y, dst_rect.w, dst_rect.h };
+		SDL_RenderCopy(sys_ren.get_ren(), texture, &src_rect, &r);
 	}
 
 }

@@ -5,7 +5,7 @@
 
 namespace engine {
 
-	SystemRenderer::SystemRenderer() {
+	SystemRenderer::SystemRenderer() : SCREEN_H(960), SCREEN_W(1600) {
 		// Check for errors at initialization of SDL
 		int init_code = SDL_Init(SDL_INIT_EVERYTHING);
 		if ( init_code == -1 ) {
@@ -38,7 +38,6 @@ namespace engine {
 		cleanup(this->sdl_ren, this->sdl_win, this->music);
 		Mix_Quit();
 		SDL_Quit();
-
 	}
 
 	/// <summary>

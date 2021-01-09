@@ -20,16 +20,17 @@ namespace engine {
 		virtual void key_up(const SDL_Event&) {};
 
 		virtual void tick() = 0;
-		void draw();
+		void draw(SDL_Rect&);
 
-		//const SDL_Rect& get_rect() const { return dstRect; }
-		const bool is_solid() const { return solid; } //For the time being, should return if objects should stop when colliding.
+		const bool is_solid() const { return solid; }
 
 		//Boundarys for the object
 		const int get_left() const;
 		const int get_right() const;
 		const int get_top() const;
 		const int get_bottom() const;
+		const int get_width() const;
+		const int get_height() const;
 
 		virtual const int get_elasticity() const { return 0; }
 
@@ -63,7 +64,7 @@ namespace engine {
 		GameObject(int x, int y, int w, int h, bool solid);
 		SDL_Rect dst_rect;
 	private:
-		bool solid; //For the time being
+		bool solid;
 
 		Level* level;
 		int curr_anim;

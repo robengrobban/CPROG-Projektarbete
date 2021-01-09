@@ -24,7 +24,7 @@ namespace engine {
 
 		for (JObject j_level : j_levels)
 		{
-			Level* level = Level::create(j_level["Name"]);
+			Level* level = Level::create(j_level["Name"], stoi(j_level["Width"]), stoi(j_level["Height"]));
 			std::string color = j_level["BackgroundColor"];
 			if (color[0] == '#')
 			{

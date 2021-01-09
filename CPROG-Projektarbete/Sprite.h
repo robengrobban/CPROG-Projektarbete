@@ -14,7 +14,7 @@ namespace engine
 		public:
 			static Sprite* create(int, int, int, int, std::string);
 			void animate();
-			void draw(SDL_Rect);
+			void draw(SDL_Rect&, SDL_Rect&);
 			~Sprite();
 
 		protected:

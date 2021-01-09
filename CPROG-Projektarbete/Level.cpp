@@ -2,11 +2,11 @@
 
 namespace engine {
 
-	Level* Level::create(std::string name) {
-		return new Level(name);
+	Level* Level::create(std::string name, int w, int h) {
+		return new Level(name, w, h);
 	}
 
-	Level::Level(std::string n) : game_objects(), to_remove(), name(n) {
+	Level::Level(std::string n, int w, int h) : LEVEL_WIDTH(w), LEVEL_HEIGHT(h), game_objects(), to_remove(), name(n) {
 
 	}
 
@@ -22,9 +22,9 @@ namespace engine {
 		this->internal_object_cleanup();
 	}
 
-	void Level::draw_level() const {
+	void Level::draw_level(SDL_Rect camera) const {
 		for ( GameObject* object : this->game_objects ) {
-			object->draw();
+			object->draw(camera);
 		}
 	}
 

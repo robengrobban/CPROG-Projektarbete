@@ -11,10 +11,39 @@ namespace demo {
 		: MovingObject(x, y, w, h, solid), on_ground(false), moving(false), MAX_MOV_SPEED(8), movement_speed(0) {
 	}
 
+	void Player::set_camera(SDL_Rect* camera) {
+		this->camera = camera;
+		this->screen_w = camera->w;
+		this->screen_h =camera->h;
+	}
+
 	void Player::tick() {
 		this->calculate_movement();
 		this->default_collision_executor();
 		this->do_movement();
+		this->move_camera();
+	}
+
+	void Player::move_camera() {
+		if (this->get_left() + this->get_width() / 2)
+		camera->x = (this->get_left() + this->get_width() / 2) - screen_w / 2;
+		camera->y = (this->get_top() + this->get_height() / 2) - screen_h / 2;
+		if (camera->x < 0)
+		{
+			camera->x = 0;
+		}
+		if (camera->y < 0)
+		{
+			camera->y = 0;
+		}
+		if (camera->x > 2560 - camera->w)
+		{
+			camera->x = 2560 - camera->w;
+		}
+		if (camera->y > 960 - camera->h)
+		{
+			camera->y = 960 - camera->h;
+		}
 	}
 
 	void Player::calculate_movement() {

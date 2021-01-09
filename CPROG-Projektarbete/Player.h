@@ -14,6 +14,8 @@ namespace demo {
 		public:
 			static Player* create(int x, int y, int w, int h, bool solid = true);
 
+			void set_camera(SDL_Rect*);
+			void move_camera();
 			void tick();
 
 			void mouse_down(const SDL_Event&);
@@ -36,6 +38,9 @@ namespace demo {
 			
 
 		private:
+			SDL_Rect* camera;
+			int screen_w;
+			int screen_h;
 			bool moving;
 			const int MAX_MOV_SPEED;
 			int movement_speed;

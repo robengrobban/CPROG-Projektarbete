@@ -14,12 +14,12 @@ namespace engine {
 	class Level {
 
 		public:
-			static Level* create(std::string);
+			static Level* create(std::string, int, int);
 
 			std::string get_name() const;
 
 			void tick_level();
-			void draw_level() const;
+			void draw_level(SDL_Rect) const;
 
 			void add_object(GameObject&);
 			void remove_object(GameObject&);
@@ -44,13 +44,16 @@ namespace engine {
 			~Level();
 
 		protected:
-			Level(std::string);
+			Level(std::string, int, int);
 
 		private:
-			std::vector<GameObject*> game_objects;
-			std::vector<GameObject*> to_remove;
 			std::string name;
 			SDL_Color bg_color;
+			const int LEVEL_WIDTH;
+			const int LEVEL_HEIGHT;
+
+			std::vector<GameObject*> game_objects;
+			std::vector<GameObject*> to_remove;
 
 			LevelManager* level_manager;
 

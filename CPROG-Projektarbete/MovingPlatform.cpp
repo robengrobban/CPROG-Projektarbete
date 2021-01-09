@@ -64,9 +64,4 @@ namespace demo {
 			}
 		}
 	}
-
-	MovingPlatform::~MovingPlatform()
-	{
-	}
-
 }

@@ -11,10 +11,8 @@ namespace demo {
 		static MovingPlatform* create(int x, int y, int w, int h, int x_speed, int y_speed, bool solid = true);
 
 		void tick();
-
 		void on_collision(GameObject&);
-
-		~MovingPlatform();
+		~MovingPlatform() {}
 
 	protected:
 		MovingPlatform(int x, int y, int w, int h, int x_speed, int y_speed, bool solid);

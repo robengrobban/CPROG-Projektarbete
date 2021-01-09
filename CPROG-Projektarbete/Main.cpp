@@ -16,14 +16,14 @@ using namespace engine;
 using namespace demo;
 
 //Declarations, to not have to scroll down to Main for setup methods to work.
-void autoSetup(LevelManager*);
+void autoSetup(LevelManager*, GameManager*);
 void manualSetup(LevelManager*);
 
 int main(int argc, char** argv) {
 
-	GameManager* game_manager = new GameManager();
+	GameManager* game_manager = new GameManager(1600, 960);
 	LevelManager* lm = &game_manager->get_level_manager();
-	autoSetup(lm);
+	autoSetup(lm, game_manager);
 
 	game_manager->run();
 	delete game_manager;
@@ -32,13 +32,14 @@ int main(int argc, char** argv) {
 
 
 //Temporary method for testing setup with loading level from json.
-void autoSetup(LevelManager* lm)
+void autoSetup(LevelManager* lm, GameManager* gm)
 {
 	GameObject* player = Player::create(0, 768, 64, 128);
 	player->set_gravity(1);
 	player->add_sprite(1, 100, "c:/CPROG-Assets/images/mario_standing.png");
 	player->add_sprite(3, 100, "c:/CPROG-Assets/images/mario_left.png");
 	player->add_sprite(3, 100, "c:/CPROG-Assets/images/mario_right.png");
+	dynamic_cast<Player*>(player)->set_camera(gm->get_camera());
 
 	JsonParser* parser = new JsonParser();
 	vector<Level*>* levels(parser->load_levels("C:/CPROG-Assets/project.json"));
@@ -57,6 +58,7 @@ void autoSetup(LevelManager* lm)
 	player_level_5->add_sprite(1, 100, "c:/CPROG-Assets/images/mario_standing.png");
 	player_level_5->add_sprite(3, 100, "c:/CPROG-Assets/images/mario_left.png");
 	player_level_5->add_sprite(3, 100, "c:/CPROG-Assets/images/mario_right.png");
+	dynamic_cast<Player*>(player_level_5)->set_camera(gm->get_camera());
 	l5->add_object(*player_level_5);
 
 	l1->print_debug();
@@ -68,11 +70,11 @@ void autoSetup(LevelManager* lm)
 
 //Temporary method for testing setup with manually created levels and objects.
 void manualSetup(LevelManager* lm) {
-	Level* l1 = Level::create("Level 1");
-	Level* l2 = Level::create("Level 2");
-	Level* l3 = Level::create("Level 3");
-	Level* l4 = Level::create("Level 4");
-	Level* l5 = Level::create("Level 5");
+	Level* l1 = Level::create("Level 1", 1600, 960);
+	Level* l2 = Level::create("Level 2", 1600, 960);
+	Level* l3 = Level::create("Level 3", 1600, 960);
+	Level* l4 = Level::create("Level 4", 1600, 960);
+	Level* l5 = Level::create("Level 5", 1600, 960);
 
 
 	lm->add_level(*l1);

@@ -12,14 +12,16 @@ namespace engine {
 	{
 	}
 
-	void GameObject::draw(){
-		sprites[curr_anim]->draw(dst_rect);
+	void GameObject::draw(SDL_Rect& camera){
+		sprites[curr_anim]->draw(dst_rect, camera);
 	}
 
 	const int GameObject::get_left() const { return dst_rect.x; }
 	const int GameObject::get_right() const { return dst_rect.x + dst_rect.w; }
 	const int GameObject::get_top() const { return dst_rect.y; }
 	const int GameObject::get_bottom() const { return dst_rect.y + dst_rect.h; }
+	const int GameObject::get_width() const { return dst_rect.w; }
+	const int GameObject::get_height() const { return dst_rect.h; }
 
 	void GameObject::rect_add_x(int x) {
 		dst_rect.x += x;
