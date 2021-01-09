@@ -50,7 +50,6 @@ namespace engine {
 				}
 			}
 
-
 			// Tick every Game Object
 			this->level_manager->tick_current_level();
 
@@ -68,8 +67,6 @@ namespace engine {
 			if ( delay > 0 ) {
 				SDL_Delay(delay);
 			}
-			static int x;
-			std::cout << x++ << " ";
 		} while (running);
 	}
 }
