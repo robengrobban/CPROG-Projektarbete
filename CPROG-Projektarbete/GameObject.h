@@ -3,6 +3,8 @@
 
 #include <SDL.h>
 #include<string>
+#include <vector>
+#include "Sprite.h"
 
 namespace engine {
 
@@ -18,7 +20,7 @@ namespace engine {
 		virtual void key_up(const SDL_Event&) {};
 
 		virtual void tick() = 0;
-		virtual void draw() = 0;
+		void draw();
 
 		//const SDL_Rect& get_rect() const { return dstRect; }
 		const bool is_solid() const { return solid; } //For the time being, should return if objects should stop when colliding.
@@ -44,14 +46,12 @@ namespace engine {
 		void rect_add_x(int);
 		void rect_add_y(int);
 
-		void set_image_path(std::string);
+		void add_sprite(int num_frames, int anim_speed, std::string path);
 
-		void addAnimation(int nFrame, int mSpeed);
-		void removeAnimation() { animated = false; }
+		void set_animation(int);
+		void animate();
 
-		//std::string& get_image_path() const { return image_path; }
 	   // SDL_Texture* get_texture_Image() const { return textureImage; }
-
 
 		const Level& get_level() const;
 		void assign_level(Level&);
@@ -61,27 +61,17 @@ namespace engine {
 		
 	protected:
 		GameObject(int x, int y, int w, int h, bool solid);
-		SDL_Rect dstRect;
-		SDL_Rect srcRect;
-		bool animated = false;
-		int frame = 1;
-		int speed = 1000;
-		std::string  image_path;
-		SDL_Texture* textureImage;
+		SDL_Rect dst_rect;
 	private:
 		bool solid; //For the time being
 
-
 		Level* level;
-		Sprite* sprite;
+		int curr_anim;
+		std::vector<Sprite*> sprites;
 
 		GameObject(const GameObject&) = delete; // For the time being
 		const GameObject& operator=(const GameObject&) = delete; // For the time being
-
-
 	};
-
-
 }
 
 #endif

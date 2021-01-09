@@ -10,19 +10,6 @@ namespace engine {
 		return new StaticObject(x, y, w, h, solid, elasticity);
 	}
 
-	void StaticObject::draw()
-	{
-		if (animated) {
-			addAnimation(frame, speed);
-			SDL_RenderCopy(sys_ren.get_ren(), textureImage, &srcRect, &dstRect);
-		}
-		else
-		{
-			SDL_RenderCopy(sys_ren.get_ren(), textureImage, NULL, &dstRect);
-
-		}
-	}
-
 	StaticObject::StaticObject(int x, int y, int w, int h, bool solid, int elasticity)
 		: GameObject(x, y, w, h, solid), elasticity(elasticity)
 	{

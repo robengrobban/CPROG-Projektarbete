@@ -1,42 +1,43 @@
+
 #include "GameObject.h"
+#include <iostream>
 #include <SDL_image.h>
 #include "SystemRenderer.h"
-#include <iostream>
+#include "Cleanup.h"
+
+
 namespace engine {
 
-	GameObject::GameObject(int x, int y, int w, int h, bool solid) :dstRect{ x,y,w,h }, srcRect{ 0,0,w,h }, solid(solid), level(nullptr), image_path("c:/CPROG-Assets/images/test-image.png")
+	GameObject::GameObject(int x, int y, int w, int h, bool solid) : dst_rect{ x,y,w,h }, sprites(), curr_anim(0), solid(solid), level(nullptr)
 	{
-		textureImage = IMG_LoadTexture(sys_ren.get_ren(), image_path.c_str());
-
 	}
 
-	const int GameObject::get_left() const { return dstRect.x; }
-	const int GameObject::get_right() const { return dstRect.x + dstRect.w; }
-	const int GameObject::get_top() const { return dstRect.y; }
-	const int GameObject::get_bottom() const { return dstRect.y + dstRect.h; }
+	void GameObject::draw(){
+		sprites[curr_anim]->draw(dst_rect);
+	}
+
+	const int GameObject::get_left() const { return dst_rect.x; }
+	const int GameObject::get_right() const { return dst_rect.x + dst_rect.w; }
+	const int GameObject::get_top() const { return dst_rect.y; }
+	const int GameObject::get_bottom() const { return dst_rect.y + dst_rect.h; }
 
 	void GameObject::rect_add_x(int x) {
-		dstRect.x += x;
+		dst_rect.x += x;
 	}
 	void GameObject::rect_add_y(int y) {
-		dstRect.y += y;
+		dst_rect.y += y;
 	}
 
-	void GameObject::set_image_path(std::string path)
-	{
-		SDL_DestroyTexture(textureImage);
-
-		image_path = path;
-		textureImage = IMG_LoadTexture(sys_ren.get_ren(), image_path.c_str());
-
+	void GameObject::add_sprite( int num_frames, int anim_speed, std::string path){
+		sprites.push_back(Sprite::create(dst_rect.w, dst_rect.h, num_frames, anim_speed, path));
 	}
 
-	void GameObject::addAnimation(int nFrame, int mSpeed)
-	{
-		animated = true;
-		frame = nFrame;
-		speed = mSpeed;
-		srcRect.x = srcRect.w * static_cast<int>((SDL_GetTicks() / mSpeed) % nFrame);
+	void GameObject::set_animation(int sprite_no) {
+		curr_anim = sprite_no;
+	}
+
+	void GameObject::animate() {
+		sprites[curr_anim]->animate();
 	}
 
 	const Level& GameObject::get_level() const {
@@ -48,9 +49,10 @@ namespace engine {
 	}
 
 	GameObject::~GameObject() {
-		delete this->sprite;
-		SDL_DestroyTexture(textureImage);
+		for (Sprite* s : this->sprites) {
+			delete s;
+		}
+		this->sprites.clear();
 	}
-
 }
 

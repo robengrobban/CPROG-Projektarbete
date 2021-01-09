@@ -12,7 +12,6 @@ namespace engine {
 		static StaticObject* create(int x, int y, int w, int h, bool solid = true, int elasticity = 0);
 
 		virtual void tick() {};
-		void draw() ;
 
 		const int get_next_left() const;
 		const int get_next_right() const;

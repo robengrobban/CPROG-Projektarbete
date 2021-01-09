@@ -4,29 +4,10 @@
 
 namespace engine {
 
-
-
-	void MovingObject::draw() {
-
-
-		if (animated) {
-			addAnimation(frame, speed);
-			SDL_RenderCopy(sys_ren.get_ren(), textureImage, &srcRect, &dstRect);
-		}
-		else {
-			SDL_RenderCopy(sys_ren.get_ren(), textureImage, NULL, &dstRect);
-
-		}
-
-	}
-
-
-
 	MovingObject::MovingObject(int x, int y, int w, int h, bool solid)
-		: GameObject(x, y, w, h, solid), velocity_x(0), velocity_y(0), gravity(0) {
+		: GameObject(x, y, w, h, solid), on_ground(false), velocity_x(0), velocity_y(0), gravity(0) {
 
 	}
-
 
 	const int MovingObject::get_next_left() const { return get_left() + velocity_x; }
 	const int MovingObject::get_next_right() const { return get_right() + velocity_x; }
@@ -96,7 +77,6 @@ namespace engine {
 	void MovingObject::do_movement() {
 		this->rect_add_x(velocity_x);
 		this->rect_add_y(velocity_y);
-
 		if (abs(velocity_y <= MAX_GRAVITY)) {
 			velocity_y += gravity;
 		}

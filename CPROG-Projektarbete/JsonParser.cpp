@@ -43,7 +43,7 @@ namespace engine {
 					std::string id = game_obj["SpriteID"];
 					std::vector<JObject> paths = project.get_array("Paths");
 					std::string path = paths[0][id];
-					obj->set_image_path(path);
+					obj->add_sprite(1, 100, path);
 
 					level->add_object(*obj);
 				}

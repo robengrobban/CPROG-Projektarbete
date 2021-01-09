@@ -39,7 +39,9 @@ void autoSetup(LevelManager* lm)
 {
 	GameObject* player = Player::create(0, 768, 64, 128);
 	player->set_gravity(1);
-	player->set_image_path("c:/CPROG-Assets/images/mario_standing.png");
+	player->add_sprite(1, 100, "c:/CPROG-Assets/images/mario_standing.png");
+	player->add_sprite(3, 100, "c:/CPROG-Assets/images/mario_left.png");
+	player->add_sprite(3, 100, "c:/CPROG-Assets/images/mario_right.png");
 	//player->addAnimation(3, 100);
 
 	JsonParser* parser = new JsonParser();
@@ -65,8 +67,9 @@ void autoSetup(LevelManager* lm)
 	Level* l5 = levels->at(3);
 	GameObject* player_level_5 = Player::create(0, 704, 64, 128);
 	player_level_5->set_gravity(1);
-	player_level_5->set_image_path("c:/CPROG-Assets/images/mario_sheet.png");
-	player_level_5->addAnimation(3, 100);
+	player_level_5->add_sprite(1, 100, "c:/CPROG-Assets/images/mario_standing.png");
+	player_level_5->add_sprite(3, 100, "c:/CPROG-Assets/images/mario_left.png");
+	player_level_5->add_sprite(3, 100, "c:/CPROG-Assets/images/mario_right.png");
 	l5->add_object(*player_level_5);
 
 	l1->print_debug();
@@ -108,15 +111,12 @@ void manualSetup(LevelManager* lm) {
 	GameObject* go7 = StaticObject::create(100, 250, 50, 50);
 	GameObject* go8 = StaticObject::create(100, 100, 50, 50);
 
-	go7->set_image_path("c:/images/donkey.png");
-	go8->set_image_path("c:/images/mario_sheet.png");
-	go8->addAnimation(3, 100);
-	go8->removeAnimation();
+	go7->add_sprite(1, 1000, "c:/images/donkey.png");
+	go8->add_sprite(3, 1000, "c:/images/mario_sheet.png");
 
 	GameObject* player = Player::create(0, 0, 64, 128);
 	player->set_gravity(1);
-	player->set_image_path("c:/CPROG-Assets/images/mario_sheet.png");
-	player->addAnimation(3, 100);
+	player->add_sprite(3, 100, "c:/images/mario_sheet.png");
 
 	l1->add_object(*go1);
 	l1->add_object(*go2);

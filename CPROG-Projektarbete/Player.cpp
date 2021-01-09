@@ -8,9 +8,8 @@ namespace demo {
 	}
 
 	Player::Player(int x, int y, int w, int h, bool solid)
-		: MovingObject(x, y, w, h, solid), force_up(0), force_down(0), force_left(0), force_right(0),
+		: MovingObject(x, y, w, h, solid), on_ground(false), force_up(0), force_down(0), force_left(0), force_right(0),
 		movement_speed(6) {
-		//set_image_path("c:/images/gubbe.bmp");
 	}
 
 	void Player::tick() {
@@ -57,15 +56,11 @@ namespace demo {
 		}
 		if ( key_num == 97 ) { // A
 			force_left = -movement_speed;
-			set_image_path("c:/CPROG-Assets/images/mario_left.png");
-			addAnimation(2, 100);
+			set_animation(1);
 		}
 		if ( key_num == 100 ) { // D
 			force_right = movement_speed;
-			set_image_path("c:/CPROG-Assets/images/mario_right.png");
-			addAnimation(2, 100);
-
-
+			set_animation(2);
 		}
 		if (key_num == SDLK_SPACE) {
 			jump();
@@ -82,13 +77,11 @@ namespace demo {
 		}
 		if (key_num == 97) { // A
 			force_left = 0;
-			set_image_path("c:/CPROG-Assets/images/mario_standing.png");
-			animated = false;
+			set_animation(0);
 		}
 		if (key_num == 100) { // D
 			force_right = 0;
-			set_image_path("c:/CPROG-Assets/images/mario_standing.png");
-			animated = false;
+			set_animation(0);
 		}
 		
 
