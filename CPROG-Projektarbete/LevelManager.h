@@ -13,7 +13,7 @@ namespace engine {
 			static LevelManager* create();
 
 			void tick_current_level();
-			void draw_current_level(SDL_Rect& camera) const;
+			void draw_current_level(SDL_Rect& camera, int, int) const;
 
 			int add_level(Level&);
 			void assign_level(int, Level&);

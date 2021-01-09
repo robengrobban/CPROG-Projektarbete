@@ -22,9 +22,9 @@ namespace engine {
 		}
 	}
 
-	void LevelManager::draw_current_level(SDL_Rect& camera) const {
+	void LevelManager::draw_current_level(SDL_Rect& camera, int screen_w, int screen_h) const {
 		try {
-			this->levels.at(this->current_level)->draw_level(camera);
+			this->levels.at(this->current_level)->draw_level(camera, screen_w, screen_h);
 		}
 		catch (std::out_of_range e) {
 			std::cout << "Cannot draw current level, out of range: " << e.what() << std::endl;

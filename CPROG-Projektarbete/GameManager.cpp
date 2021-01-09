@@ -57,7 +57,7 @@ namespace engine {
 			SDL_Color bgc = this->level_manager->get_bg_color();
 			SDL_SetRenderDrawColor(sys_ren.get_ren(), bgc.r, bgc.g, bgc.b, 255);
 			SDL_RenderClear(sys_ren.get_ren());
-			this->level_manager->draw_current_level(camera);
+			this->level_manager->draw_current_level(camera, SCREEN_WIDTH, SCREEN_HEIGHT);
 
 			// Present frame
 			SDL_RenderPresent(sys_ren.get_ren());

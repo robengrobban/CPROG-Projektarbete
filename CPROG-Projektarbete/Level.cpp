@@ -15,6 +15,7 @@ namespace engine {
 	}
 
 	void Level::tick_level() {
+
 		for ( GameObject* object : this->game_objects ) {
 			object->tick();
 		}
@@ -22,7 +23,8 @@ namespace engine {
 		this->internal_object_cleanup();
 	}
 
-	void Level::draw_level(SDL_Rect camera) const {
+	void Level::draw_level(SDL_Rect& camera, int screen_w, int screen_h) const {
+		update_camera(camera, screen_w, screen_h);
 		for ( GameObject* object : this->game_objects ) {
 			object->draw(camera);
 		}
@@ -45,6 +47,30 @@ namespace engine {
 	SDL_Color Level::get_bg_color() const
 	{
 		return bg_color;
+	}
+
+	void Level::set_cam_follow(GameObject& follow) {
+		camera_follow = &follow;
+	}
+	void Level::update_camera(SDL_Rect& camera, int screen_w, int screen_h) const {
+		camera.x = (camera_follow->get_left() + camera_follow->get_width() / 2) - screen_w / 2;
+		camera.y = (camera_follow->get_top() + camera_follow->get_height() / 2) - screen_h / 2;
+		if (camera.x < 0)
+		{
+			camera.x = 0;
+		}
+		if (camera.y < 0)
+		{
+			camera.y = 0;
+		}
+		if (camera.x > 2560 - camera.w)
+		{
+			camera.x = 2560 - camera.w;
+		}
+		if (camera.y > 960 - camera.h)
+		{
+			camera.y = 960 - camera.h;
+		}
 	}
 
 	void Level::forward_event(const SDL_Event& event) {

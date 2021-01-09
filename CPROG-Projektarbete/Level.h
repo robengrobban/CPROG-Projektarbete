@@ -19,12 +19,14 @@ namespace engine {
 			std::string get_name() const;
 
 			void tick_level();
-			void draw_level(SDL_Rect) const;
+			void draw_level(SDL_Rect&, int, int) const;
 
 			void add_object(GameObject&);
 			void remove_object(GameObject&);
 			void add_bg_color(SDL_Color);
 			SDL_Color get_bg_color() const;
+			void set_cam_follow(GameObject&);
+			void update_camera(SDL_Rect&, int, int) const;
 
 			void forward_event(const SDL_Event&);
 
@@ -52,6 +54,7 @@ namespace engine {
 			const int LEVEL_WIDTH;
 			const int LEVEL_HEIGHT;
 
+			GameObject* camera_follow;
 			std::vector<GameObject*> game_objects;
 			std::vector<GameObject*> to_remove;
 

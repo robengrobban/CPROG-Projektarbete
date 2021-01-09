@@ -39,7 +39,6 @@ void autoSetup(LevelManager* lm, GameManager* gm)
 	player->add_sprite(1, 100, "c:/CPROG-Assets/images/mario_standing.png");
 	player->add_sprite(3, 100, "c:/CPROG-Assets/images/mario_left.png");
 	player->add_sprite(3, 100, "c:/CPROG-Assets/images/mario_right.png");
-	dynamic_cast<Player*>(player)->set_camera(gm->get_camera());
 
 	JsonParser* parser = new JsonParser();
 	vector<Level*>* levels(parser->load_levels("C:/CPROG-Assets/project.json"));
@@ -50,6 +49,7 @@ void autoSetup(LevelManager* lm, GameManager* gm)
 	
 	Level* l1 = levels->at(0);
 	l1->add_object(*player);
+	l1->set_cam_follow(*player);
 
 	// ... and player for level 5
 	Level* l5 = levels->at(levels->size() - 1);
@@ -58,8 +58,8 @@ void autoSetup(LevelManager* lm, GameManager* gm)
 	player_level_5->add_sprite(1, 100, "c:/CPROG-Assets/images/mario_standing.png");
 	player_level_5->add_sprite(3, 100, "c:/CPROG-Assets/images/mario_left.png");
 	player_level_5->add_sprite(3, 100, "c:/CPROG-Assets/images/mario_right.png");
-	dynamic_cast<Player*>(player_level_5)->set_camera(gm->get_camera());
 	l5->add_object(*player_level_5);
+	l5->set_cam_follow(*player_level_5);
 
 	l1->print_debug();
 	l1->tick_level();
