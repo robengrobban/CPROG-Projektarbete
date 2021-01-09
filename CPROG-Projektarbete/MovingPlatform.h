@@ -14,7 +14,7 @@ namespace demo {
 
 		void on_collision(GameObject&);
 
-		~MovingPlatform() {}
+		~MovingPlatform();
 
 	protected:
 		MovingPlatform(int x, int y, int w, int h, int x_speed, int y_speed, bool solid);

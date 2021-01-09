@@ -36,12 +36,8 @@ namespace demo {
 			
 
 		private:
-			const int MAX_MOV_SPEED;
-			int force_up;
-			int force_down;
-			int force_right;
-			int force_left;
 			bool moving;
+			const int MAX_MOV_SPEED;
 			int movement_speed;
 			bool on_ground;
 			void calculate_movement();

@@ -38,6 +38,7 @@ namespace engine {
 		cleanup(this->sdl_ren, this->sdl_win, this->music);
 		Mix_Quit();
 		SDL_Quit();
+
 	}
 
 	/// <summary>
