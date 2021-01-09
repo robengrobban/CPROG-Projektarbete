@@ -80,6 +80,7 @@ namespace engine {
 		if (abs(velocity_y <= MAX_GRAVITY)) {
 			velocity_y += gravity;
 		}
+		
 	}
 
 	void MovingObject::default_collision_executor() {

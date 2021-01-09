@@ -8,22 +8,35 @@ namespace demo {
 	}
 
 	Player::Player(int x, int y, int w, int h, bool solid)
-		: MovingObject(x, y, w, h, solid), on_ground(false), force_up(0), force_down(0), force_left(0), force_right(0),
-		movement_speed(8) {
+		: MovingObject(x, y, w, h, solid), on_ground(false), moving(false), MAX_MOV_SPEED(8), movement_speed(0) {
 	}
 
 	void Player::tick() {
-
 		this->calculate_movement();
-
 		this->default_collision_executor();
-
 		this->do_movement();
-
 	}
 
 	void Player::calculate_movement() {
-		velocity_x = force_left + force_right;
+		if (moving)
+			accelerate(movement_speed);
+		else if (on_ground && !moving)
+			decelerate(movement_speed);
+	}
+
+	void Player::accelerate(int vel) {
+		if (abs(velocity_x + vel) <= MAX_MOV_SPEED)
+			velocity_x += vel;
+		else if (abs(velocity_x + vel) > MAX_MOV_SPEED)
+			velocity_x = velocity_x < 0 ? -MAX_MOV_SPEED : MAX_MOV_SPEED;
+	}
+
+	void Player::decelerate(int vel) {
+		if (abs(velocity_x - vel) < abs(velocity_x)) {
+			if (abs(velocity_x - vel) > 0)
+				velocity_x -= vel;
+			else velocity_x = 0;
+		}
 	}
 
 	void Player::jump()
@@ -40,12 +53,21 @@ namespace demo {
 
 	void Player::decide_anim() {
 		const Uint8* keys = SDL_GetKeyboardState(NULL);
-		if (!keys[SDL_SCANCODE_D] && !keys[SDL_SCANCODE_A] || keys[SDL_SCANCODE_D] && keys[SDL_SCANCODE_A])
+		if (!keys[SDL_SCANCODE_D] && !keys[SDL_SCANCODE_A] || keys[SDL_SCANCODE_D] && keys[SDL_SCANCODE_A]) {
+			moving = false;
 			set_animation(0);
-		else if (keys[SDL_SCANCODE_D])
+		}
+		else if (keys[SDL_SCANCODE_D]) {
+			moving = true;
+			movement_speed = 1;
 			set_animation(2);
-		else if (keys[SDL_SCANCODE_A])
+		}
+		else if (keys[SDL_SCANCODE_A]) {
+			moving = true;
+			movement_speed = -1;
 			set_animation(1);
+		}
+			
 	}
 
 	void Player::mouse_down(const SDL_Event& event) {
@@ -55,23 +77,17 @@ namespace demo {
 	void Player::mouse_up(const SDL_Event& event) {
 		
 	}
-
+	
 	void Player::key_down(const SDL_Event& event) {
 		const Uint8* keys = SDL_GetKeyboardState(NULL);
 		int key_num = event.key.keysym.sym;
 		if ( key_num == 119 ) { // W
-			force_up = -movement_speed;
 		}
 		if ( key_num == 115 ) { // S
-			force_down = movement_speed;
 		}
 		if ( key_num == 97 ) { // A
-			force_left = -movement_speed;
-			set_animation(1);
 		}
 		if ( key_num == 100 ) { // D
-			force_right = movement_speed;
-			set_animation(2);
 		}
 		if (key_num == SDLK_SPACE) {
 			jump();
@@ -80,19 +96,19 @@ namespace demo {
 	}
 
 	void Player::key_up(const SDL_Event& event) {
-		int key_num = event.key.keysym.sym;
-		if (key_num == 119) { // W
-			force_up = 0;
-		}
-		if (key_num == 115) { // S
-			force_down = 0;
-		}
-		if (key_num == 97) { // A
-			force_left = 0;
-		}
-		if (key_num == 100) { // D
-			force_right = 0;
-		}
+		//int key_num = event.key.keysym.sym;
+		//if (key_num == 119) { // W
+		//	force_up = 0;
+		//}
+		//if (key_num == 115) { // S
+		//	force_down = 0;
+		//}
+		//if (key_num == 97) { // A
+		//	force_left = 0;
+		//}
+		//if (key_num == 100) { // D
+		//	force_right = 0;
+		//}
 		decide_anim();
 	}
 

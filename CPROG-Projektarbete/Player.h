@@ -23,6 +23,8 @@ namespace demo {
 
 			void decide_anim();
 
+			void accelerate(int);
+			void decelerate(int vel);
 			void on_collision(GameObject&);
 
 			void die();
@@ -34,13 +36,14 @@ namespace demo {
 			
 
 		private:
+			const int MAX_MOV_SPEED;
 			int force_up;
 			int force_down;
 			int force_right;
 			int force_left;
+			bool moving;
 			int movement_speed;
 			bool on_ground;
-
 			void calculate_movement();
 			void jump();
 
