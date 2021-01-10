@@ -17,10 +17,7 @@ namespace engine {
 	private:
 		std::string value;
 		std::string get(std::string);
-		std::string get_jarray(std::string);
-
-		JObject(const JObject&) = delete;
-		const JObject& operator=(const JObject&) = delete;
+		std::string get_jarray(std::string);		
 	};
 }
 #endif
