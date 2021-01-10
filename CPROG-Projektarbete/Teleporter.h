@@ -6,7 +6,7 @@
 
 namespace demo {
 
-	class Teleporter : public engine::StaticObject {
+	const class Teleporter : public engine::StaticObject {
 		public:
 			static Teleporter* create(int x, int y, int w, int h, int n);
 
@@ -19,6 +19,9 @@ namespace demo {
 
 		private:
 			int next_level;
+
+			Teleporter(const Teleporter&) = delete;
+			const Teleporter& operator=(const Teleporter&) = delete;
 
 	};
 

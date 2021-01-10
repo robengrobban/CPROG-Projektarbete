@@ -6,7 +6,7 @@
 
 namespace demo {
 
-	class MovingPlatform : public engine::MovingObject {
+	const class MovingPlatform : public engine::MovingObject {
 	public:
 		static MovingPlatform* create(int x, int y, int w, int h, int x_speed, int y_speed, bool solid = true);
 
@@ -23,6 +23,9 @@ namespace demo {
 
 		bool levelbounds_coll();
 		void calculate_movement();
+
+		MovingPlatform(const MovingPlatform&) = delete;
+		const MovingPlatform operator=(const MovingPlatform&) = delete;
 
 	};
 

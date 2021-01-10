@@ -52,8 +52,6 @@ namespace engine {
 		void set_animation(int);
 		void animate();
 
-	   // SDL_Texture* get_texture_Image() const { return textureImage; }
-
 		const Level& get_level() const;
 		void assign_level(Level&);
 
@@ -70,8 +68,8 @@ namespace engine {
 		int curr_anim;
 		std::vector<Sprite*> sprites;
 
-		GameObject(const GameObject&) = delete; // For the time being
-		const GameObject& operator=(const GameObject&) = delete; // For the time being
+		GameObject(const GameObject&) = delete;
+		const GameObject& operator=(const GameObject&) = delete;
 	};
 }
 

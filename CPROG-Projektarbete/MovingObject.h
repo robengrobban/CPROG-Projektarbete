@@ -12,11 +12,7 @@ namespace engine {
 	class MovingObject : public GameObject {
 
 		public:
-
-			//static MovingObject* create(int x, int y, int w, int h, bool solid = true);
-
 			virtual void tick() {};
-			void draw();
 
 			virtual void mouse_down(const SDL_Event&) {};
 			virtual void mouse_up(const SDL_Event&) {};
@@ -53,8 +49,8 @@ namespace engine {
 			bool check_collides_x(GameObject&, const CollisionManager&);
 			bool check_collides_y(GameObject&, const CollisionManager&);
 
-			MovingObject(const MovingObject&) = delete; // For the time being
-			const MovingObject& operator=(const MovingObject&) = delete; // For the time being
+			MovingObject(const MovingObject&) = delete;
+			const MovingObject& operator=(const MovingObject&) = delete;
 			
 	};
 

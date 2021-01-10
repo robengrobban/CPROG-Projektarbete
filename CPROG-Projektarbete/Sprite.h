@@ -9,7 +9,7 @@
 
 namespace engine 
 {
-	class Sprite
+	const class Sprite
 	{
 		public:
 			static Sprite* create(int, int, int, int, std::string);
@@ -27,8 +27,9 @@ namespace engine
 			int curr_frame;
 			SDL_Rect src_rect;
 			SDL_Texture* texture;
-			Sprite(const Sprite&) = delete; // For the time being
-			const Sprite& operator=(const Sprite&) = delete; // For the time being
+
+			Sprite(const Sprite&) = delete;
+			const Sprite& operator=(const Sprite&) = delete;
 	};
 }
 

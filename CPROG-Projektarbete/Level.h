@@ -9,9 +9,9 @@
 
 namespace engine {
 
-	class LevelManager;
+	const class LevelManager;
 
-	class Level {
+	const class Level {
 
 		public:
 			static Level* create(std::string, int, int);
@@ -62,8 +62,8 @@ namespace engine {
 
 			void internal_object_cleanup();
 
-			Level(const Level&) = delete; // For the time being
-			const Level& operator=(const Level&) = delete; // For the time being
+			Level(const Level&) = delete;
+			const Level& operator=(const Level&) = delete;
 
 	};
 

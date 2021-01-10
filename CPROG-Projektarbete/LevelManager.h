@@ -7,7 +7,7 @@
 
 namespace engine {
 
-	class LevelManager {
+	const class LevelManager {
 
 		public:
 			static LevelManager* create();
@@ -47,8 +47,8 @@ namespace engine {
 
 			void rearrange_levels();
 
-			LevelManager(const LevelManager&) = delete; // For the time being
-			const LevelManager& operator=(const LevelManager&) = delete; // For the time being
+			LevelManager(const LevelManager&) = delete;
+			const LevelManager& operator=(const LevelManager&) = delete;
 
 	};
 

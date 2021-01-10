@@ -1,5 +1,6 @@
 #include "Level.h"
 
+
 namespace engine {
 
 	Level* Level::create(std::string name, int w, int h) {
@@ -32,7 +33,12 @@ namespace engine {
 
 	void Level::add_object(GameObject& object) {
 		object.assign_level(*this);
-		this->game_objects.push_back(&object);
+		if ( dynamic_cast<MovingObject*>(&object) ) {
+			this->game_objects.push_back(&object);
+		}
+		else {
+			this->game_objects.insert(this->game_objects.begin(), &object);
+		}
 	}
 
 	void Level::remove_object(GameObject& object) {

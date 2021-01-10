@@ -4,7 +4,7 @@
 #include <SDL_mixer.h>
 
 namespace engine {
-	class SystemRenderer {
+	const class SystemRenderer {
 		public:
 			SystemRenderer();
 			~SystemRenderer();

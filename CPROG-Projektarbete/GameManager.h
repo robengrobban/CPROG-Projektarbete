@@ -5,7 +5,7 @@
 
 namespace engine {
 
-	class GameManager {
+	const class GameManager {
 		public:
 			GameManager(int, int);
 			~GameManager();
@@ -29,6 +29,9 @@ namespace engine {
 			//Screen dimension constants
 			const int SCREEN_WIDTH = 640;
 			const int SCREEN_HEIGHT = 480;
+
+			GameManager(const GameManager&) = delete;
+			const GameManager& operator=(const GameManager&) = delete;
 	};
 
 }

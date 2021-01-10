@@ -5,7 +5,7 @@
 
 namespace demo {
 
-	class Enemy : public engine::MovingObject {
+	const class Enemy : public engine::MovingObject {
 		public:
 			static Enemy* create(int x, int y, int w, int h, bool solid = true);
 
@@ -22,6 +22,9 @@ namespace demo {
 			int movement_speed;
 
 			void calculate_movement();
+
+			Enemy(const Enemy&) = delete;
+			const Enemy operator=(const Enemy&) = delete;
 
 	};
 

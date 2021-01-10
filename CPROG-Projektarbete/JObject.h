@@ -5,7 +5,7 @@
 #include <vector>
 
 namespace engine {
-	class JObject {
+	const class JObject {
 
 	public:
 		JObject(std::string);
@@ -13,10 +13,14 @@ namespace engine {
 		std::string operator[](std::string property) {
 			return get(property);
 		}
+		~JObject() {}
 	private:
 		std::string value;
 		std::string get(std::string);
 		std::string get_jarray(std::string);
+
+		JObject(const JObject&) = delete;
+		const JObject& operator=(const JObject&) = delete;
 	};
 }
 #endif

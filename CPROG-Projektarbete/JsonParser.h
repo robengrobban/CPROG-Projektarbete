@@ -9,13 +9,18 @@
 #include "StaticObject.h"
 
 namespace engine {
-	class JsonParser
+	const class JsonParser
 	{
 	public:
 		std::vector<Level*>* load_levels(std::string path);
 		GameObject* get_obj(JObject&);
 
+		JsonParser() = default;
 		~JsonParser() {}
+
+	private:
+		JsonParser(const JsonParser&) = delete;
+		const JsonParser& operator=(const JsonParser&) = delete;
 	};
 }
 #endif

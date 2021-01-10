@@ -9,7 +9,7 @@
 
 namespace demo {
 
-	class Player : public engine::MovingObject {
+	const class Player : public engine::MovingObject {
 
 		public:
 			static Player* create(int x, int y, int w, int h, bool solid = true);
@@ -42,6 +42,9 @@ namespace demo {
 			bool on_ground;
 			void calculate_movement();
 			void jump();
+
+			Player(const Player&) = delete;
+			const Player& operator=(const Player&) = delete;
 
 	};
 
