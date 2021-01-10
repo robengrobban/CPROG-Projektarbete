@@ -49,17 +49,17 @@ namespace demo {
 				p->rect_add_y(m_speed_y);
 			}
 		}
-		if (obj.is_solid()) {
-			if (obj.get_bottom() == this->get_bottom() && obj.get_right() < this->get_right()) {
+		else if (obj.is_solid()) {
+			if (obj.get_right() < this->get_right()) {
 				m_speed_x = -m_speed_x;
 			}
-			else if (obj.get_bottom() == this->get_bottom() && obj.get_left() > this->get_left()) {
+			else if (obj.get_left() > this->get_left()) {
 				m_speed_x = -m_speed_x;
 			}
-			else if (obj.get_right() == this->get_right() && obj.get_top() > this->get_top()) {
+			if (obj.get_top() > this->get_top()) {
 				m_speed_y = -m_speed_y;
 			}
-			else if (obj.get_right() == this->get_right() && obj.get_bottom() < this->get_bottom()) {
+			else if (obj.get_bottom() > this->get_bottom()) {
 				m_speed_y = -m_speed_y;
 			}
 		}
