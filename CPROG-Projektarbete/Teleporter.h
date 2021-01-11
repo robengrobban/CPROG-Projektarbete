@@ -6,7 +6,7 @@
 
 namespace demo {
 
-	const class Teleporter : public engine::StaticObject {
+	class Teleporter : public engine::StaticObject {
 		public:
 			static Teleporter* create(int x, int y, int w, int h, int n);
 

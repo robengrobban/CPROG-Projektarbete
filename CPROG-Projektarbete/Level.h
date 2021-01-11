@@ -9,9 +9,9 @@
 
 namespace engine {
 
-	const class LevelManager;
+	class LevelManager;
 
-	const class Level {
+	class Level {
 
 		public:
 			static Level* create(std::string, int, int);

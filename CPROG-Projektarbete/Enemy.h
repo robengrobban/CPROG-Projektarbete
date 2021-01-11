@@ -5,7 +5,7 @@
 
 namespace demo {
 
-	const class Enemy : public engine::MovingObject {
+	class Enemy : public engine::MovingObject {
 		public:
 			static Enemy* create(int x, int y, int w, int h, bool solid = true);
 

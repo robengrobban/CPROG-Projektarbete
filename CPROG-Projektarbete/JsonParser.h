@@ -9,7 +9,7 @@
 #include "StaticObject.h"
 
 namespace engine {
-	const class JsonParser
+	class JsonParser
 	{
 	public:
 		std::vector<Level*>* load_levels(std::string path);

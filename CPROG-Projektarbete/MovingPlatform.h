@@ -6,7 +6,7 @@
 
 namespace demo {
 
-	const class MovingPlatform : public engine::MovingObject {
+	class MovingPlatform : public engine::MovingObject {
 	public:
 		static MovingPlatform* create(int x, int y, int w, int h, int x_speed, int y_speed, bool solid = true);
 

@@ -9,7 +9,7 @@
 
 namespace demo {
 
-	const class Player : public engine::MovingObject {
+	class Player : public engine::MovingObject {
 
 		public:
 			static Player* create(int x, int y, int w, int h, bool solid = true);

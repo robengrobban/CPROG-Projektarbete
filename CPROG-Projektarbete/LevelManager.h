@@ -7,7 +7,7 @@
 
 namespace engine {
 
-	const class LevelManager {
+	class LevelManager {
 
 		public:
 			static LevelManager* create();

@@ -5,7 +5,7 @@
 #include <vector>
 
 namespace engine {
-	const class JObject {
+	class JObject {
 
 	public:
 		JObject(std::string);

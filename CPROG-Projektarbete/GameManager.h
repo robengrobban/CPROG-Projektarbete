@@ -5,7 +5,7 @@
 
 namespace engine {
 
-	const class GameManager {
+	class GameManager {
 		public:
 			GameManager(int, int);
 			~GameManager();

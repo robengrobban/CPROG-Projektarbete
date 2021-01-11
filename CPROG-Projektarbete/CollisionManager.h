@@ -6,7 +6,7 @@
 
 
 namespace engine {
-	const class CollisionManager {
+	class CollisionManager {
 	public:
 		void handle_next_collision(GameObject&, std::vector<GameObject*>&) const;
 		bool collides_down(const GameObject&, const GameObject&) const;

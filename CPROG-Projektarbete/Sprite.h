@@ -9,7 +9,7 @@
 
 namespace engine 
 {
-	const class Sprite
+	class Sprite
 	{
 		public:
 			static Sprite* create(int, int, int, int, std::string);
