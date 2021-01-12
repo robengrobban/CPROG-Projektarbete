@@ -21,6 +21,7 @@ namespace engine {
 		JObject project = JObject(json_string);
 		std::vector<JObject> j_levels = project.get_array("Levels");
 		std::vector<Level*>* levels = new std::vector<Level*>();
+		std::vector<JObject> paths = project.get_array("Paths");
 
 		for (JObject j_level : j_levels)
 		{
@@ -41,9 +42,11 @@ namespace engine {
 				if (obj != nullptr)
 				{
 					std::string id = game_obj["SpriteID"];
-					std::vector<JObject> paths = project.get_array("Paths");
 					std::string path = paths[0][id];
-					obj->add_sprite(1, 100, path);
+					obj->add_sprite(1, 100, path); 
+					int mm = 0;
+					if (id == "1")
+						mm = 2;
 
 					level->add_object(*obj);
 				}
@@ -89,7 +92,7 @@ namespace engine {
 				stoi(game_obj["Y"]),
 				stoi(game_obj["W"]),
 				stoi(game_obj["H"]),
-				stoi(game_obj["LevelTo"])
+				std::string(game_obj["Solid"]) == "true" ? true : false
 			);
 		default: return nullptr;
 		}

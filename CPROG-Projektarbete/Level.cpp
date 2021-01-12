@@ -73,9 +73,9 @@ namespace engine {
 		{
 			camera.x = 2560 - camera.w;
 		}
-		if (camera.y > 960 - camera.h)
+		if (camera.y > 1600 - camera.h)
 		{
-			camera.y = 960 - camera.h;
+			camera.y = 1600 - camera.h;
 		}
 	}
 
@@ -112,7 +112,7 @@ namespace engine {
 		this->game_objects.clear();
 
 	}
-
+	 
 	void Level::set_level_manager(LevelManager* manager) {
 		this->level_manager = manager;
 	}

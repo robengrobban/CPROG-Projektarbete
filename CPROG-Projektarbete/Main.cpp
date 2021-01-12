@@ -34,7 +34,7 @@ int main(int argc, char** argv) {
 //Temporary method for testing setup with loading level from json.
 void autoSetup(LevelManager* lm, GameManager* gm)
 {
-	GameObject* player = Player::create(0, 768, 64, 128);
+	GameObject* player = Player::create(0, 1200, 64, 128);
 	player->set_gravity(1);
 	player->add_sprite(1, 100, "c:/CPROG-Assets/images/mario_standing.png");
 	player->add_sprite(3, 100, "c:/CPROG-Assets/images/mario_left.png");

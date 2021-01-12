@@ -71,7 +71,7 @@ namespace engine {
     /// <param name="property"></param>
     /// <returns></returns>
     std::string JObject::get(std::string property) {
-        size_t first = value.find(property) + property.size() + 2;
+        size_t first = value.find("\"" + property + "\"") + property.size() + 3;
         if (value[first] == '\"')
             first++;
         size_t last = 0;
@@ -82,6 +82,7 @@ namespace engine {
                 break;
             }
         }
+        std::string s = value.substr(first, last - first);
         return value.substr(first, last - first);
     }
 }
