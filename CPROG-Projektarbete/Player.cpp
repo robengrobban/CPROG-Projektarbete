@@ -18,10 +18,13 @@ namespace demo {
 	}
 
 	void Player::calculate_movement() {
-		if (moving)
-			accelerate(movement_speed);
-		else if (on_ground && !moving)
-			decelerate(movement_speed);
+		if (movement_speed != 0)
+		{
+			if (moving)
+				accelerate(movement_speed);
+			else if (on_ground && !moving)
+				decelerate(movement_speed);
+		}
 	}
 
 	void Player::accelerate(int vel) {
@@ -32,11 +35,13 @@ namespace demo {
 	}
 
 	void Player::decelerate(int vel) {
-		if (abs(velocity_x - vel) < abs(velocity_x)) {
+		if (abs(velocity_x - vel) < abs(velocity_x) && velocity_x * vel > 0) {
 			if (abs(velocity_x - vel) > 0)
 				velocity_x -= vel;
 			else velocity_x = 0;
 		}
+		else if (velocity_x * vel < 0)
+			velocity_x = 0;
 	}
 
 	void Player::jump()
