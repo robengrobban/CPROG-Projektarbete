@@ -38,7 +38,7 @@ namespace demo {
 			
 
 		private:
-			int lives;
+			static int lives;
 			bool moving;
 			const int MAX_MOV_SPEED;
 			int movement_speed;
@@ -50,7 +50,6 @@ namespace demo {
 			const Player& operator=(const Player&) = delete;
 
 	};
-
 }
 
 #endif

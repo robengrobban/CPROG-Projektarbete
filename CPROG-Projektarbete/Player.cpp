@@ -6,9 +6,10 @@ namespace demo {
 	Player* Player::create(int x, int y, int w, int h, bool solid) {
 		return new Player(x, y, w, h, solid);
 	}
-
+	int Player::lives = 5;
 	Player::Player(int x, int y, int w, int h, bool solid)
-		: MovingObject(x, y, w, h, solid), on_ground(false), moving(false), MAX_MOV_SPEED(8), movement_speed(0), lives(5) {
+		: MovingObject(x, y, w, h, solid), on_ground(false), moving(false), MAX_MOV_SPEED(8), movement_speed(0) {
+		
 	}
 
 	void Player::tick() {
