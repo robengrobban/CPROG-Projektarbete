@@ -15,6 +15,7 @@ namespace demo {
 		this->calculate_movement();
 		this->default_collision_executor();
 		this->check_within_level();
+		this->check_fall_oob();
 		this->do_movement();
 	}
 
@@ -123,6 +124,11 @@ namespace demo {
 			return true;
 		}
 		return false;
+	}
+
+	void Player::check_fall_oob() {
+		if (this->get_top() > get_level().get_height())
+			die();
 	}
 
 	void Player::on_collision(GameObject& obj) {
