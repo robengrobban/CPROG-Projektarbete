@@ -46,10 +46,14 @@ namespace engine {
 		if (m.collides_x(*this, obj, this->velocity_x))
 		{
 			int moveX = this->velocity_x > 0 ? 1 : -1;
+			if (m.collides_x(*this, obj, 20))
+				moveX = 1;
+			else if (m.collides_x(*this, obj, -20))
+				moveX = -1;
 			this->velocity_x = 0;
 			while (!m.collides_x(*this, obj, moveX)) {
 				this->rect_add_x(moveX);
-			}	
+			}
 			return true;
 		}
 		return false;
@@ -59,7 +63,13 @@ namespace engine {
 		{
 			int temp_vel_y = velocity_y;
 			int moveY = this->velocity_y > 0 ? 1 : -1;
-			this->velocity_y = 0;
+			if (m.collides_y(*this, obj, 20))
+				moveY = 1;
+			else if (m.collides_y(*this, obj, -20))
+				moveY = -1;
+			if (velocity_y > 0 && m.collides_y(*this, obj, 30) || velocity_y < 0)
+				this->velocity_y = 0;
+
 			while (!m.collides_y(*this, obj, moveY)) {
 				this->rect_add_y(moveY);
 			}
@@ -72,6 +82,20 @@ namespace engine {
 			return true;
 		}
 		return false;
+	}
+
+	bool MovingObject::can_move(int vel_x, int vel_y, GameObject& platform)
+	{
+		const engine::Level& level = get_level();
+		std::vector<GameObject*> objects = level.get_game_objects();
+
+		for (GameObject* obj : objects) {
+			if (obj != this && obj != &platform && obj->is_solid()) {
+				if (engine::col_man.collides_x(*this, *obj, vel_x) || engine::col_man.collides_y(*this, *obj, vel_y))
+					return false;
+			}
+		}
+		return true;
 	}
 
 	void MovingObject::do_movement() {

@@ -88,6 +88,17 @@ namespace engine {
 	}
 
 	/// <summary>
+	/// checks if two objects are touching.
+	/// </summary>
+	/// <param name="a">First object</param>
+	/// <param name="b">Second object.</param>
+	/// <returns>True if touching, else false.</returns>
+	bool CollisionManager::touching(const GameObject& a, const GameObject& b) const
+	{
+		return (collides_y(a, b, 1) || engine::col_man.collides_y(a, b, -1) || engine::col_man.collides_x(a, b, -1) || engine::col_man.collides_x(a, b, 1));
+	}
+
+	/// <summary>
 	/// Checks if two objects will collide next tick.
 	/// </summary>
 	/// <param name="a">First object.</param>

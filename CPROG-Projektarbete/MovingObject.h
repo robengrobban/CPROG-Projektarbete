@@ -26,6 +26,7 @@ namespace engine {
 
 			void set_gravity(int);
 
+			bool can_move(int, int, GameObject&);
 			virtual void on_collision(GameObject&) {};
 			virtual void resolve_phys_collision(GameObject&, const CollisionManager&);
 

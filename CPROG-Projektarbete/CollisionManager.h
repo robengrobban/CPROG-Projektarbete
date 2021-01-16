@@ -12,6 +12,7 @@ namespace engine {
 		bool collides_down(const GameObject&, const GameObject&) const;
 		bool collides_x(const GameObject&, const GameObject&, const int) const;
 		bool collides_y(const GameObject&, const GameObject&, const int) const;
+		bool touching(const GameObject&, const GameObject&) const;
 		bool within_level(GameObject&, int, int) const;
 		CollisionManager() = default;
 

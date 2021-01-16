@@ -20,7 +20,8 @@ namespace demo {
 	private:
 		int m_speed_x;
 		int m_speed_y;
-
+		GameObject* cargo;
+		void move_cargo();
 		bool levelbounds_coll();
 		void calculate_movement();
 
