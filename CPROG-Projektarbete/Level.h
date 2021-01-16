@@ -25,6 +25,8 @@ namespace engine {
 			void remove_object(GameObject&);
 			void add_bg_color(SDL_Color);
 			SDL_Color get_bg_color() const;
+			int get_width() const;
+			int get_height() const;
 			void set_cam_follow(GameObject&);
 			void update_camera(SDL_Rect&, int, int) const;
 

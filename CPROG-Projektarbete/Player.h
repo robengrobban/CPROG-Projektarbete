@@ -25,6 +25,7 @@ namespace demo {
 
 			void accelerate(int);
 			void decelerate(int vel);
+			bool check_within_level();
 			void on_collision(GameObject&);
 
 			void die();

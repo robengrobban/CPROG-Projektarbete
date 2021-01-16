@@ -14,6 +14,7 @@ namespace demo {
 	void Player::tick() {
 		this->calculate_movement();
 		this->default_collision_executor();
+		this->check_within_level();
 		this->do_movement();
 	}
 
@@ -109,6 +110,19 @@ namespace demo {
 		//	force_right = 0;
 		//}
 		decide_anim();
+	}
+
+	bool Player::check_within_level() {
+		if (this->get_right() > get_level().get_width() || this->get_left() < 0)
+		{
+			int moveX = this->velocity_x > 0 ? -1 : 1;
+			this->velocity_x = 0;
+			while (this->get_right() > get_level().get_width() || this->get_left() < 0) {
+				this->rect_add_x(moveX);
+			}
+			return true;
+		}
+		return false;
 	}
 
 	void Player::on_collision(GameObject& obj) {

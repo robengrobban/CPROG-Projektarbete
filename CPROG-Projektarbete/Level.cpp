@@ -55,6 +55,16 @@ namespace engine {
 		return bg_color;
 	}
 
+	int Level::get_width() const
+	{
+		return LEVEL_WIDTH;
+	}
+
+	int Level::get_height() const
+	{
+		return LEVEL_HEIGHT;
+	}
+
 	void Level::set_cam_follow(GameObject& follow) {
 		camera_follow = &follow;
 	}
@@ -69,13 +79,13 @@ namespace engine {
 		{
 			camera.y = 0;
 		}
-		if (camera.x > 2560 - camera.w)
+		if (camera.x > LEVEL_WIDTH - camera.w)
 		{
-			camera.x = 2560 - camera.w;
+			camera.x = LEVEL_WIDTH - camera.w;
 		}
-		if (camera.y > 1600 - camera.h)
+		if (camera.y > LEVEL_HEIGHT - camera.h)
 		{
-			camera.y = 1600 - camera.h;
+			camera.y = LEVEL_HEIGHT - camera.h;
 		}
 	}
 
