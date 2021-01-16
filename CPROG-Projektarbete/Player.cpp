@@ -8,7 +8,7 @@ namespace demo {
 	}
 
 	Player::Player(int x, int y, int w, int h, bool solid)
-		: MovingObject(x, y, w, h, solid), on_ground(false), moving(false), MAX_MOV_SPEED(8), movement_speed(0) {
+		: MovingObject(x, y, w, h, solid), on_ground(false), moving(false), MAX_MOV_SPEED(8), movement_speed(0), lives(5) {
 	}
 
 	void Player::tick() {
@@ -55,7 +55,14 @@ namespace demo {
 	}
 
 	void Player::die() {
-		this->get_level().get_level_manager().get_current_level().remove_object(*this);
+		if (lives > 0) {
+			lives--;
+			velocity_x = 0;
+			velocity_y = 0;
+			reset_pos();
+		}
+		else
+			this->get_level().get_level_manager().get_current_level().remove_object(*this);
 	}
 
 	void Player::decide_anim() {

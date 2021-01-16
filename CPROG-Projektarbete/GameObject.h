@@ -44,6 +44,7 @@ namespace engine {
 
 		virtual void on_collision(GameObject&) = 0;
 
+		void reset_pos();
 		void rect_add_x(int);
 		void rect_add_y(int);
 
@@ -63,7 +64,8 @@ namespace engine {
 		SDL_Rect dst_rect;
 	private:
 		bool solid;
-
+		int origin_x;
+		int origin_y;
 		Level* level;
 		int curr_anim;
 		std::vector<Sprite*> sprites;

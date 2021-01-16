@@ -38,6 +38,7 @@ namespace demo {
 			
 
 		private:
+			int lives;
 			bool moving;
 			const int MAX_MOV_SPEED;
 			int movement_speed;

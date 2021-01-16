@@ -8,7 +8,7 @@
 
 namespace engine {
 
-	GameObject::GameObject(int x, int y, int w, int h, bool solid) : dst_rect{ x,y,w,h }, sprites(), curr_anim(0), solid(solid), level(nullptr)
+	GameObject::GameObject(int x, int y, int w, int h, bool solid) : dst_rect{ x,y,w,h }, origin_x(x), origin_y(y), sprites(), curr_anim(0), solid(solid), level(nullptr)
 	{
 	}
 
@@ -22,6 +22,11 @@ namespace engine {
 	const int GameObject::get_bottom() const { return dst_rect.y + dst_rect.h; }
 	const int GameObject::get_width() const { return dst_rect.w; }
 	const int GameObject::get_height() const { return dst_rect.h; }
+
+	void GameObject::reset_pos() {
+		dst_rect.x = origin_x;
+		dst_rect.y = origin_y;
+	}
 
 	void GameObject::rect_add_x(int x) {
 		dst_rect.x += x;
