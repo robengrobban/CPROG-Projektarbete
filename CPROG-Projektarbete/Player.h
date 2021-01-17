@@ -42,6 +42,7 @@ namespace demo {
 			bool moving;
 			const int MAX_MOV_SPEED;
 			int movement_speed;
+			int prev_dir;
 			bool on_ground;
 			void calculate_movement();
 			void jump();

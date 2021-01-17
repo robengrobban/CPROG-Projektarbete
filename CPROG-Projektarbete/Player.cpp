@@ -8,15 +8,16 @@ namespace demo {
 	}
 	int Player::lives = 5;
 	Player::Player(int x, int y, int w, int h, bool solid)
-		: MovingObject(x, y, w, h, solid), on_ground(false), moving(false), MAX_MOV_SPEED(8), movement_speed(0) {
+		: MovingObject(x, y, w, h, solid), on_ground(false), moving(false), MAX_MOV_SPEED(8), movement_speed(0), prev_dir(1) {
 		
 	}
 
 	void Player::tick() {
+
+		this->decide_anim();
 		this->calculate_movement();
 		this->check_within_level();
 		this->default_collision_executor();
-		
 		this->check_fall_oob();
 		this->do_movement();
 	}
@@ -71,17 +72,25 @@ namespace demo {
 		const Uint8* keys = SDL_GetKeyboardState(NULL);
 		if (!keys[SDL_SCANCODE_D] && !keys[SDL_SCANCODE_A] || keys[SDL_SCANCODE_D] && keys[SDL_SCANCODE_A]) {
 			moving = false;
-			set_animation(0);
+			if (prev_dir > 0)
+				set_animation(0);
+			else set_animation(1);
 		}
 		else if (keys[SDL_SCANCODE_D]) {
 			moving = true;
 			movement_speed = 1;
-			set_animation(2);
+			set_animation(3);
 		}
 		else if (keys[SDL_SCANCODE_A]) {
 			moving = true;
 			movement_speed = -1;
-			set_animation(1);
+			set_animation(2);
+		}
+		if (!this->on_ground) {
+			if (prev_dir > 0)
+				set_animation(4);
+			else
+				set_animation(5);
 		}
 	}
 
@@ -89,15 +98,13 @@ namespace demo {
 	void Player::mouse_up(const SDL_Event& event) {}
 	
 	void Player::key_down(const SDL_Event& event) {
-		const Uint8* keys = SDL_GetKeyboardState(NULL);
+
 		int key_num = event.key.keysym.sym;
-		if ( key_num == 119 ) { // W
-		}
-		if ( key_num == 115 ) { // S
-		}
 		if ( key_num == 97 ) { // A
+			prev_dir = -1;
 		}
 		if ( key_num == 100 ) { // D
+			prev_dir = 1;
 		}
 		if (key_num == SDLK_SPACE) {
 			jump();
@@ -105,22 +112,7 @@ namespace demo {
 		decide_anim();
 	}
 
-	void Player::key_up(const SDL_Event& event) {
-		//int key_num = event.key.keysym.sym;
-		//if (key_num == 119) { // W
-		//	force_up = 0;
-		//}
-		//if (key_num == 115) { // S
-		//	force_down = 0;
-		//}
-		//if (key_num == 97) { // A
-		//	force_left = 0;
-		//}
-		//if (key_num == 100) { // D
-		//	force_right = 0;
-		//}
-		decide_anim();
-	}
+	void Player::key_up(const SDL_Event& event) {}
 
 	bool Player::check_within_level() {
 		if (this->get_right() > get_level().get_width() || this->get_left() < 0)

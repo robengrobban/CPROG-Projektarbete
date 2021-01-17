@@ -36,9 +36,12 @@ void autoSetup(LevelManager* lm, GameManager* gm)
 {
 	GameObject* player = Player::create(0, 960-(128+64), 64, 128);
 	player->set_gravity(1);
-	player->add_sprite(1, 100, "c:/CPROG-Assets/images/mario_standing.png");
-	player->add_sprite(3, 100, "c:/CPROG-Assets/images/mario_left.png");
-	player->add_sprite(3, 100, "c:/CPROG-Assets/images/mario_right.png");
+	player->add_sprite(2, 300, "c:/CPROG-Assets/images/player_standing_right.png");
+	player->add_sprite(2, 300, "c:/CPROG-Assets/images/player_standing_left.png");
+	player->add_sprite(8, 100, "c:/CPROG-Assets/images/player_run_left.png");
+	player->add_sprite(8, 100, "c:/CPROG-Assets/images/player_run_right.png");
+	player->add_sprite(1, 100, "c:/CPROG-Assets/images/player_jump_right.png");
+	player->add_sprite(1, 100, "c:/CPROG-Assets/images/player_jump_left.png");
 
 	JsonParser* parser = new JsonParser();
 	vector<Level*>* levels(parser->load_levels("C:/CPROG-Assets/project.json"));
@@ -55,9 +58,12 @@ void autoSetup(LevelManager* lm, GameManager* gm)
 	Level* l5 = levels->at(levels->size() - 1);
 	GameObject* player_level_5 = Player::create(0, 1600-(128+64), 64, 128);
 	player_level_5->set_gravity(1);
-	player_level_5->add_sprite(1, 100, "c:/CPROG-Assets/images/mario_standing.png");
-	player_level_5->add_sprite(3, 100, "c:/CPROG-Assets/images/mario_left.png");
-	player_level_5->add_sprite(3, 100, "c:/CPROG-Assets/images/mario_right.png");
+	player_level_5->add_sprite(2, 300, "c:/CPROG-Assets/images/player_standing_right.png");
+	player_level_5->add_sprite(2, 300, "c:/CPROG-Assets/images/player_standing_left.png");
+	player_level_5->add_sprite(8, 100, "c:/CPROG-Assets/images/player_run_left.png");
+	player_level_5->add_sprite(8, 100, "c:/CPROG-Assets/images/player_run_right.png");
+	player_level_5->add_sprite(1, 100, "c:/CPROG-Assets/images/player_jump_right.png");
+	player_level_5->add_sprite(1, 100, "c:/CPROG-Assets/images/player_jump_left.png");
 	l5->add_object(*player_level_5);
 	l5->set_cam_follow(*player_level_5);
 
